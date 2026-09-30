@@ -1,0 +1,172 @@
+﻿
+@{
+    ViewData["Title"] = "AGB";
+}
+
+<style>
+
+.zeile-1 {
+    line-height: 45px;
+}
+
+.title-1{
+    font-weight: bold;
+    line-height: 45px;
+    letter-spacing: 7px;
+    font-size: 20px;
+}
+
+.title-2{
+    font-weight: bold;
+    line-height: 45px;
+    font-size: 20px;
+}
+
+.title-2x{
+    font-weight: bold;
+    line-height: 45px;
+    font-size: 20px;
+    color: #61b300;
+}
+
+.title-3{
+    font-weight: bold;
+    line-height: 45px;
+    font-size: 16px;
+}
+
+.text-0{
+    line-height: 40px;
+    font-size: 16px;
+}
+
+ul,li{
+    list-style: disc !important;
+    list-style-type: disc !important;
+    margin-left: 2%;
+}
+
+.list-x{
+    list-style: none !important;
+    list-style-type: none !important;
+    margin-left: 2%;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: var(--bs-nav-pills-link-active-color);
+    background-color: #61b300;
+}
+
+</style>
+
+<div class="container">
+
+    <div class="container-fliud">
+        <div class="pt-5">
+            <h6 class="mb-0 ueberschrift" style="margin:0;text-align:start;margin-bottom: 20px;font-weight:normal;color:#FF6000;">
+                @*<a href="@Url.Action("Shop", "Shop",new{zipcode = @Model.Postleitzahl})" style="color:#FF6000;;">
+                <!--<i class="fas fa-long-arrow-alt-left me-2"></i> --> zurück
+                </a>*@
+            </h6>
+        </div>
+
+        <div style="text-align:center;margin-bottom:80px;position:relative;margin-left: 10%;">
+            <h1 class="zipcodeResult-2 mb-0 mt-5 ueberschrift2">
+                <span>Packanleitung</span>
+            </h1>
+            <div class="mb-0 mt-0 lineX text"></div>
+        </div>
+
+        <div class="d-flex align-items-start Fliestext">
+
+            <div class="tab-content ms-5" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+
+                    <p style="text-align:justify; font-size: 15px!important;">
+                        
+                 
+
+                        Damit die Verwendung unserer Boxen nicht nur platzschaffend, sondern auch kinderleicht wird, haben wir dir den stressfreien Umgang mit unseren Lagerboxen in dieser Packanleitung zusammengefasst.<br /><br />
+
+                        Generell gilt: Schütze deine persönlichen Dinge ausreichend und verpacke diese gründlich, da wir für unsachgemäße Verladung keine Verantwortung übernehmen können. Bei Schäden aufgrund von unsachgemäßer Beladung ist allein der Verlader verantwortlich. <br /><br />
+
+
+
+                        <span class="fw-bolder">Tipps zu unserer room it! Karton-Box</span><br /><br />
+
+                        <ul>
+                            <li>Tipp 1: Schwere Gegenstände nach unten, leichte nach oben.</li>
+                            <li>Tipp 2: Max. Beladungsgewicht von 25 kg beachten (Tragfähigkeit, Transportfähigkeit).</li>
+                            <li>Tipp 3: Nutze unsere App um ganz leicht einen Überblick über den Inhalt der jeweiligen Box zu behalten.</li>
+                            <li>Tipp 4: Für Gegenstände aus Glas  oder Geschirr am besten in eine Lage Seidenpapier oder Luftpolsterfolie verwenden.</li>
+                            <li>Tipp 5: Kennzeichne Boxen mit zerbrechlichem Inhalt.</li>
+                            <li>Tipp 6: Bücher und Akten sind schwer und überschreiten schnell die Tragfähigkeit. Schwere Bücher sollten waagerecht in der Box verpackt werden. Lege leichtes Material oben auf, damit deine Box nicht zu schwer wird.</li>
+                            <li>Tipp 7: Nach der Beladung kannst du deine Karton-Box ganz einfach mit unseren mitgelieferten Plomben versiegeln.</li>
+                        </ul>
+                        <br /><br />
+
+
+                        <span class="fw-bolder">Tipps zu unserer room it! Möbel-Container-Box</span><br /><br />
+
+                        <ul>
+                            <li>Tipp 1: Achte darauf, das Gewicht in der Box gleichmäßig zu verteilen.</li>
+                            <li>Tipp 2: Nutze für die Beladung möglichst die komplette Höhe und Breite. Je passgenauer deine Gegenstände in der Box stehen, desto sicherer sind diese.</li>
+                            <li>Tipp 3: Um leere Zwischenräume zu vermeiden benutze am besten Decken und andere weiche Materialien.</li>
+                            <li>Tipp 4: Für schwere Gegenstände nutze Packdecken als Boden und Schutz gegen Kratzer. Hohe Möbel, Kühlschränke und ähnliche Dinge stellst du am besten mittig auf und sicherst diese zusätzlich mit Zurrgurten ab.</li>
+
+                            <li>Tipp 5: Tische, Stühle und andere Möbelstücke in der Größe werden am besten in der Mitte der Box platziert.</li>
+                            <li>Tipp 6: Achte auch darauf, dass alle überstehenden Dinge wie Schlüssel oder Griffe nach Möglichkeit  entfernt werden. Nicht verschlossene Türen klebst du einfach zu.</li>
+                            <li>Tipp 7: Nutze zusätzliche Zurrgurte um deine Gegenstände optimal zu sichern.</li>
+                            <li>Tipp 8: Die maximale Zuladung für unsere Möbel-Container-Box beträgt 1000kg !</li>
+                            <li>Tipp 9: Denke daran, deine Container-Box nach der Beladung mit deinem eigenen Schloss abzuschließen.</li>
+                        </ul>
+                        <br /><br />
+
+
+                        <span class="fw-bolder">Tipps zu einzelnen Gegenständen</span><br /><br />
+
+                        <ul>
+                            <li>Tipp 1: Ein Gegenstand darf die Abmessungen von 1,20m Länge x 0,80m Breite x 0,4m Höhe und ein   Maximalgewicht von 30 kg nicht überschreiten.</li>
+                            <li>Tipp 2: Verpacke deine Gegenstände so, dass Sie vor transporttypischen Beanspruchungen wie z.B. Stößen oder Temperaturschwankungen geschützt sind.</li>
+                            <li>Tipp 3: Besonders empfindliche Gegenstände wie Spiegel oder Glasplatten müssen besonders gut geschützt werden. Am besten werden diese eingewickelt in Luftpolsterfolie und/oder Decken.</li>
+                            <li>Tipp 4: Nutze unsere App um ganz leicht einen Überblick über deine eingelagerten Gegenstände zu behalten</li>
+                        </ul>
+                        <br /><br />
+
+                        <span class="fw-bolder">Was darf nicht eingelagert werden?</span><br /><br />
+
+                        <ul>
+                            <li>verderbliche Nahrungsmittel und Waren</li>
+                            <li>Lebewesen (egal welcher Art)</li>
+                            <li>leicht entflammbare, zur Selbstzündung neigende Stoffe</li>
+                            <li>Waffen, Sprengstoffe, explosive Stoffe jeder Art</li>
+
+                            <li>Drogen und andere Suchtstoffe</li>
+                            <li>Chemikalien, toxische Stoffe</li>
+                            <li>radioaktive Materialien & Sondermüll (egal welcher Art)</li>
+                            <li>Abfallstoffe</li>
+
+                            <li>Materialien, deren Emissionen Dritte beeinträchtigen könnten</li>
+                            <li>Bargeld, Edelmetalle, Edelsteine, Schmuck, Wertpapiere</li>
+                            <li> Flüssigkeiten (Bitte sprich uns diesbezüglich an, wir bieten dir eine passende Lösung.)</li>
+
+                        </ul>
+                        <br /><br />
+
+
+                     
+
+                        <hr />
+
+                        <span class="fw-bolder">
+                            Lies dazu bitte auch unsere AGB's.
+                        </span><br /><br />
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>

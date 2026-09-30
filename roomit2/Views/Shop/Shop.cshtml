@@ -1,0 +1,421 @@
+﻿@model Warenkorb
+
+@{
+    ViewData["Title"] = "Lagerboxen online bestellen | room it!";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var tt = Model.WarenkorbItemsListe.Count();
+}
+
+@section metatags{
+    <title>Vorteile der Einlagerung | room it!</title>
+    <meta name="description" content="Alles rund um die Einlagerung: Der Service mit Container-Boxen✅ Karton-Boxen✅ Einzelstücken✅ » Jetzt Anfrage senden!">
+    <meta name="keywords" content="Onlineshop, Shop, Einlagerung, Lagerboxen bestellen, Container-Box, Karton-Box, Einzelstücke, externes Lager, Auslagerung, Lagerbox, Container mieten, Storage">
+}
+
+
+
+<style>
+
+    .btn-shop{
+        min-width:66px;
+        display:flex;
+        justify-content:center;
+        border-radius:5px;
+    
+    }
+
+</style>
+
+<div class="container shop Fliestext" style="max-width:1600px; margin-top:5%;">
+    <div class="row">
+        @if (ViewBag.Area != null)
+        {
+            <div style="text-align:center;margin-bottom:10%;position:relative;">
+                <h1 class="zipcodeResult fw-bold mb-0" style="font-size:46px;">
+                    <span>@ViewBag.Zipcode</span>
+                    <span>@ViewBag.Area</span>
+                 </h1>
+                <div class="mb-4 lineX text" style="width:325px;"></div>
+                <h3 class="text">Unsere aktuellen Angebote in deiner Region:</h3>
+            </div>
+
+            <div class="cardGroup ma-1">
+
+                <div id="Karton-Box" class="card cardItem">
+                    <div class="row g-0 ga-x">
+                        <!-- Bild -->
+                        <div class="col-md-2 bild">
+                            <img src="/assets/images/Produkte_Karton3.png"  class="img-fluid rounded-start" alt="Produkte_Kartonbox" style="width:auto;height:215px;">
+                        </div>
+                        <!-- Text Infos -->
+                        <div class="col-md-4 text-start float-end TextInfos">
+                            <div class="card-body">
+                                <h3 class="card-title fw-bold">Karton-Box</h3>
+                                <p class="card-text text Fliestext">
+                                    Maße  (L x B x H): 57 x 37 x 32 cm​<br>
+                                    Max. Gewicht: 25 kg​<br>
+                                    Geeignet für: T-Shirts, DVDs etc.​
+                                </p>
+                                <p class="card-text"><strong class="text-muted">@*Anlieferung und Abholung ab 0,00 €*@</strong></p>
+
+                                <div class="btn-roomit-div mt-4">
+                                    <a type="button" asp-controller="Shop" asp-action="Karton" asp-route-Zipcode="@Model.Postleitzahl" asp-route-Stadtname="@Model.Stadtname" class="btn btn-roomit abs btn-details" >Details</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  Quantity && + und -   -->
+                        <div class="col-md-3 Fliestext quantity">
+                            <div class="quantity-1">
+                                <span class="article-column-headline">Anzahl</span>
+                                <br />
+                                <span class="text">Mindestmenge: 3 Stück</span>
+                            </div>                           
+                            <div class="cont-add-prod btn-roomit-div">
+                                 <button class="minus minus2 btn-roomit btn-center abs btn-shop" value="4" style="display:none;">-</button>
+                                    <p class="product-counter">0</p>                              
+                                <button class="plus plus2 btn-roomit btn-center abs btn-shop" value="4">+</button>
+                            </div>
+                        </div>
+                        <!-- Preis  -->
+                        <div class="col-md-3 ps-5 Fliestext preis">
+                            <div class="preis-1">
+                                <span class="article-column-headline">Preis</span>
+                                <br />
+                                <span class="text">Pro Monat zzgl. Lieferkosten</span>
+                            </div>
+
+                            <div class="preis-1">   
+                                <div class="cont-add-prod text-center preis-2">   
+                                    <span class="result fw-bold">0,00 €</span>                                                          
+                                </div>
+                                <div class="preis-3">
+                                    <input type="button" class="btn mt-4 in-warenkorb btn-roomit btn-center abs" style="min-width:auto;font-weight:normal!important;"  value="In den Warenkorb" />
+                                </div>
+                            </div>
+                         
+                        </div>
+                    </div>
+                    <span class="price-info">ab <span class="price">4,00 €</span> pro Karton-Box</span>
+                </div>
+
+                <!-- Container Bolck -->
+                @if (Model?.NL == "München")
+                {
+                    <div id="Container-Box-Holz" class="card cardItem C1">
+                    <div class="row g-0 ga-x">
+                        <!-- Bild -->
+                        <div class="col-md-2 bild">
+                            <img src="/assets/images/Produkte_Container.png" class="box-item-img img-item" alt="lagere deine Container-Box im Lager" style="margin-top: 0rem;">
+                        </div>
+                        <!-- Text Infos -->
+                        <div class="col-md-4 text-start float-end TextInfos">
+                            <div class="card-body Fliestext">
+                                <h5 class="card-title fw-bold">Holz-Container-Box</h5>
+                                <p class="card-text text Fliestext">
+                                  Maße  (L x B x H): 230 x 230 x 155 cm<br>
+                                  Max. Gewicht: 0,8 Tonnen<br>
+                                  Geeignet für: Wohnungsinventar (30 m2)<br>
+                                </p>
+                                <p class="card-text"><strong class="text-muted">@*Anlieferung und Abholung ab 0,00 €*@</strong></p>
+
+                                <div class="btn-roomit-div mt-4">
+                                    <a type="button" asp-controller="Shop" asp-action="Container" asp-route-Zipcode="@Model?.Postleitzahl" asp-route-Stadtname="@Model?.Stadtname" class="btn btn-roomit abs btn-details">Details</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  Quantity && + und -   -->
+                        <div class="col-md-3 Fliestext quantity">
+                            <div class="quantity-1">
+                                <span class="article-column-headline fw-bold">Anzahl</span>
+                                <br />
+
+                            </div>                                                    
+                            <div class="cont-add-prod btn-roomit-div">                       
+                                <button class="minus minus2 btn-roomit btn-center abs btn-shop" value="99" style="display:none;">-</button>
+                                <p class="product-counter">0</p>
+                                <button class="plus plus2 btn-roomit btn-center abs btn-shop" value="99">+</button>
+                            </div>                            
+                        </div>
+                        <!-- Preis  -->
+                        <div class="col-md-3 ps-5 Fliestext preis">
+                            <div class="preis-1">
+                                <span class="article-column-headline">Preis</span>
+                                <br />
+                                <span class="text">Pro Monat zzgl. Lieferkosten</span>
+                            </div>
+                             <div class="preis-1"> 
+                                 <div class="cont-add-prod text-center preis-2">                          
+                                    <span class="result fw-bold">0,00 €</span>                           
+                                </div>
+                             <div class="preis-3">
+                                <input type="button" class="btn mt-4 in-warenkorb btn-roomit btn-center abs" style="min-width:auto;font-weight:normal!important;"  value="In den Warenkorb" />
+                            </div>
+                        </div>
+                         
+                            
+                            
+                        </div>
+                    </div>
+                    <span class="price-info">ab <span class="price"> 99,00 €</span> pro Container-Box</span>
+                </div>
+                }
+                else
+                {
+                    <div id="Container-Box-Metall" class="card cardItem C1">
+                    <div class="row g-0 ga-x">
+                        <!-- Bild -->
+                        <div class="col-md-2 bild">
+                            <img src="/assets/images/Produkte_Container.png" class="box-item-img img-item" alt="lagere deine Container-Box im Lager" style="margin-top: 0rem;">
+                        </div>
+                        <!-- Text Infos -->
+                        <div class="col-md-4 text-start float-end TextInfos">
+                            <div class="card-body Fliestext">
+                                <h5 class="card-title fw-bold">Metall-Container-Box</h5>
+                                <p class="card-text text Fliestext">
+                                   Maße  (L x B x H): 240 x 150 x 225 cm <br>
+                                   Max. Gewicht: 0,8 Tonnen <br>
+                                   Geeignet für: Wohnungsinventar (30 m<sup>2</sup>)<br>
+
+                                </p>
+                                <p class="card-text"><strong class="text-muted">@*Anlieferung und Abholung ab 0,00 €*@</strong></p>
+
+                                <div class="btn-roomit-div mt-4">
+                                    <a type="button" asp-controller="Shop" asp-action="Container" asp-route-Zipcode="@Model?.Postleitzahl" asp-route-Stadtname="@Model?.Stadtname" class="btn btn-roomit abs btn-details">Details</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  Quantity && + und -   -->
+                        <div class="col-md-3 quantity">
+                            <div class="quantity-1">
+                                <span class="article-column-headline fw-bold">Anzahl</span>
+                                <br />
+                            </div>                                                    
+                            <div class="cont-add-prod btn-roomit-div">                          
+                                <button class="minus minus2 btn-roomit btn-center abs btn-shop" value="99" style="display:none;">-</button>
+                                <p class="product-counter">0</p>
+                                <button class="plus plus2 btn-roomit btn-center abs btn-shop" value="99">+</button>
+                            </div>
+                            @*<input type="button" class="btn btn-outline-success mt-4 in-warenkorb" style="min-width:60%;height: 42px;" value="IN DEN WARENKORB" />*@
+                        </div>
+                        <!-- Preis  -->
+                        <div class="col-md-3 ps-5 Fliestext preis">
+                            <div class="preis-1">
+                                <span class="article-column-headline">Preis</span>
+                                <br />
+                                <span class="text">Pro Monat zzgl. Lieferkosten</span>
+                            </div>
+
+                            <div class="preis-1"> 
+                                <div class="cont-add-prod text-center preis-2">                      
+                                <span class="result fw-bold">0,00 €</span>                             
+                            </div>                     
+                             <div class="preis-3">
+                                <input type="button" class="btn mt-4 in-warenkorb btn-roomit btn-center abs" style="min-width:auto;font-weight:normal!important"  value="In den Warenkorb" />
+                            </div>
+                            </div>
+                           
+                            
+                            
+                        </div>
+                    </div>
+                    <span class="price-info">ab <span class="price"> 99,00 €</span> pro Container-Box</span>
+                </div>  
+                }
+
+                <div id="Einzelstücke" class="card cardItem C1 Fliestext">
+                    <div class="row g-0 ga-x">
+                        <!-- Bild -->
+                        <div class="col-md-2 bild">
+                             <img src="/assets/images/Produkte_Einstuecke.png" class="box-item-img img-item" alt="lagere deine Einstücke im Lager" style="margin-top: 0rem;">
+                        </div>
+                        <!-- Text Infos -->
+                        <div class="col-md-4 text-start float-end TextInfos">
+                            <div class="card-body Fliestext">
+                                <h5 class="card-title fw-bold">Einzelstück</h5>
+                                <p class="card-text text Fliestext">
+                                    Max. Maße  (L x B x H): 120 x 80 x 40 cm​<br>
+                                    Max. Gewicht: 30 kg​ Geeignet für: Sessel,<br> Fahrräder, Skier etc.​
+                                </p>
+                               
+
+                                <div class="btn-roomit-div mt-4">
+                                    <a type="button" asp-controller="Shop" asp-action="Einzelstueck" asp-route-Zipcode="@Model?.Postleitzahl" asp-route-Stadtname="@Model?.Stadtname" class="btn btn-roomit abs btn-details">Details</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  Quantity && + und -   -->
+                        <div class="col-md-3 Fliestext quantity">
+                            <div class="quantity-1">
+                                <span class="article-column-headline fw-bold">Anzahl</span>
+                                <br />
+
+                            </div>                                                    
+                            <div class="cont-add-prod btn-roomit-div">
+                                <button class="minus minus2 btn-roomit btn-center abs btn-shop" value="12" style="display:none;">-</button>
+                                <p class="product-counter">0</p>
+                                <button class="plus plus2 btn-roomit btn-center abs btn-shop" value="12">+</button>
+                            </div>
+
+                        </div>
+                        <!-- Preis  -->
+                        <div class="col-md-3 ps-5 Fliestext preis">
+                            <div class="preis-1">
+                                <span class="article-column-headline">Preis</span>
+                                <br />
+                                <span class="text">Pro Monat zzgl. Lieferkosten</span>
+                            </div>
+                            <div class="preis-1">  
+                                  <div class="cont-add-prod text-center preis-2">                              
+                                    <span class="result fw-bold">0,00 €</span>                            
+                                 </div>
+                                 <div class="preis-3">
+                                   <input type="button" class="btn mt-4 in-warenkorb btn-roomit btn-center abs" style="min-width:auto;font-weight:normal!important;"  value="In den Warenkorb" />
+                                </div>
+                            </div>
+                          
+                            
+                            
+                        </div>
+                    </div>
+                    <span class="price-info">ab <span class="price"> 12,00 € </span> pro Einzelstück</span>  
+                </div>
+
+
+            <!-- die letzten Zwei produkten die nicht mehr angeboten werden nämlich (Umzugskarton,Ladehilfe) -->
+
+           @*     <h1 style="color: chocolate;text-align: center;margin-top: 10%;margin-bottom: 10%;">Weitere Produkte hinzufügen</h1>
+
+                <div id="Umzugskarton" class="card cardItem C1">
+                    <div class="row g-0">
+                        <!-- Bild -->
+                        <div class="col-md-3">
+                            <img src="/assets/images/umzugkarton_360x360.png" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <!-- Text Infos -->
+                        <div class="col-md-3">
+                            <div class="card-body">
+                                <h5 class="card-title">Umzugskarton</h5>
+                                <p class="card-text">
+                                    Unser Standart-Karton mit
+                                    den Maßen 57 x 37 x 32 cm
+                                    Max. Gewicht: 25 KG
+                                    Volumen: 69 Liter
+                                </p>
+                                <p class="card-text"><strong class="text-muted">Last updated 3 mins ago</strong></p>
+                                <div class="mt-2">
+                                    <a type="button" asp-controller="Shop" asp-action="Umzugskarton" class="btn btn-outline-success" style="min-width:50%;">Mehr Details</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- + und - -->
+                        <div class="col-md-3">
+                            <p class="article-column-headline">Anzahl</p>
+                            <div class="cont-add-prod">
+                                @if (Model?.WarenkorbItemsListe.FirstOrDefault(x => x.ProduktName == "Umzugskarton")?.Quantity > 0)
+                                {
+                                    <button class="minus minus2" style="display:block;" value="2.5">-</button>
+                                    <p class="product-counter">@Model?.WarenkorbItemsListe.FirstOrDefault(x => x.ProduktName == "Umzugskarton")?.Quantity</p>
+                                }
+                                else
+                                {
+                                    <button class="minus minus2" value="2.5">-</button>
+                                    <p class="product-counter">0</p>
+                                }
+                              
+                                <button class="plus plus2" value="2.5">+</button>
+                            </div>
+                        </div>
+                        <!-- Preis  -->
+                        <div class="col-md-3 ps-5">
+                            <p class="article-column-headline">Preis</p>
+                            <span class="article-price-amount">
+                                @if (Model?.WarenkorbItemsListe.FirstOrDefault(x => x.ProduktName == "Umzugskarton")?.Quantity > 0)
+                                {
+                                    <span class="result">@Model?.WarenkorbItemsListe.FirstOrDefault(x => x.ProduktName == "Umzugskarton")?.Total</span>
+                                }
+                                else
+                                {
+                                    <span class="result"></span>
+                                }
+
+                                <span class="proMonat">Pro Monat</span>
+                            </span>
+                            <input type="button" class="btn btn-outline-success mt-4 float-end me-4 in-warenkorb" style="min-width:60%;height: 42px;" value="IN DEN WARENKORB" />
+                        </div>
+                    </div>
+                    <span class="price-info">ab <span class="price"> 2,50 €</span></span>
+                </div>
+
+                <div id="Ladehilfe" class="card cardItem C1">
+                    <div class="row g-0">
+                        <!-- Bild -->
+                        <div class="col-md-3">
+                            <img src="/assets/images/Ladehilfe_600x600_Tranz.jpg" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <!-- Text Infos -->
+                        <div class="col-md-3">
+                            <div class="card-body">
+                                <h5 class="card-title">Ladehilfe</h5>
+                                <p class="card-text">
+                                    Du benötigst Hilfe beim Tragen?
+
+                                    Für 1 Std. oder länger helfen dir unsere beiden stärksten Männer all deine Sachen in die Box zu laden.
+                                </p>
+                                <p class="card-text"><strong class="text-muted">Last updated 3 mins ago</strong></p>
+                                <div class="mt-2">
+                                    <a type="button" asp-controller="Shop" asp-action="Ladehilfe" class="btn btn-outline-success" style="min-width:50%;">Mehr Details</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- + und - -->
+                        <div class="col-md-3">
+                            <p class="article-column-headline">Anzahl</p>
+                            <div class="cont-add-prod">
+                                @if (Model?.WarenkorbItemsListe.FirstOrDefault(x => x.ProduktName == "Ladehilfe")?.Quantity > 0)
+                                {
+                                    <button class="minus minus2" style="display:block;" value="99">-</button>
+                                    <p class="product-counter">@Model?.WarenkorbItemsListe.FirstOrDefault(x => x.ProduktName == "Ladehilfe")?.Quantity</p>
+                                }
+                                else
+                                {
+                                    <button class="minus minus2" value="99">-</button>
+                                    <p class="product-counter">0</p>
+                                }
+                                <button class="plus plus2" value="99">+</button>
+                            </div>
+                        </div>
+                        <!-- Preis  -->
+                        <div class="col-md-3 ps-5">
+                            <p class="article-column-headline">Preis</p>
+                            <span class="article-price-amount">
+                                @if (Model?.WarenkorbItemsListe.FirstOrDefault(x => x.ProduktName == "Ladehilfe")?.Quantity > 0)
+                                {
+                                    <span class="result">@Model?.WarenkorbItemsListe.FirstOrDefault(x => x.ProduktName == "Ladehilfe")?.Total</span>
+                                }
+                                else
+                                {
+                                    <span class="result"></span>
+                                }
+
+                                <span class="proMonat">Pro Monat</span>
+                            </span>
+                            <input type="button" class="btn btn-outline-success mt-4 float-end me-4 in-warenkorb" style="min-width:60%;height: 42px;" value="IN DEN WARENKORB" />
+                        </div>
+                    </div>
+                    <span class="price-info">ab <span class="price">99,00 € </span></span>
+                </div>*@
+
+            </div>
+        }
+        else
+        {
+            <div style="text-align:center;margin-bottom:10%;position:relative;">
+                <h1 class="noZipcodeResult">@ViewBag.Zipcode</h1>
+                <h3 style="color:chocolate;margin-top: 6%;">Aktuellen haben wir keine Angebote in Deiner Region!</h3>
+            </div>
+            
+        }
+
+        
+    </div>
+</div>

@@ -1,0 +1,35 @@
+﻿@model Bestellung
+@{
+    ViewData["Title"] = "Danke";
+}
+
+
+<div class="row mt-4" style="padding:0;">
+    <div class="col-lg-6 align-self-center div-danke">
+        <div class="row">
+            <div class="col-lg-12 mt-5">
+                <h1 class="mt-4 ueberschrift">Danke für deine Anfrage</h1>
+                <div class="mb-0 mt-4 lineX text"></div>
+
+                <p style="margin-top:110px;">
+                    Vielen Dank für deine Anfrage.
+                    <br /><br />
+                    Eine ausführliche Zusammenfassung deiner Bestellung erhältst du per E-Mail.
+                    <br /><br />
+                    Ein*e Mitarbeiter*in wird sich zur weiteren Absprache mit dir in Verbindung setzen.
+                </p>
+            </div>
+
+            <div id="trustedShopsCheckout" style="display: none;">
+                <span id="tsCheckoutOrderNr">@Model.Bestellnummer</span>
+                <span id="tsCheckoutBuyerEmail">@Model?.GastKunde?.Email</span>
+                <span id="tsCheckoutOrderAmount">@Model?.GesamtBestellungsBetrag</span>
+                <span id="tsCheckoutOrderCurrency">EUR</span>
+                <span id="tsCheckoutOrderPaymentType">Auf Rechnung</span>
+                <span id="tsCheckoutOrderEstDeliveryDate">Nach Eingang deiner Bestellung bekommst du eine E-Mail oder einen Anruf von unserem Team, um einen Termin für die Lieferung zu vereinbaren</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+

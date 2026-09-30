@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<h1>@ViewData["Title"]</h1>
+
+
+<style>
+    .div {
+        border: solid 1px;
+        /*height:250px;*/
+        text-align: center;
+        padding: 200px;
+        background-color:lightseagreen;
+        color:white;
+    }
+
+    .div2 {
+        border: solid 1px;
+        height: 200px;
+    }
+</style>
+
+<div class="container" style="max-width: 1600px;">
+    <div class="row div">
+        @*<div class="col-md-8 div h-auto">
+        <div class="d-flex flex-row justify-content-center mt-3">
+        <div class="col-md-4 div2 h-auto">
+        <div class="d-flex flex-row justify-content-center mt-5">
+        <div class="col-md-4 div2"></div>
+        <div class="col-md-4 div2"></div>
+        </div>
+        </div>
+        <div class="col-md-4 div2"></div>
+        </div>
+        </div>
+        <div class="col-md-4 div">x</div>*@
+
+        @*<marquee width="300" scrollamount="300" scrolldelay="500" loop="7">HIer blinkender Text.</marquee>*@
+        <h1 id="announcement" class=".div">Use this page to detail your site's privacy policy.</h1>
+    </div>
+
+</div>
+<script>
+    (function blinktext() {
+        var f = document.getElementById('announcement');
+        setInterval(function () {
+            f.style.visibility = (f.style.visibility == 'hidden' ? '' : 'hidden');
+        }, 100);
+    })();
+</script>
+

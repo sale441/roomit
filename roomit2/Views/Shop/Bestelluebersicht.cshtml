@@ -1,0 +1,425 @@
+﻿@using System.Globalization;
+@model Warenkorb
+@{
+    ViewData["Title"] = "Bestelluebersicht";
+    var TotalAmount = TempData["TotalAmount"];
+    var Model1 = TempData["WarenkorbImSession"] as Warenkorb;
+}
+
+<!-- hier muss noch nach dem PLZ geteilt werden-->
+<style>
+    /*   @@media (min-width: 1025px) {
+            .h-custom {
+                height: 100vh !important;
+            }
+        }
+
+        .registration .select-input.form-control[readonly]:not([disabled]) {
+            font-size: 1rem;
+            line-height: 2.15;
+            padding-left: .75em;
+            padding-right: .75em;
+        }
+
+        .card-registration .select-arrow {
+            top: 13px;
+        }
+
+        .bg-grey {
+            background-color: #eae8e8;
+        }
+
+        @@media (min-width: 992px) {
+            .card-registration-2 .bg-grey {
+                border-top-right-radius: 16px;
+                border-bottom-right-radius: 16px;
+            }
+        }
+
+        @@media (max-width: 991px) {
+            .card-registration-2 .bg-grey {
+                border-bottom-left-radius: 16px;
+                border-bottom-right-radius: 16px;
+            }
+        }
+
+        tbody, td, tfoot, th, thead, tr {
+            border-color: inherit;
+            border-style: solid;
+            border-width: 0;
+            border-bottom-width: 0px;
+            text-align: center;
+        }
+       p,h6{
+           text-align:center;
+       }*/
+
+
+    .abstand-40 {
+        text-align: center;
+        position: relative;
+        margin-bottom: 80px;
+    }
+
+    .bg-grey {
+        background-color: #eae8e8;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        border-width: thin 0 0 thin;
+        margin: 0 0 1em;
+        table-layout: auto;
+        max-width: 100%;
+    }
+
+    table, th, td {
+        border-collapse: collapse;
+    }
+
+    tbody {
+        height: 130px;
+    }
+
+    th, td {
+        width: 20%;
+        text-align: center;
+    }
+    /* das hier für td img */
+    .tdImg {
+        width: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .plusMinus {
+        display: flex;
+        justify-content: space-between;
+        width: 100% !important;
+        background-color: aliceblue !important;
+    }
+
+    .tr-underline {
+        border-bottom: 4px solid #b9bdbc;
+        height: 100px;
+    }
+
+
+    .tab2-p tr:first-child {
+        padding-top: 30px;
+        display: block;
+    }
+    
+    .btn-bestellung{
+        display: flex;
+        justify-content: end;
+        flex-flow:wrap;
+        height: 100%;
+        min-height:100px;
+        float: right;
+        width: auto;
+        min-width: 30%;       
+    }
+    .btn-bestellung input{
+        margin-inline:2%;
+    }
+
+
+@@media only screen and (max-width: 700px) {
+    .imgx1 {
+        width: 80px !important;
+    }
+
+    .imgx2 {
+        width: 100px !important;
+    }
+
+    .width-100 {
+        width: 100% !important;
+    }
+
+    .abstand-40 {
+        margin-bottom: 40px;
+    }
+
+    .btn-bestellung {
+        display: flex;
+        flex-direction:column;       
+        width: 100%;      
+        flex-flow:wrap;
+        height: auto;      
+        gap:2%;
+    }
+}
+
+</style>
+
+<section id="cart" class="h-100" style="min-height:1000px;height:auto;">
+    @if (Model.WarenkorbItemsListe.Count() > 0)
+    {
+        <div class="container py-5 h-100" style="max-width:1630px;">
+
+            <div class="pt-5">
+                <h6 class="mb-0 fs-3" style="margin:0;text-align:start;margin-bottom: 20px;font-weight:normal;color:#FF6000;">
+                    <!--  <a href="@Url.Action("Shop", "Shop",new{zipcode = @Model.Postleitzahl})" style="color:#FF6000;"> <i class="fas fa-long-arrow-alt-left me-2"></i> zurück </a>  -->
+                    <a href="javascript:history.back()" style="color:#FF6000;text-decoration:none;font-weight:bold;">zurück</a>
+                </h6>
+            </div>
+
+            @* <div class="pt-5">
+        <h6 class="mb-0 ueberschrift2" style="margin:0;text-align:start;margin-bottom: 20px;font-weight:normal;color:#FF6000;">
+        <a href="@Url.Action("Shop", "Shop",new{zipcode = @Model.Postleitzahl})" style="color:#FF6000;text-decoration:none;">
+        <!--<i class="fas fa-long-arrow-alt-left me-2"></i> --> zurück
+        </a>
+        </h6>
+        </div>*@
+
+            <p hidden class="zipcodeResult mb-0 mt-5">
+                <span>@Model.Postleitzahl</span>
+                <span>@Model.Stadtname</span>
+            </p>
+
+            <div class="abstand-40 ma-1">
+                <h1 class="zipcodeResult-2 mb-0 ueberschrift">
+                    Bestellübersicht
+                </h1>
+                <div class="mb-0 mt-0 lineX text" style="width:371px;"></div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-12 col-lg-9 Fliestext">
+                    <!-- Div Code Design -->
+                    <div class="">
+                        <table class="table-responsive-sm">
+                            <thead>
+                                <tr class="tr-underline mb-4">
+                                    <!--Produkt Image-->
+                                    <th scope="col"></th>
+                                    <!--Produktname-->
+                                    <th scope="col">Bezeichnung </th>
+                                    <!--item.UnitPrice -->
+                                    <th scope="col">Preis</th>
+                                    <th scope="col">Anzahl </th>
+                                    <th scope="col">Gesamt </th>
+                                </tr>
+
+                            </thead>
+                            @foreach (var item in Model.WarenkorbItemsListe)
+                            {
+                                var id = @item.ProduktName + "_Cart";
+
+                                <tbody>
+                                    <tr>
+                                        <!--Produkt Image-->
+                                        <td scope="col" class="pt-4">
+                                            @if (item.ProduktName == "Container-Box-Metall" || item.ProduktName == "Container-Box-Holz")
+                                            {
+                                                <img src=@item.ProductImage class="imgx1" alt="@item.ProduktName" style="width:40%;">
+                                            }
+                                            else
+                                            {
+                                                <img src=@item.ProductImage class="imgx2" alt="@item.ProduktName" style="width:60%;">
+
+                                            }
+                                        </td>
+
+                                        <!--Produktname-->
+                                        <td scope="col" class="pt-4">@item.ProduktName</td>
+
+                                        <!--item.UnitPrice -->
+                                        <td scope="col" class="pt-4">
+                                            @item.UnitPrice.ToString("C2",CultureInfo.CreateSpecificCulture("de-DE"))
+                                        </td>
+
+                                        <!--minus quantity plus-->
+                                        <td scope="col" class="pt-4">
+                                            <div>
+                                                <p class="product-counter quantity" style="margin-top:8px;z-index:0;">@item.Quantity</p>
+                                                <!-- <input min="0" name="quantity" value="@item.Quantity" type="text" class="form-control form-control-sm icon-korp-Size quantity" style="text-align:center;color:#61b300;font-weight:500;" />-->
+                                            </div>
+
+                                        </td>
+
+                                        <!--item.Total-->
+                                        <td scope="col" class="pt-4" style="width: 50%;">
+                                            <span>@item.Total.ToString("C2",CultureInfo.GetCultureInfo("de-DE"))</span>
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            }
+                            <tr class="tr-underline text-muted"></tr>
+
+                        </table>
+                    </div>
+                </div>
+
+                <!-- hier hier-->
+                <div class="col-lg-3 Fliestext">
+                    <div class="cart-right-div bg-grey  ps-2 pe-2">
+                        <table class="table-responsive-sm">
+                            <thead>
+                                <tr class="tr-underline mb-4">
+                                    <td> <h3 class="fw-bold mb-4 mt-2 pt-1">Kundendaten</h3></td>
+                                </tr>
+                            </thead>
+
+                            <tbody class="tab2-p">
+
+                                <tr>
+                                    <td>
+                                        <div class="d-flex justify-content-between">
+                                            <p>
+                                                <span>@Model?.GastKunde?.Anrede</span>
+                                            </p>
+                                            <p>
+                                                <span>@Model?.GastKunde?.Vorname</span>
+                                                <span>@Model?.GastKunde?.Nachname</span>
+                                            </p>
+                                        </div>
+
+                                        <div class="d-flex justify-content-between">
+                                            <p class="">
+                                                <span>Telefon</span>
+                                            </p>
+                                            <p>
+                                                <span>@Model?.GastKunde?.Telefon</span>
+                                            </p>
+                                        </div>
+
+                                        <div class="d-flex justify-content-between">
+                                            <p class="">
+                                                <span>E-Mail</span>
+                                            </p>
+                                            <p>
+                                                <span>@Model?.GastKunde?.Email</span>
+                                            </p>
+                                        </div>
+
+                                        <div style="text-align:start;">
+                                            <p class="mt-5" style="font-size:22px!important;font-weight:bold;">
+                                                <span>Rechnungsadresse</span>
+                                            </p>
+
+                                            <hr class="my-2 mb-3" style="height:4px;border-width:0;color:gray;background-color:gray">
+
+                                            <div class="mb-5">
+
+                                                <p>
+                                                    <span>@Model?.GastKunde?.RechStraße</span>
+                                                </p>
+                                                <p class="d-flex gap-3">
+                                                    <span>@Model?.GastKunde?.RechOrt</span>
+                                                    <span>@Model?.GastKunde?.RechPLZ</span>
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        @if (Model?.GastKunde?.LiefStraße != null)
+                                        {
+                                            <div style="text-align:start;">
+                                                <p class="mt-5">
+                                                    <span>Lieferadresse</span>
+                                                </p>
+
+                                                <hr class="my-2 mb-3" style="height:4px;border-width:0;color:gray;background-color:gray">
+
+                                                <div class="mb-5">
+                                                    <p class="mb-2">
+                                                        <span>@Model?.GastKunde?.LiefStraße</span>
+                                                    </p>
+                                                    <p class="d-flex gap-5">
+                                                        <span>@Model?.GastKunde?.LiefOrt</span>
+                                                        <span>@Model?.GastKunde?.LiefPLZ</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        }
+                                    </td>
+                                </tr>
+
+
+                                @* <tr>
+                            <td>
+                            <h5 class="mb-3 Fliestext text-start"> Lieferkosten werden im Nachgang berechnet!</h5>
+                            </td>
+                            </tr>*@
+
+                                <tr>
+                                    <td>
+                                        <div id="totalAmount-x" class="d-flex justify-content-between mb-5">
+                                            <p class="text-uppercase">Gesamtpreis</p>
+                                            <p class="totalAmount-1">@Model?.TotalAmount.ToString("C2",CultureInfo.GetCultureInfo("de-DE"))</p>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-md-12 col-lg-12 Fliestext">
+                    <table style="width:100%;">
+                        <tr>
+                            <td>
+                                <form method="post" asp-action="Danke" asp-controller="Shop" style="width:100%;">
+                                    <div class="btn-bestellung">
+                                        <input hidden value="@Model?.IPAdresse" name="_ip" />
+                                        <input type="button" class="btn btn-roomit btn-center" style="width:200px;" value="Zurück zum Warenkorb" onclick="location.href='@Url.Action("warenkorb", "Shop")'" />
+                                        @*<input type="submit" class="btn btn-roomit btn-center" style="width:200px;" value="Anfrage senden" />*@
+                                        <input type="submit" class="btn btn-roomit btn-center" style="width:200px;" value="Bestellen" />
+                                    </div>
+                                </form>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+
+
+        </div>
+    }
+    else
+    {
+        <div class="container pt-5 mt-5 border" style="max-width:1600px;height:600px;">
+            <div class="row" style="min-height:110px;">
+                <h6 class="mb-0 ueberschrift2" style="margin:0;text-align:start;margin-bottom: 20px;font-weight:normal;color:#FF6000;">
+                    <a href="@Url.Action("Shop", "Shop",new{zipcode = @Model.Postleitzahl})" style="color:#FF6000;;">
+                        <!--<i class="fas fa-long-arrow-alt-left me-2"></i> --> zurück
+                </a>
+                </h6>
+            </div>
+            <div class="row text-md-center align-items-center" style="min-height:250px;"><h1>Warenkorb ist Leer</h1></div>
+        </div>
+
+    }
+
+</section>
+
+
+@*<div class="cont-add-prod">
+    @if (Model?.WarenkorbItemsListe.FirstOrDefault(x => x.ProduktName == "Container-Box")?.Quantity > 0)
+    {
+        <button class="minus minus2 btn-roomit" value="99">-</button>
+        <p class="product-counter">@Model?.WarenkorbItemsListe.FirstOrDefault(x => x.ProduktName == "Container-Box")?.Quantity</p>
+    }
+    else
+    {
+        <button class="minus minus2 btn-roomit" value="99">-</button>
+        <p class="product-counter">0</p>
+    }
+    <button class="plus plus2 btn-roomit" value="99">+</button>
+</div>*@
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

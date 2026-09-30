@@ -1,0 +1,339 @@
+﻿@{
+    ViewData["Title"] = "Ablauf der Einlagerung | room it!";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section metatags{
+    <title>Ablauf der Einlagerung | room it!</title>
+    <meta name="description" content="Von der Bestellung, über die Lieferung bis hin zur Einlagerung. Wir organisieren dein Lager! » Lerne unseren Service kennen!">
+    <meta name="keywords" content="Ablauf, Serviceablauf, extern einlagern, auslagern">
+}
+
+<!--
+<style>
+    .div2{
+        border:solid 1px;
+        /*height:250px;*/
+        text-align:center;
+        padding:200px;
+        background-color:lightcyan;
+    }
+
+    .div {
+        border: solid 1px;
+        min-height: 200px;
+        height:auto;
+        padding: 10px;
+    }
+</style>
+-->
+
+<style>
+
+    .zeile-1 {
+        line-height: 45px;
+    }
+
+    .title-1 {
+        font-weight: bold;
+        line-height: 45px;
+        letter-spacing: 7px;
+        font-size: 20px;
+    }
+
+    .title-2 {
+        font-weight: bold;
+        line-height: 45px;
+        font-size: 20px;
+    }
+
+    .title-2x {
+        font-weight: bold;
+        line-height: 45px;
+        font-size: 20px;
+        color: #61b300;
+    }
+
+    .title-3 {
+        font-weight: bold;
+        line-height: 45px;
+        font-size: 16px;
+    }
+
+    .text-0 {
+        line-height: 40px;
+        font-size: 16px;
+    }
+
+    ul, li {
+        list-style: disc !important;
+        list-style-type: disc !important;
+        margin-left: 2%;
+    }
+
+    .list-x {
+        list-style: none !important;
+        list-style-type: none !important;
+        margin-left: 2%;
+    }
+
+    .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+        color: var(--bs-nav-pills-link-active-color);
+        background-color: #61b300;
+    }
+
+</style>
+
+<div>
+
+    <div class="container Fliestext" style="max-width: 1620px;">
+        <!-- ***** Section-2  Video ***** -->
+        <div class="row">
+            <div class="teil2 mt-5">
+                <div class="pt-5">
+                    <h6 class="mb-0 ueberschrift2" style="margin:0;text-align:start;margin-bottom: 20px;font-weight:normal;color:#FF6000;">
+                        <a href="javascript:history.back()" style="color:#FF6000;text-decoration:none;">
+                            <!--<i class="fas fa-long-arrow-alt-left me-2"></i> --> zurück
+                        </a>
+                    </h6>
+                </div>
+                @*     <div class="aufheben-innen-1 mb-4">
+                <div class="mt-3">
+                <img class="" src="/assets/images/roomit_signet.png" alt="" width="240" height="100">
+                </div>
+                </div>*@
+
+                <div class="aufheben-innen-2">
+                    <h1 class="mt-2 mb-2 ueberschrift"> Wie funktioniert die Einlagerung überhaupt?</h1>
+
+                    <div class="mt-4 mb-4 lineX" style="width:400px;"></div>
+
+                    <div class="aufheben-innen-2-a mt-5">
+                        <p>
+                            <span style="font-weight:bolder;">Du brauchst Platz? </span>
+                            Bei uns musst du dich um nichts kümmern!<br />
+                            Bestelle einfach online den Platz, den du brauchst - den Rest übernehmen wir!<br />
+                            Wie das funktioniert, erfährst du hier:<br />
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- das Video -->
+    <div class="video-bg mt-5">
+        <video height="450" class="embed-responsive-item v-x1" controls>
+            <source src="/assets/images/roomit Video Abgeschnitten.mp4" type="video/mp4">
+            <source src="movie.ogg" type="video/ogg">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+@*    <div class="container rasterfooter-0 mb-5 Fliestext" style="margin-top:10rem;">
+        <div class="container rasterfooter mt-4">
+            <button onclick="location.href='/'" class="btn btn-roomit" style="margin-left:10%;"><p style="margin-bottom:0;margin-top:0;"><strong>Weiter zum Shop</strong></p></button>
+        </div>
+    </div>*@
+
+    <div class="container rasterfooter-0 mb-5 Fliestext" style="margin-top:10rem;">
+        <div class="rasterfooter" style="width:auto!important;">
+            <button onclick="location.href='/'" class="btn btn-roomit"><p style="margin-bottom:0;margin-top:0;">Weiter zum Shop</p></button>
+        </div>
+    </div>
+
+
+    <!-- ***** Section-3  3 Pictuers Cards ***** -->
+    <!--Noch nie war Platz schaffen so einfach!-->
+    <section class="container mt-4 Fliestext" style="max-width:1620px;">
+        <div class="teil2">
+
+            <div class="platzSchafenRaster">
+
+                <h2 class="mt-2 mb-2 ueberschrift">Noch nie war Platz schaffen so einfach!</h2>
+
+                <div class="mt-4 lineX"></div>
+
+                <div class="text-center" style="margin-bottom:100px;">
+                    <h4><strong>Du bestellst. Wir liefern. Hol dir jetzt den Platz du brauchst!</strong></h4>
+                </div>
+
+                <div class="mt-5 pictures row Fliestext">
+                    <div class="card col-lg-3">
+                        <div class="down-content kreis-nr">1</div>
+                        <img src="assets/images/1.png" class="card-img-top" alt="img_roomit_Lebtop">
+                        <div class="card-body">
+                            <p class="card-text Fliestext" style="text-align:center;">Bestell deine Boxen online – bequem von zuhause aus!</p>
+                        </div>
+                    </div>
+                    <div class="card col-lg-3">
+                        <div class="down-content kreis-nr">2</div>
+                        <img src="assets/images/2.jpg" alt="img_roomit_LKW" class="card-img-top">
+                        <div class="card-body">
+                            <p class="card-text Fliestext" style="text-align:center;">Wir liefern die Boxen an deinen Wunschort.</p>
+                        </div>
+                    </div>
+                    <div class="card col-lg-3">
+                        <div class="down-content kreis-nr">3</div>
+                        <img src="assets/images/3.jpg" alt="img_roomit_Lkw" class="card-img-top">
+                        <div class="card-body">
+                            <p class="card-text Fliestext" style="text-align:center;">Wir holen die beladenen Boxen ab und lagern diese für dich ein. </p>
+                        </div>
+                    </div>                   
+                </div>
+                <div class="p-block">
+                    <p>
+                        In unserem Onlineshop kannst du die Lagerboxen bequem von zu Hause aus bestellen. Prüfe zunächst die Verfügbarkeit
+                        unserer Leistung an deinem Wunschort. Wähle dann die gewünschte Box im Shop aus und schließe die Bestellung ab.
+                        Nach Eingang deiner Bestellung werden wir dich kontaktieren, um sämtliche Details zu besprechen und einen Liefertermin
+                        zu vereinbaren.
+                        Im Anschluss wird die Box an deinen Wunschort geliefert und zur Befüllung bereitgestellt. Verpackungsmaterialien wie Luftpolsterfolie oder Klebeband können nach Absprache gegen Aufpreis mitgeliefert werden. Bitte beachte, dass du zum Beladen der Box 30 Minuten Zeit hast. Solltest du Unterstützung bei der Befüllung benötigen, steht dir ein*e Mitarbeiter*in tatkräftig zur Seite.
+                        Unmittelbar nach der Befüllung werden die verschlossenen Boxen zu einem unserer Lagerstandorten in Köln oder München transportiert.
+
+                    </p>
+                </div>
+
+            </div>
+
+            <!--Packanleitung-->
+            <div id="Packanleitung" class="row p-block">
+
+                <div style="text-align:center;position:relative;">
+                    <h1 class="zipcodeResult-2 mb-3 ueberschrift m-0"><span>Packanleitung</span></h1>
+                </div>
+
+                <div class="d-flex align-items-start Fliestext" style="padding-left:0;padding-right:0;">
+
+                    <div class="tab-content" id="v-pills-tabContent">
+
+                        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+
+                            <p style="text-align:justify; font-size: 15px!important;">
+
+                                <!--<span class="title-1">Packanleitung</span> -->
+                                <br>
+
+                                Damit die Verwendung unserer Boxen nicht nur platzschaffend, sondern auch kinderleicht wird, haben wir dir den stressfreien Umgang mit unseren Lagerboxen in dieser Packanleitung zusammengefasst.<br><br>
+
+                                Generell gilt: Schütze deine persönlichen Dinge ausreichend und verpacke diese gründlich, da wir für unsachgemäße Verladung keine Verantwortung übernehmen können. Bei Schäden aufgrund von unsachgemäßer Beladung ist allein der Verlader verantwortlich. <br><br>
+
+
+
+                                <span class="fw-bolder">Tipps zu unserer room it! Karton-Box</span><br>
+
+                            </p><ul>
+                                <li>Tipp 1: Schwere Gegenstände nach unten, leichte nach oben.</li>
+                                <li>Tipp 2: Max. Beladungsgewicht von 25 kg beachten (Tragfähigkeit, Transportfähigkeit).</li>
+                                <li>Tipp 3: Nutze unsere App um ganz leicht einen Überblick über den Inhalt der jeweiligen Box zu behalten.</li>
+                                <li>Tipp 4: Für Gegenstände aus Glas  oder Geschirr am besten in eine Lage Seidenpapier oder Luftpolsterfolie verwenden.</li>
+                                <li>Tipp 5: Kennzeichne Boxen mit zerbrechlichem Inhalt.</li>
+                                <li>Tipp 6: Bücher und Akten sind schwer und überschreiten schnell die Tragfähigkeit. Schwere Bücher sollten waagerecht in der Box verpackt werden. Lege leichtes Material oben auf, damit deine Box nicht zu schwer wird.</li>
+                                <li>Tipp 7: Nach der Beladung kannst du deine Karton-Box ganz einfach mit unseren mitgelieferten Plomben versiegeln.</li>
+                            </ul>
+                            <br><br>
+
+
+                            <span class="fw-bolder">Tipps zu unserer room it! Möbel-Container-Box</span><br><br>
+
+                            <ul>
+                                <li>Tipp 1: Achte darauf, das Gewicht in der Box gleichmäßig zu verteilen.</li>
+                                <li>Tipp 2: Nutze für die Beladung möglichst die komplette Höhe und Breite. Je passgenauer deine Gegenstände in der Box stehen, desto sicherer sind diese.</li>
+                                <li>Tipp 3: Um leere Zwischenräume zu vermeiden benutze am besten Decken und andere weiche Materialien.</li>
+                                <li>Tipp 4: Für schwere Gegenstände nutze Packdecken als Boden und Schutz gegen Kratzer. Hohe Möbel, Kühlschränke und ähnliche Dinge stellst du am besten mittig auf und sicherst diese zusätzlich mit Zurrgurten ab.</li>
+
+                                <li>Tipp 5: Tische, Stühle und andere Möbelstücke in der Größe werden am besten in der Mitte der Box platziert.</li>
+                                <li>Tipp 6: Achte auch darauf, dass alle überstehenden Dinge wie Schlüssel oder Griffe nach Möglichkeit  entfernt werden. Nicht verschlossene Türen klebst du einfach zu.</li>
+                                <li>Tipp 7: Nutze zusätzliche Zurrgurte um deine Gegenstände optimal zu sichern.</li>
+                                <li>Tipp 8: Die maximale Zuladung für unsere Möbel-Container-Box beträgt 1000 kg !</li>
+                                <li>Tipp 9: Denke daran, deine Container-Box nach der Beladung mit deinem eigenen Schloss abzuschließen.</li>
+                            </ul>
+                            <br><br>
+
+
+                            <span class="fw-bolder">Tipps zu einzelnen Gegenständen</span><br><br>
+
+                            <ul>
+                                <li>Tipp 1: Ein Gegenstand darf die Abmessungen von 1,20 m Länge x 0,80 m Breite x 0,4 m Höhe und ein   Maximalgewicht von 30 kg nicht überschreiten.</li>
+                                <li>Tipp 2: Verpacke deine Gegenstände so, dass Sie vor transporttypischen Beanspruchungen wie z.B. Stößen oder Temperaturschwankungen geschützt sind.</li>
+                                <li>Tipp 3: Besonders empfindliche Gegenstände wie Spiegel oder Glasplatten müssen besonders gut geschützt werden. Am besten werden diese eingewickelt in Luftpolsterfolie und/oder Decken.</li>
+                                <li>Tipp 4: Nutze unsere App um ganz leicht einen Überblick über deine eingelagerten Gegenstände zu behalten</li>
+                            </ul>
+                            <br><br>
+
+                            <span class="fw-bolder">Was darf nicht eingelagert werden?</span><br><br>
+
+                            <ul>
+                                <li>verderbliche Nahrungsmittel und Waren</li>
+                                <li>Lebewesen (egal welcher Art)</li>
+                                <li>leicht entflammbare, zur Selbstzündung neigende Stoffe</li>
+                                <li>Waffen, Sprengstoffe, explosive Stoffe jeder Art</li>
+
+                                <li>Drogen und andere Suchtstoffe</li>
+                                <li>Chemikalien, toxische Stoffe</li>
+                                <li>radioaktive Materialien &amp; Sondermüll (egal welcher Art)</li>
+                                <li>Abfallstoffe</li>
+
+                                <li>Materialien, deren Emissionen Dritte beeinträchtigen könnten</li>
+                                <li>Bargeld, Edelmetalle, Edelsteine, Schmuck, Wertpapiere</li>
+                                <li> Flüssigkeiten (Bitte sprich uns diesbezüglich an, wir bieten dir eine passende Lösung.)</li>
+
+                            </ul>
+                            <br>
+
+                            <hr>
+
+                            <!--
+                            <a href="/AGB" class="fw-bolder">
+                              Lies dazu bitte auch unsere AGB's.
+                            </a>
+                            -->
+
+                            <p></p>
+                        </div>
+
+                    </div>
+
+                </div>
+           
+            </div>
+       
+        </div>
+    </section>
+
+    <div class="container rasterfooter-0 mt-4 mb-5 Fliestext">
+        <div class="rasterfooter Fliestext" style="max-width:1260px;">
+            <div class="col-7">
+                <p style="font-size:30px!important;color:white;font-weight:bold;">
+                    <span>Hast du noch eine Frage?</span><br /><br />
+                    <span class="fw-bolder" style="font-size:larger;">08131 2792920</span><br />
+                    <span style="font-size:large;">Mo.- Fr.: 09:00 - 17:00 Uhr</span><br />
+                </p>
+            </div>
+
+            <div class="col-5 sos-2">
+                <button onclick="location.href='/Kontakt'" class="btn btn-roomit"><p style="margin-bottom:0;margin-top:0;">Kontaktformular</p></button>
+                <button onclick="location.href='/FAQ'" class="btn btn-roomit"><p style="margin-bottom:0;margin-top:0;">FAQ</p></button>
+            </div>
+
+        </div>
+    </div>
+    
+</div>
+
+
+
+
+
+
+
+@*<script>
+    (function blinktext() {
+        var f = document.getElementById('announcement');
+        setInterval(function () {
+            f.style.visibility = (f.style.visibility == 'hidden' ? '' : 'hidden');
+        }, 100);
+    })();
+</script>*@
+
+

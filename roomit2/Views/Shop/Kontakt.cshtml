@@ -1,0 +1,416 @@
+﻿@model Kontaktformular
+@inject IConfiguration configuration
+
+@{
+    ViewData["Title"] = "Kontakt";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string siteKey = configuration["Friendlycaptcha:SiteKey"];
+    string CC = "";
+}
+
+
+@section metatags{
+    <title>Wir sind für Sie da | room it!</title>
+    <meta name="description" content="Wir kümmern uns gerne um deine Anfragen » Jetzt Kontakt aufnehmen!">
+    <meta name="keywords" content="Kontakt, Hilfe, Kontaktformular, Anfrage">
+}
+
+<!-- Version V1-->
+<script type="module" src="https://cdn.jsdelivr.net/npm/friendly-challenge@0.9.18/widget.module.min.js" async defer></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/friendly-challenge@0.9.18/widget.min.js" async defer></script>
+
+
+@*<!-- Version V2-->
+<script type="module" src="https://cdn.jsdelivr.net/npm/@@friendlycaptcha/sdk@0.1.9/site.min.js" async defer></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/@@friendlycaptcha/sdk@0.1.9/site.compat.min.js" async defer></script>
+*@
+
+
+<style>
+    .register {
+        /*background: -webkit-linear-gradient(left,#449634,gray);*/
+        margin-top: 3%;
+        margin-bottom: 3%;
+        padding: 3%;
+        border-radius: 5px;
+        box-shadow: 1px 1px 10px 1px;
+        padding-left: 2%;
+        background-color: #f7f7f7
+    }
+
+    .register-left {
+        /*text-align: center;*/
+        color: #fff;
+        /*margin-top: 4%;*/
+    }
+
+    .register-left input {
+        border: none;
+        border-radius: 1.5rem;
+        padding: 2%;
+        width: 60%;
+        background: #f8f9fa;
+        font-weight: bold;
+        color: #383d41;
+        margin-top: 30%;
+        margin-bottom: 3%;
+        cursor: pointer;
+    }
+
+    .register-right {
+        background: #f8f9fa;
+        border-top-left-radius: 10% 50%;
+        border-bottom-left-radius: 10% 50%;
+    }
+
+    .register-left img {
+        margin-top: 15%;
+        margin-bottom: 10%;
+        width: 80%;
+        -webkit-animation: mover 2s infinite alternate;
+        animation: mover 1s infinite alternate;
+        border-radius: 20px;
+    }
+
+
+
+    @@keyframes mover {
+        from {
+            transform: translateY(-10);
+        }
+
+        To {
+            transform: translateY(30px);
+        }
+    }
+
+    .register-left p {
+        font-weight: lighter;
+        padding: 12%;
+        margin-top: -9%;
+    }
+
+    .register .register-form {
+        padding: 3%;
+        /*    margin-top: 10%;*/
+    }
+
+    .btnRegister {
+        float: right;
+        /*margin-top: 5%;*/
+        border: none;
+        border-radius: 0.5rem;
+        padding: 24px;
+        font-weight: 600;
+        cursor: pointer;
+        padding-inline: 50px;
+        font-size: 22px;
+    }
+
+    .register .nav-tabs {
+        margin-top: 3%;
+        border: none;
+        background: #0062cc;
+        border-radius: 1.5rem;
+        width: 28%;
+        float: right;
+    }
+
+    .register .nav-tabs .nav-link {
+        padding: 2%;
+        height: 34px;
+        font-weight: 600;
+        color: #fff;
+        border-top-right-radius: 1.5rem;
+        border-bottom-right-radius: 1.5rem;
+    }
+
+    .register .nav-tabs .nav-link:hover {
+        border: none;
+    }
+
+    .register .nav-tabs .nav-link.active {
+        width: 100px;
+        color: #0062cc;
+        border: 2px solid #0062cc;
+        border-top-left-radius: 1.5rem;
+        border-bottom-left-radius: 1.5rem;
+    }
+
+    .register-heading {
+        text-align: center;
+        margin-top: 8%;
+        margin-bottom: -15%;
+        color: #61b300;
+    }
+
+    .btn-radio {
+        transform: scale(1.5);
+        margin-right: 10px;
+        /*accent-color: #61b300;*/
+    }
+
+    input[type="radio"]:checked::after {
+        background-color: #61b300;
+    }
+
+    input[type="radio"] {
+        position: relative;
+        display: inline-block;
+        top: 4px;
+        left: 0;
+        width: 19px;
+        height: 19px;
+        background-color: blanchedalmond;
+        border-radius: 50%;
+        cursor: pointer;
+        outline: none;
+        -webkit-appearance: none;
+        margin-right: 10px;
+    }
+
+    input[type="radio"]::after {
+        position: relative;
+        display: block;
+        width: 7px;
+        height: 7px;
+        background-color: #fff;
+        border-radius: 25px;
+        content: '';
+        left: 6px;
+        top: 6px;
+    }
+
+    /*.maxl .radio span {
+                margin-left: 5px;
+                }*/
+    .card {
+        border: none;
+    }
+
+    .xform {
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        align-items: center;
+    }
+
+    .form-select:hover {
+        color: #61b300 !important;
+        border-color: #61b300 !important;
+        background: #fff;
+        cursor: pointer;
+        background-color: var(--bs-body-bg);
+        background-image: var(--bs-form-select-bg-img),var(--bs-form-select-bg-icon,none);
+        background-repeat: no-repeat;
+        background-position: right .75rem center;
+        background-size: 16px 12px;
+    }
+
+    .x2:after {
+        width: 30px;
+        width: 1.875rem;
+        height: 40px;
+        height: 2.5rem;
+        top: 1px;
+        top: .0625rem;
+        -webkit-user-select: none;
+        user-select: none;
+        line-height: 40px;
+        max-height: 100%;
+        display: block;
+        content: "\e612";
+        position: absolute;
+        right: 0;
+        font-size: 5px;
+        border-left: 1px solid #dcdcdc;
+        text-align: center;
+        font-family: 'shopware';
+        pointer-events: none;
+    }
+
+    /*select:active{
+                    color: green;
+                }
+
+                select:hover{
+                    color: green;
+                }*/
+
+    .form-control:focus {
+        color: var(--bs-body-color);
+        background-color: var(--bs-body-bg);
+        border-color: #61b300;
+        outline: 0;
+        box-shadow: 0 0 0 .25rem #61b300;
+    }
+
+</style>
+
+<div class="container" style="max-width: 1600px;">
+    <div class="row">
+
+        <div class="pt-5">
+            <h6 class="mb-0 ueberschrift2" style="margin:0;text-align:start;margin-bottom: 20px;font-weight:normal;color:#FF6000;">
+                <a href="javascript:history.back()" style="color:#FF6000;text-decoration:none;">
+                    <!--<i class="fas fa-long-arrow-alt-left me-2"></i> --> zurück
+                </a>
+            </h6>
+        </div>
+
+        <form method="post" asp-action="Kontakt" asp-controller="Shop" name="kontaktKunde" class="xform">
+            <div class="col-md-8 mt-5 mb-5">
+
+                <div style="color: #61b300;margin-bottom: 70px;text-align:center">
+                    <h1 class="ueberschrift">Kontaktformular</h1>
+                    <div class="mb-0 mt-0 lineX text"></div>
+                </div>
+
+                <!--#region Fehlermeldung -->
+                @*
+                @if (ViewBag.ErrorMessage != null && ViewBag.ErrorMessage.Length > 0)
+                {
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>@ViewBag.ErrorMessage</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                }*@
+
+                <!--#region DropdownList -->
+                <div class="col-md-6">
+                    <h3 class="ueberschrift2" @*style="text-align:left;color: #61b300;margin-bottom: 20px;margin-top: 16px;"*@>Deine Daten</h3>
+                    <div>
+                        <!-- <label for="sel1" class="form-label">Anrede*</label>-->
+                        <select asp-for="Anrede" class="form-select Fliestext x2">
+                            <option disabled selected>Anrede*</option>
+                            <option>Frau</option>
+                            <option>Herr</option>
+                        </select>
+                    </div>
+                </div>
+                <br />
+
+                <!-- Inputsfelder -->
+                <div class="row mt-4">
+                    <!-- Inputs Kunden Daten -->
+                    <div class="col-md-12 Fliestext">
+                        <div class="form-floating mb-3 col-auto">
+                            <input type="text" asp-for="Vorname" class="form-control zipcode-field" placeholder="Vorname*">
+                            <label asp-for="Vorname">Vorname*</label>
+                            <span asp-validation-for="Vorname" class="text-danger"></span>
+                        </div>
+                        <div class="form-floating mb-3 col-auto">
+                            <input type="text" asp-for="Nachname" class="form-control zipcode-field" placeholder="Nachname*">
+                            <label asp-for="Nachname">Nachname*</label>
+                            <span asp-validation-for="Nachname" class="text-danger"></span>
+                        </div>
+                        <div class="form-floating mb-3 col-auto">
+                            <input type="text" asp-for="Email" class="form-control zipcode-field" placeholder="E-Mail-Adresse*">
+                            <label asp-for="Email">E-Mail-Adresse*</label>
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-floating mb-3 col-auto">
+                            <input type="text" asp-for="Telefon" class="form-control zipcode-field" placeholder="Telefon*">
+                            <label asp-for="Telefon">Telefon*</label>
+                            <span asp-validation-for="Telefon" class="text-danger"></span>
+                        </div>
+                        <div class="form-floating mb-3 col-auto">
+                            <input type="text" asp-for="Betreff" class="form-control zipcode-field" placeholder="Deine E-Mail-Adresse*">
+                            <label asp-for="Betreff">Betreff*</label>
+                            <span asp-validation-for="Betreff" class="text-danger"></span>
+                        </div>
+                        <!-- FrindlyCaptcha HTML-->
+                        <div hidden class="form-floating mb-3 col-auto">
+                            <input hidden id="friendlycaptchaToken" type="text" asp-for="FriendlycaptchaToken" class="form-control zipcode-field">
+                            <!-- <input hidden id="friendlycaptchaToken2" type="text" name="friendlycaptchaToken2" class="form-control zipcode-field"> -->
+                        </div>
+
+                        <div class="form-floating mb-3 col-auto">
+                            <textarea asp-for="Nachricht" class="form-control" style="resize:none;height:200px;" placeholder="Deine Nachricht*"></textarea>
+                            <label asp-for="Nachricht">Nachricht*</label>
+                            <span asp-validation-for="Nachricht" class="text-danger"></span>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <!-- Section Form-Submit-->
+                <div class="row Fliestext">
+                    <p>* hierbei handelt es sich um ein Pflichtfeld</p>
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <br>
+                    <!-- Submit + FrindlyCaptcha -->
+                    <div class="row m-0 p-0" style="display:flex;justify-content:space-between;align-items:baseline; min-height:60px;height:auto;">
+
+                       <!-- FrindlyCaptcha -->
+                        <div class="frc-captcha" data-sitekey="@siteKey" data-lang="de" data-callback="myCallback"></div>
+                        <span class="p-0" id="err"></span>
+
+                        <div id="" class="col-md-4" style="height:auto;min-height:50px;"></div>
+
+                        <!-- Submit-->
+                        <div class="col-md-3 m-0 p-0" style="height:auto;min-height:50px;margin-bottom:13px;">
+                            <input id="my-button" type="submit" class="btnRegister btn-roomit" value="Senden" style="min-width:200px;width:auto;padding:5px;font-weight:normal;float:right;" @*disabled="disabled"*@ />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+<!--
+<script>
+    (function blinktext() {
+        var f = document.getElementById('announcement');
+        setInterval(function () {
+            f.style.visibility = (f.style.visibility == 'hidden' ? '' : 'hidden');
+        }, 100);
+    })();
+</script>
+
+-->
+
+<script>
+
+     // Version V1
+    function myCallback(solution) {
+        //document.getElementById('friendlycaptchaToken2').value = solution;
+        document.getElementById('friendlycaptchaToken').value = solution;
+    }
+
+
+   
+    // Version V2
+    ////// friendlycaptchaToken Listener Onload the Tocken
+    //const captchaWidget = document.querySelector(".frc-captcha");
+    //const myButton = document.getElementById("my-button");
+    //myButton.style.pointerEvents = 'none';
+    //myButton.classList.remove('btn-roomit');
+
+    //captchaWidget.addEventListener("frc:widget.complete", function (event) {     
+    //    document.getElementById('friendlycaptchaToken').value = event.detail.response
+    //    document.getElementById('friendlycaptchaToken2').value = document.getElementsByClassName('frc-captcha-solution').value
+        
+    //    myButton.style.pointerEvents = 'auto';
+    //    myButton.disabled = false;
+    //    myButton.classList.add('btn-roomit');
+    //});
+
+    //captchaWidget.addEventListener("frc:widget.error", function (event) {
+    //    myButton.style.pointerEvents = 'none';
+    //    myButton.classList.remove('btn-roomit');
+    //    myButton.disabled = true;
+    //    document.getElementById('err').innerText = event.detail.error
+    //});
+
+    //captchaWidget.addEventListener("frc:widget.expired", function (event) {
+    //    myButton.style.pointerEvents = 'none';
+    //    myButton.classList.remove('btn-roomit');
+    //    myButton.disabled = true;
+    //    document.getElementById('#err').innerText('Das Anti Roboter Verifizierung ist abgelaufen, versuchen Sie nochmal!');
+    //});
+</script>

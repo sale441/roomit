@@ -1,0 +1,512 @@
+﻿@model Checkout
+@inject IConfiguration configuration
+
+@{
+    ViewData["Title"] = "Checkout";
+    var TotalAmount = TempData["TotalAmount"];
+    string siteKey = configuration["Friendlycaptcha:SiteKey"];
+}
+
+
+<script type="module" src="https://cdn.jsdelivr.net/npm/@@friendlycaptcha/sdk@0.1.9/site.min.js" async defer></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/@@friendlycaptcha/sdk@0.1.9/site.compat.min.js" async defer></script>
+
+
+<style>
+.register {
+    /*background: -webkit-linear-gradient(left,#449634,gray);*/
+    margin-top: 3%;
+    margin-bottom: 3%;
+    padding: 3%;
+    border-radius:5px;
+    box-shadow: 1px 1px 10px 1px;
+    padding-left:2%;
+    background-color: #f7f7f7
+   
+}
+
+.register-left {
+    /*text-align: center;*/
+    color: #fff;
+    /*margin-top: 4%;*/
+}
+
+.register-left input {
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    width: 60%;
+    background: #f8f9fa;
+    font-weight: bold;
+    color: #383d41;
+    margin-top: 30%;
+    margin-bottom: 3%;
+    cursor: pointer;
+}
+
+.register-right {
+    background: #f8f9fa;
+    border-top-left-radius: 10% 50%;
+    border-bottom-left-radius: 10% 50%;
+}
+
+.register-left img {
+    margin-top: 15%;
+    margin-bottom: 10%;
+    width: 80%;
+    -webkit-animation: mover 2s infinite alternate;
+    animation: mover 1s infinite alternate;
+    border-radius: 20px;
+    
+}
+
+
+
+@@keyframes mover {
+    from {
+        transform: translateY(-10);
+    }
+
+    To {
+        transform: translateY(30px);
+    }
+}
+
+.register-left p {
+    font-weight: lighter;
+    padding: 12%;
+    margin-top: -9%;
+}
+
+.register .register-form {
+    padding: 3%;
+
+/*    margin-top: 10%;*/
+}
+
+.btnRegister {
+    float: right;
+    /*margin-top: 5%;*/
+    border: none;
+    border-radius: 0.5rem;
+    /*padding: 8px;*/
+    /*font-weight: 600;*/
+    cursor: pointer;
+    /*padding-inline: 50px;*/
+    /*font-size: 22px;*/
+    min-width:200px!important;
+}
+
+.register .nav-tabs {
+    margin-top: 3%;
+    border: none;
+    background: #0062cc;
+    border-radius: 1.5rem;
+    width: 28%;
+    float: right;
+}
+
+.register .nav-tabs .nav-link {
+    padding: 2%;
+    height: 34px;
+    font-weight: 600;
+    color: #fff;
+    border-top-right-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+}
+
+.register .nav-tabs .nav-link:hover {
+    border: none;
+}
+
+.register .nav-tabs .nav-link.active {
+    width: 100px;
+    color: #0062cc;
+    border: 2px solid #0062cc;
+    border-top-left-radius: 1.5rem;
+    border-bottom-left-radius: 1.5rem;
+}
+
+.register-heading {
+    text-align: center;
+    margin-top: 8%;
+    margin-bottom: -15%;
+    color: #61b300;
+}
+.btn-radio{
+    transform:scale(1.5);
+    margin-right:10px;
+    /*accent-color: #61b300;*/
+}
+
+input[type="radio"]:checked::after {
+   background-color: #61b300;
+}
+
+input[type="radio"] {
+    position: relative;
+    display: inline-block;
+    top: 4px;
+    left: 0;
+    width: 19px;
+    height: 19px;
+    background-color: blanchedalmond;
+    border-radius: 50%;
+    cursor: pointer;
+    outline: none;
+    -webkit-appearance: none;
+    margin-right: 10px;
+}
+
+input[type="radio"]::after {
+    position: relative;
+    display: block;
+    width: 7px;
+    height: 7px;
+    background-color: #fff;
+    border-radius: 25px;
+    content: '';
+    left: 6px;
+    top: 6px;
+}
+
+.btn-roomit-div2{
+    display: flex;
+    justify-content: right;
+    margin-bottom: 0;
+    height: auto;
+    min-height:30px;
+}
+
+/*.maxl .radio span {
+margin-left: 5px;
+}*/
+.card{
+     border:none;
+}
+
+.form-control:focus {
+    color: var(--bs-body-color);
+    background-color: var(--bs-body-bg);
+    border-color: #61b300;
+    outline: 0;
+    box-shadow: 0 0 0 .25rem #61b300;
+}
+
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+       background : none;
+       background-color: #eee;
+       opacity: 0.1;
+ }
+
+ /* wenn man nicht manuel eintippt, und die automatische Ausfüllen des browsers benutzt, wird die Farbe blau als Hintergrund im Input Feld vergeben, diese hier soll das verhindern und weiße Hintergrund im Input verleihen*/
+ input:-webkit-autofill,
+  input:-webkit-autofill:focus {
+    transition: background-color 0s 600000s, color 0s 600000s !important;
+  }
+    
+
+</style>
+
+<!-- Hier soll stattdessen ein Popup Fenster sein -->
+@if (ViewBag.ServerMessage != string.Empty)
+{
+    <div>
+        <h3 class="text-danger">@ViewBag.ServerMessage</h3>
+    </div>
+}
+
+@if (ViewBag.TotalAmount > 0 && ViewBag.WarenkorbItemsCount > 0)
+{
+    <div id="checkout" class="container" style="max-width:1600px;">
+        <div class="row">
+
+            <div class="pt-5">
+                <h6 class="mb-0 ueberschrift2" style="margin:0;text-align:start;margin-bottom: 20px;font-weight:normal;color:#FF6000;">
+                    <a href="javascript:history.back()" style="color:#FF6000;text-decoration:none;">zurück</a>
+                </h6>
+            </div>
+            <div style="text-align:left;color: #61b300;margin-bottom: 70px;text-align:center">
+                <h1 class="ueberschrift">Checkout</h1>
+                <div class="mb-0 mt-0 lineX text" style="width:213px;"></div>
+            </div>
+            <div class="register" style="color: #6E6E6E !important;">
+
+                @*<ul class="nav nav-tabs nav-justified" id="myTab" role="tablist" style="background:#258744;/*background:#0062cc;*/">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" href="#home" role="tab" aria-controls="home" aria-selected="true" style="width:100%;">Ich bin Neukunde</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" href="#profile" role="tab" aria-controls="profile" aria-selected="false" style="width:100%;">Anmelden</a>
+                    </li>
+                </ul>*@
+
+                <div class="tab-content" id="myTabContent">                  
+                    <!-- Neukunde -->
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+                        @*<h3 class="register-heading">Ich bin Neukunde</h3>*@
+
+                        <form id="signupform" method="post" asp-action="Bestelluebersicht" asp-controller="Shop" name="newKunde">
+
+                        <div class="row register-form">
+
+                                <!-- Radio Buttons -->
+                                <div class="col-md-4">
+                                    <div class="form-group d-flex justify-content-between mb-3">
+                                        <div class="col">
+                                            <label class="radio inline">
+                                                <input type="radio" asp-for="KundenType" class="btn-radio" value="Privatkunde" checked>
+                                                <span>Privatkunde</span>
+                                            </label>
+                                        </div>
+                                        <div class="col">
+                                            <label class="radio inline">
+                                                <input type="radio" asp-for="KundenType" class="btn-radio" value="Geschäftskunde">
+                                                <span>Geschäftskunde </span>
+                                            </label>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group d-flex justify-content-between mt-3">
+                                        <div class="col">
+                                            <label class="radio inline">
+                                                <input type="radio" asp-for="Anrede" class="btn-radio" value="Herr" checked>
+                                                <span>Herr</span>
+                                            </label>
+                                        </div>
+                                        <div class="col">
+                                            <label class="radio inline">
+                                                <input type="radio" asp-for="Anrede" class="btn-radio" value="Frau">
+                                                <span>Frau</span>
+                                            </label>
+                                        </div>
+                                        <div class="col">
+                                            <label class="radio inline">
+                                                <input type="radio" asp-for="Anrede" class="btn-radio" value="Divers">
+                                                <span>Divers</span>
+                                            </label>
+                                        </div>
+
+                                    </div>
+                               
+                                    @*<div class="form-group mt-2 mb-2">
+                                        <div class="maxl">
+                                            <label class="radio inline" style="margin:2%;">
+                                                <input type="checkbox" asp-for="GastKunde" id="GastKunde" class="btn-radio" value="true" >
+                                                <span>Als Gast Kunde bestellen</span>
+                                            </label>
+                                            
+                                        </div>
+                                    </div>*@
+                                </div>                                
+                              
+                               
+                                <!-- Inputs -->
+                                <div class="row mt-4">
+                                    <!-- Inputs Kunden Daten und **** Liefer Adresse ***** -->
+                                    <div class="col-md-6">
+                                        <h3 class="" style="text-align:left;color: #61b300;margin-bottom: 20px;margin-top: 16px;">Deine Daten</h3>
+                                        <div class="form-floating mb-3 col-auto">
+                                            <input type="text" asp-for="Vorname" class="form-control zipcode-field text-muted" placeholder="Vorname*">
+                                            <label asp-for="Vorname">Vorname*</label>
+                                            <span asp-validation-for="Vorname" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-floating mb-3 col-auto">
+                                            <input type="text" asp-for="Nachname" class="form-control zipcode-field text-muted" placeholder="Nachname*">
+                                            <label asp-for="Nachname">Nachname*</label>
+                                            <span asp-validation-for="Nachname" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-floating mb-3 col-auto">
+                                            <input type="text" asp-for="Telefon" class="form-control zipcode-field text-muted" placeholder="Telefon*">
+                                            <label asp-for="Telefon">Telefon*</label>
+                                            <span asp-validation-for="Telefon" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-floating mb-3 col-auto">
+                                            <input type="text" asp-for="Email" class="form-control zipcode-field text-muted" placeholder="E-Mail-Adresse*">
+                                            <label asp-for="Email">E-Mail-Adresse*</label>
+                                            <span asp-validation-for="Email" class="text-danger"></span>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="maxl">
+                                                <label class="radio inline" style="margin:2%;">
+                                                    <input type="checkbox" asp-for="HasTowAdresse" id="hasTowAdresseInCheckout" class="btn-radio">
+                                                    <span>Die Lieferadresse weicht von der Rechnungsadresse ab.</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                        <div class="maxl">
+                                            <label class="radio inline" style="margin:2%;">
+                                                <input type="checkbox" asp-for="GeschäftsbedingungenAkzeptiert" class="btn-radio" required data-msg="Akzeptieren Sie bitte die Geschäftsbedingungen" /> 
+                                                @* Input HTML ERROR oninvalid="this.setCustomValidity('akzeptieren Sie bitte die Geschäftsbedingungen')" onvalid="this.setCustomValidity('')" onchange="this.setCustomValidity('')"  *@
+                                                @*<span asp-validation-for="GeschäftsbedingungenAkzeptiert" class="text-danger"></span>*@
+                                                    <span>Ich akzeptiere die <a href="/AGB" target="_blank">Allgemeinen Geschäftsbedingungen</a> der Rhenus Data Office GmbH.*</span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                        <!--#region Liefer Adresse -->
+                                        <div id="LieferAdresse2" class="adreseChild" style="display:none;margin-top:30px;">
+                                            <h4 style="color:#61b300;margin-bottom:30px;">Deine Lieferadresse</h4>
+                                            <div class="form-floating mb-3 col-auto">
+                                                <input type="text" asp-for="LieferAdresse!.Straße" class="form-control zipcode-field text-muted" placeholder="Straße und Nr.*">
+                                                <label asp-for="LieferAdresse!.Straße">Straße und Nr.*</label>
+                                                <span asp-validation-for="LieferAdresse!.Straße" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-floating mb-3 col-auto">
+                                                <input type="text" asp-for="LieferAdresse!.Ort" class="form-control zipcode-field text-muted" placeholder="Ort*">
+                                                <label asp-for="LieferAdresse!.Ort">Ort*</label>
+                                                <span asp-validation-for="LieferAdresse!.Ort" class="text-danger"></span>
+                                            </div>
+
+                                            <div class="form-floating mb-3 col-auto">
+                                                <input type="text" asp-for="LieferAdresse!.PLZ" class="form-control zipcode-field text-muted" placeholder="PLZ*">
+                                                <label asp-for="LieferAdresse!.PLZ">PLZ*</label>
+                                                <span asp-validation-for="LieferAdresse!.PLZ" class="text-danger"></span>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <select class="form-control text-muted" style="color:gray;">
+                                                    <option class="hidden" selected disabled>Wählen Sie Ihres Land</option>
+                                                    <option selected>Deutschland</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <!-- Anmelden Passwords usw...-->
+                                        <!--
+                                        <div class="form-floating mb-3 col-auto">
+                                        <input type="password" asp-for="Password" class="form-control zipcode-field password" placeholder="Deine Password*" required data-msg="Passwort ist ein  Pflichtfeld">
+                                        <label asp-for="Password">Deine Password*</label>
+                                        <span asp-validation-for="Password" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-floating mb-3 col-auto">
+                                        <input type="password" asp-for="ConfirmPassword" class="form-control zipcode-field password" placeholder="Deine Password*" required data-msg="Bestätigen Sie das Passwort">
+                                        <label asp-for="ConfirmPassword">Deine Password*</label>
+                                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                    </div>
+
+                                    <p> Dein Passwort muss mindestens 8 Zeichen umfassen.Berücksichtige Groß- und Kleinschreibung.</p>
+                                        -->
+                                    
+                                        
+
+                                    </div>
+                                    <!-- Inputs Adressen -->
+                                    <div class="col-md-6 adress-Block">
+                                        <h3 class="" style="text-align:left;color: #61b300;margin-bottom: 20px;margin-top: 16px;">Deine Adresse</h3>
+                                        <!-- Adresse Block -->
+                                        <div id="adressen">
+                                            <!-- Rechnung Adresse -->
+                                            <div class="adreseChild">
+                                                <div class="form-floating mb-3 col-auto">
+                                                    <input type="text" asp-for="RechnungAdresse!.Straße" class="form-control zipcode-field text-muted" placeholder="Straße und Nr.*">
+                                                    <label asp-for="RechnungAdresse!.Straße">Straße und Nr.*</label>
+                                                    <span asp-validation-for="RechnungAdresse!.Straße" class="text-danger"></span>
+                                                </div>
+
+                                                <div class="form-floating mb-3 col-auto">
+                                                    <input type="text" asp-for="RechnungAdresse!.Ort" class="form-control zipcode-field text-muted" placeholder="Ort*">
+                                                    <label asp-for="RechnungAdresse!.Ort">Ort*</label>
+                                                    <span asp-validation-for="RechnungAdresse!.Ort" class="text-danger"></span>
+                                                </div>
+
+                                                <div class="form-floating mb-3 col-auto">
+                                                    <input type="text" asp-for="RechnungAdresse!.PLZ" class="form-control zipcode-field text-muted" placeholder="PLZ*">
+                                                    <label asp-for="RechnungAdresse!.PLZ">PLZ*</label>
+                                                    <span asp-validation-for="RechnungAdresse!.PLZ" class="text-danger"></span>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <select class="form-control text-muted">
+                                                        <option class="hidden" selected disabled>Wählen Sie Ihres Land</option>
+                                                        <option selected>Deutschland</option>
+                                                    </select>
+                                                </div>
+                                                <!-- FrindlyCaptcha HTML-->
+                                                <div hidden class="form-floating mb-3 col-auto">
+                                                    <input hidden id="friendlycaptchaToken2" type="text" asp-for="FriendlycaptchaToken" class="form-control zipcode-field">
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <br>
+  
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <!-- **** LieferAdresse wurde nach Oben verschoben ****-->
+                                    <br>
+                                    
+                                    <p class="Fliestext">* hierbei handelt es sich um ein Pflichtfeld.</p>
+
+                                    <div class="frc-captcha" data-sitekey="@siteKey"></div>
+                                    <span class="p-0" id="err"></span>
+
+                                    <div asp-validation-summary="All" class="text-danger"></div>
+                                    <div class="col-12 btn-roomit-div2">
+                                        <input id="registerSubmit" type="submit" class="btnRegister btn-roomit btn-center abs" value="Weiter" />
+                                    </div>
+                                    
+                                </div>                               
+                            </div>
+                        </form>
+                    </div>
+                    
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+}
+else
+{
+        <div class="container-nodata"><h1>Warenkorb ist Leer</h1></div>
+        <div class="pt-5">
+            <h6 class="mb-0">
+                <a href="/Shop/Warenkorb" class="text-body">
+                    <i class="fas fa-long-arrow-alt-left me-2"></i>zurück zur Warenkorb
+                </a>
+            </h6>
+        </div>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<script>
+    //// friendlycaptchaToken Listener Onload the Tocken
+    const captchaWidget = document.querySelector(".frc-captcha");
+    const myButton = document.getElementById("registerSubmit");
+    myButton.style.pointerEvents = 'none';
+    myButton.classList.remove('btn-roomit');
+
+    captchaWidget.addEventListener("frc:widget.complete", function (event) {
+        document.getElementById('friendlycaptchaToken2').value = event.detail.response
+        myButton.style.pointerEvents = 'auto';
+        myButton.disabled = false;
+        myButton.classList.add('btn-roomit');
+    });
+
+    captchaWidget.addEventListener("frc:widget.error", function (event) {
+        myButton.style.pointerEvents = 'none';
+        myButton.classList.remove('btn-roomit');
+        myButton.disabled = true;
+        document.getElementById('err').innerText = event.detail.error
+    });
+
+    captchaWidget.addEventListener("frc:widget.expired", function (event) {
+        myButton.style.pointerEvents = 'none';
+        myButton.classList.remove('btn-roomit');
+        myButton.disabled = true;
+        document.getElementById('#err').innerText('Das Anti Roboter Verifizierung ist abgelaufen, versuchen Sie nochmal!');
+    });
+</script>

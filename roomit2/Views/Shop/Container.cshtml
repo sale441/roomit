@@ -1,0 +1,636 @@
+﻿@model Warenkorb
+@{
+    ViewData["Title"] = "Container";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var tt = Model.WarenkorbItemsListe.Count();
+    var Postleitzahl = Model.Postleitzahl > 0 ? @Model.Postleitzahl : ViewBag.Zipcode;
+    var Stadtname = Model.Stadtname != null ? Model.Stadtname : ViewBag.Area;
+}
+
+
+@section metatags{
+    <title>Container-Boxen online bestellen | room it!</title>
+    <meta name="description" content="In unserem Onlineshop kannst du alles rund um die Container-Box online anfragen » Jetzt informieren!">
+    <meta name="keywords" content="Container-Box, Container, Container bestellen, einlagern">
+}
+
+
+<style>
+
+    /*****************globals*************/
+    body {
+        font-family: 'open sans';
+        overflow-x: hidden;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    .preview {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+
+    @@media screen and (max-width: 996px) {
+        .preview {
+            margin-bottom: 20px;
+        }
+    }
+
+    .preview-pic {
+        -webkit-box-flex: 1;
+        -webkit-flex-grow: 1;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+    }
+
+    .preview-thumbnail.nav-tabs {
+        border: none;
+        margin-top: 15px;
+    }
+
+        .preview-thumbnail.nav-tabs li {
+            width: 18%;
+            margin-right: 2.5%;
+        }
+
+            .preview-thumbnail.nav-tabs li img {
+                max-width: 100%;
+                display: block;
+            }
+
+            .preview-thumbnail.nav-tabs li a {
+                padding: 0;
+                margin: 0;
+            }
+
+            .preview-thumbnail.nav-tabs li:last-of-type {
+                margin-right: 0;
+            }
+
+    .tab-content {
+        overflow: hidden;
+    }
+
+        .tab-content img {
+            width: 100%;
+            -webkit-animation-name: opacity;
+            animation-name: opacity;
+            -webkit-animation-duration: .3s;
+            animation-duration: .3s;
+        }
+
+    .card {
+        margin-top: 50px;
+        background: #eee;
+        padding: 3em;
+        line-height: 1.5em;
+    }
+
+    @@media screen and (min-width: 997px) {
+        .wrapper {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+        }
+    }
+
+    .details {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+
+    .colors {
+        -webkit-box-flex: 1;
+        -webkit-flex-grow: 1;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+    }
+
+    .product-title, .price, .sizes, .colors {
+        text-transform: UPPERCASE;
+        font-weight: bold;
+    }
+
+        .checked, .price span {
+            color: #ff9f1a;
+        }
+
+    .product-title, .rating, .product-description, .price, .vote, .sizes {
+        margin-bottom: 15px;
+    }
+
+    .product-title {
+        margin-top: 0;
+    }
+
+    .size {
+        margin-right: 10px;
+    }
+
+        .size:first-of-type {
+            margin-left: 40px;
+        }
+
+    .color {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 10px;
+        height: 2em;
+        width: 2em;
+        border-radius: 2px;
+    }
+
+        .color:first-of-type {
+            margin-left: 20px;
+        }
+
+    .add-to-cart, .like {
+        background: #ff9f1a;
+        padding: 1.2em 1.5em;
+        border: none;
+        text-transform: UPPERCASE;
+        font-weight: bold;
+        color: #fff;
+        -webkit-transition: background .3s ease;
+        transition: background .3s ease;
+    }
+
+        .add-to-cart:hover, .like:hover {
+            background: #b36800;
+            color: #fff;
+        }
+
+    .not-available {
+        text-align: center;
+        line-height: 2em;
+    }
+
+        .not-available:before {
+            font-family: fontawesome;
+            content: "\f00d";
+            color: #fff;
+        }
+
+    .orange {
+        background: #ff9f1a;
+    }
+
+    .green {
+        background: #85ad00;
+    }
+
+    .blue {
+        background: #0076ad;
+    }
+
+    .tooltip-inner {
+        padding: 1.3em;
+    }
+
+    @@-webkit-keyframes opacity {
+        0% {
+            opacity: 0;
+            -webkit-transform: scale(3);
+            transform: scale(3);
+        }
+
+        100% {
+            opacity: 1;
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+    }
+
+    @@keyframes opacity {
+        0% {
+            opacity: 0;
+            -webkit-transform: scale(3);
+            transform: scale(3);
+        }
+
+        100% {
+            opacity: 1;
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+    }
+
+    /*# sourceMappingURL=style.css.map */
+</style>
+
+
+<div class="container mb-5 Fliestext" style="max-width:1600px;">
+
+    <div class="container-fliud Fliestext">
+        <div class="pt-5">
+            <h6 class="mb-0 fs-3" style="margin:0;text-align:start;margin-bottom: 20px;font-weight:normal;color:#FF6000;">
+                <!--  <a href="@Url.Action("Shop", "Shop",new{zipcode = @Model.Postleitzahl})" style="color:#FF6000;"> <i class="fas fa-long-arrow-alt-left me-2"></i> zurück </a>  -->
+                <a href="javascript:history.back()" style="color:#FF6000;text-decoration:none;font-weight:bold;">zurück</a>
+            </h6>
+        </div>
+
+        @if ((Postleitzahl > 0 && Stadtname != null) || (Postleitzahl == 0 && Model != null && Model?.WarenkorbItemsListe.Count > 0))
+        {
+            @if (Model?.NL == "München")
+            {
+                <!-- München = Container (Holz) -->
+                <div style="text-align:center;position:relative;">
+                    <h1 class="zipcodeResult-2 mb-0 mt-5 ueberschrift">
+                        <span>Holz-Container-Box</span>
+                    </h1>
+                    <div class="mb-0 mt-0 lineX text" style="width:350px;"></div>
+                    @if (Postleitzahl > 0 && Stadtname != null)
+                    {
+                        <h1 class="zipcodeResult2 mt-3 mb-0">
+                            <span>@Postleitzahl</span>
+                            <span>@Stadtname</span>
+                        </h1>
+                    }
+                </div>
+
+                <div class="card Fliestext ma-1" style="padding: 20px;">
+                    <div class="wrapper row">
+
+                        <div class="preview col-md-3">
+                            <div class="preview-pic tab-content d-flex" style="justify-content:center;align-items:center;">
+                                <img src="/assets/images/Produkte_Container.png" class="img-fluid rounded-start" style="width:auto;max-width: 330px;" alt="Produkte_Container(Holz)">
+                                <div class="tab-pane active" id="pic-1"></div>
+                                <!--
+                                <div class="tab-pane" id="pic-2"><img src="http://placekitten.com/400/252" /></div>
+                                <div class="tab-pane" id="pic-3"><img src="http://placekitten.com/400/252" /></div>
+                                <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252" /></div>
+                                <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div
+                                -->
+                            </div>
+                            <!--
+                            <ul class="preview-thumbnail nav nav-tabs">
+                            <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+                            <li><a data-target="#pic-2" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+                            <li><a data-target="#pic-3" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+                            <li><a data-target="#pic-4" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+                            <li><a data-target="#pic-5" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+                            </ul>
+                            -->
+                        </div>
+
+                        <!-- Text Beschreibung -->
+                        <div class="details col-md-6">
+                            <div class="cardGroup">
+                                <div id="Container-Box-Holz" class="Fliestext">
+                                    <div class="row g-0">
+                                        <!-- Text Infos -->
+                                        <div class="col-md-12">
+                                            <div class="col-md-12">
+                                                <h5 class="ueberschrift2" style="margin:0;text-align:start;margin-bottom: 20px;font-weight:normal;">Produktdetails</h5>
+                                                <p class="Fliestext" style="font-size:18px!important;text-align:justify!important;">
+
+                                                    Maße  (L x B x H): 230 x 230 x 155 cm<br />
+                                                    Max. Gewicht: 0,8 Tonnen<br />
+                                                    Geeignet für: Wohnungsinventar (30 m<sup>2</sup>)<br /><br />
+
+
+                                                    <span>
+                                                        Für die Beladung der Holz-Container-Box verteile das Gewicht gleichmäßig. Nutze die komplette Höhe und Breite für passgenaue Platzierung. Vermeide leere Zwischenräume mit Decken und weichen Materialien. 
+                                                        Lege schwere Gegenstände auf Packdecken und stelle hohe Möbel/Kühlschränke mittig und sichere sie mit Zurrgurten. Entferne überstehende Teile wie Schlüssel oder Griffe, und klebe nicht verschlossene Türen zu. 
+                                                        Schließe die Container-Box nach der Beladung mit deinem eigenen Schloss ab.
+                                                    </span>
+                                                </p>
+                                                <br>
+
+                                            </div>
+                                            <br />
+                                         
+                                            <br />
+
+                                            <div class="col-md-12">
+                                                <h5 class="ueberschrift2" style="margin:0;text-align:start;margin-bottom: 20px;font-weight:normal;">Weitere Kosten</h5>
+                                                <p class="Fliestext" style="font-size:18px!important;">
+                                                    Bitte beachten Sie die Barkaution in Höhe von 300,00 € bei Befüllung.
+                                                    Die Lieferkosten werden nach unserer Kontaktaufnahme mit Ihnen separat berechnet.                                                   
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="details col-md-3 fw-bold Fliestext">
+                            <div id="Container-Box-Holz" class="cardItem C1" style="height:100%;">
+                                <p hidden class="zipcodeResult2 mb-0 mt-5">
+                                    <span>@Postleitzahl</span>
+                                    <span>@Stadtname</span>
+                                </p>
+                                <div class="row g-0" style="height:100%;gap: 2%;align-content: start;">
+                                    <!-- Text -->
+                                    <div>
+                                        <span class="article-column-headline ueberschrift" style="font-weight:normal;">Anzahl</span>
+                                        <br />
+                                        @*<span class="Fliestext">Mindestmenge: 3 Stück</span>*@
+                                    </div>
+
+                                    <!-- + und - -->
+                                    <div class="cont-add-prod">
+                                        <button class="details-minus btn-roomit" value="99" style="height: inherit;width: auto;min-width: 30%;margin-inline:0;font-weight:bold;z-index:20;"> - </button>
+                                        <p class="details-product-counter" style="font-size:42px!important;">0</p>
+                                        <button class="details-plus btn-roomit" value="99" style="height: inherit;width: auto;min-width: 30%;font-weight:bold;z-index:20;">  + </button>
+                                    </div>
+                                    
+                                    <!-- Preis  -->
+                                    <div class="mt-5" style="display:flex;">
+                                        <div class="col-md-5">
+                                            <span class="article-column-headline ueberschrift fw-bold" style="font-weight:normal;">Preis:</span>
+                                            <br />
+                                            <span class="Fliestext fw-bold">Pro Monat</span>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <span class="article-price-amount details-result"> </span>
+                                        </div>
+                                    </div>
+                                    <div> <span class="Fliestext fw-bold">zzgl. Lieferkosten</span></div>
+                                    <div>
+                                        <input type="button" class="btn mt-4 in-warenkorb btn-roomit" style="min-width:60%;font-size: 16px;width: inherit;" value="In den Warenkorb" />
+                                        <input type="button" class="btn mt-4 btn-roomit" style="min-width:60%;font-size: 16px;width: inherit;" value="Weiter einkaufen" onclick="location.href='@Url.Action("shop", "Shop",new { zipcode = Postleitzahl} )'" />
+                                    </div>
+                                    
+                                </div>
+                            </div>
+
+                            <span class="price-info">ab <span class="price">99,00 €</span> pro Container-Box</span>
+
+                        </div>
+
+                    </div>
+                </div>
+            }
+            else
+            {
+                <!-- Köln = Container (Metall) -->
+                <div style="text-align:center;position:relative;">
+                    <h1 class="zipcodeResult-2 mb-0 mt-5 ueberschrift">
+                        <span>Metall-Container-Box</span>
+                    </h1>
+                    <div class="mb-0 mt-0 lineX text" style="width:400px;"></div>
+
+                    @if (Postleitzahl > 0 && Stadtname != null)
+                    {
+                        <h1 class="zipcodeResult2 mt-3 mb-0">
+                            <span>@Postleitzahl</span>
+                            <span>@Stadtname</span>
+                        </h1>
+                    }
+                </div>
+
+                <div class="card Fliestext ma-1" style="padding: 20px;">
+                    <div class="wrapper row fw-bold">
+
+                        <div class="preview col-md-3">
+                            <div class="preview-pic tab-content d-flex" style="justify-content:center;align-items:center;">
+                                <img src="/assets/images/Produkte_Container.png" class="img-fluid rounded-start" style="width: auto;max-width: 330px;" alt="Produkte_Container (Metall)">
+                                <div class="tab-pane active" id="pic-1"></div>
+                                <!--
+                                <div class="tab-pane" id="pic-2"><img src="http://placekitten.com/400/252" /></div>
+                                <div class="tab-pane" id="pic-3"><img src="http://placekitten.com/400/252" /></div>
+                                <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252" /></div>
+                                <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div
+                                -->
+                            </div>
+                            <!--
+                            <ul class="preview-thumbnail nav nav-tabs">
+                            <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+                            <li><a data-target="#pic-2" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+                            <li><a data-target="#pic-3" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+                            <li><a data-target="#pic-4" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+                            <li><a data-target="#pic-5" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+                            </ul>
+                            -->
+                        </div>
+
+                        <!-- Text Beschreibung -->
+                        <div class="details col-md-6">
+                            <div class="cardGroup">
+                                <div id="Container-Box-Metall" class="Fliestext">
+                                    <div class="row g-0">
+                                        <!-- Text Infos -->
+                                        <div class="col-md-12">
+                                            <div class="col-md-12">
+                                                <h5 class="ueberschrift2" style="margin:0;text-align:start;margin-bottom: 20px;font-weight:normal;">Produktdetails</h5>
+                                                <p class="Fliestext" style="text-align:justify!important;">
+
+                                                    Maße  (L x B x H): 240 x 150 x 225 cm<br>
+                                                    Max. Gewicht: 0,8 Tonnen <br>
+                                                    Geeignet für: Wohnungsinventar (30 m<sup>2</sup>)<br><br>
+
+                                                    <span>
+                                                        Für die Beladung der Metall-Container-Box verteile das Gewicht gleichmäßig. Nutze die komplette Höhe und Breite für passgenaue Platzierung. Vermeide leere Zwischenräume mit Decken und weichen Materialien. 
+                                                        Lege schwere Gegenstände auf Packdecken und stelle hohe Möbel/Kühlschränke mittig und sichere sie mit Zurrgurten. Entferne überstehende Teile wie Schlüssel oder Griffe, und klebe nicht verschlossene Türen zu. 
+                                                        Schließe die Container-Box nach der Beladung mit deinem eigenen Schloss ab.
+                                                    </span>
+                                                </p>
+                                                <br>
+
+                                            </div>
+                                            <br />
+                                            
+                                            <br />
+
+                                            <div class="col-md-12">
+                                                <h5 class="ueberschrift2" style="margin:0;text-align:start;margin-bottom: 20px;font-weight:normal;">Weitere Kosten</h5>
+                                                <p class="Fliestext">
+                                                    Bitte beachten Sie die Barkaution in Höhe von 300,00 € bei Befüllung.
+                                                    Die Lieferkosten werden nach unserer Kontaktaufnahme mit Ihnen separat berechnet.
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="details col-md-3 Fliestext">
+
+                            <div id="Container-Box-Metall" class="cardItem C1" style="height:100%;">
+                                <p hidden class="zipcodeResult2 mb-0 mt-5">
+                                    <span>@Postleitzahl</span>
+                                    <span>@Stadtname</span>
+                                </p>
+                                <div class="row g-0" style="height:100%;gap: 2%;align-content: start;">
+                                    <!-- Text -->
+                                    <div>
+                                        <span class="article-column-headline ueberschrift" style="font-weight:normal;">Anzahl</span>
+                                        <br />
+                                        @*<span class="Fliestext">Mindestmenge: 3 Stück</span>*@
+                                    </div>
+                                    <!-- + und - -->
+                                    <div class="cont-add-prod">
+                                        <button class="details-minus btn-roomit" value="99" style="height: inherit;width: auto;min-width: 30%;margin-inline:0;font-weight:bold;z-index:20;"> - </button>
+                                        <p class="details-product-counter" style="font-size:42px!important;">0</p>
+                                        <button class="details-plus btn-roomit" value="99" style="height: inherit;width: auto;min-width: 30%;font-weight:bold;z-index:20;">  + </button>
+                                    </div>
+                                    <!-- Preis  -->
+                                    <div class="mt-5" style="display:flex;">
+                                        <div class="col-md-5">
+                                            <span class="article-column-headline ueberschrift" style="font-weight:normal;">Preis:</span>
+                                            <br />
+                                            <span class="Fliestext">Pro Monat</span>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <span class="article-price-amount details-result"> </span>
+                                        </div>
+                                    </div>
+                                    <div> <span class="Fliestext">zzgl. Lieferkosten</span></div>
+                                    <div style="width:100%;">
+                                        <input type="button" class="btn mt-4 in-warenkorb btn-roomit" style="min-width:60%;font-size:16px;width:inherit;" value="In den Warenkorb" />
+                                        <input type="button" class="btn mt-4 btn-roomit" style="min-width:60%;font-size:16px;width:inherit;" value="Weiter einkaufen" onclick="location.href='@Url.Action("shop", "Shop",new { zipcode = Postleitzahl} )'" />
+                                    </div>
+                                  
+                                </div>
+                            </div>
+
+                            <span class="price-info">ab <span class="price">99,00 €</span> pro Container-Box</span>
+
+                        </div>
+
+                    </div>
+                </div>
+            }
+            
+        }
+        else
+        {
+            <div style="text-align:center;margin-bottom:10%;position:relative;">
+                <h1 class="noZipcodeResult">@ViewBag.Zipcode</h1>
+                <h3 style="color:chocolate;margin-top: 6%;">Aktuellen haben wir keine Angebote in Deiner Region!</h3>
+            </div>
+
+        }
+       
+
+    </div>
+
+</div>
+
+<!--  Hier hier  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<div class="container" style="max-width:1600px; margin-top:5%;">
+    <div class="row">
+         <div hidden>
+                <h1 class="zipcodeResult">
+                    <span>@Model.Postleitzahl</span>
+                    <span>@Model.Stadtname</span>
+                </h1>
+                <h3>Unsere aktuellen Angebote in Deiner Region:</h3>
+            </div>
+        <div class="cardGroup">
+            <div id="Container-Box" class="card cardItem C1">
+                <div class="row g-0">
+                    <!-- Bild -->
+                    <div class="col-md-3">
+                        <img src="/assets/images/container-Box1_Tranz.png" class="img-fluid rounded-start" style="width:200px;" alt="...">
+                    </div>
+                    <!-- Text Infos -->
+                    <div class="col-md-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Container-Box</h5>
+                            <p class="card-text">
+                                Über 2 Meter lang und hoch!
+                                Max. Zuladung: 1,0 Tonne
+                                Für Inventar einer 30 m² Wohnung
+                                Verriegelung mit eigenem Schloss
+                            </p>
+                            <p class="card-text"><strong class="text-muted">Anlieferung und Abholung ab 0,00 €</strong></p>
+
+                            <div class="mt-2">
+                                <button type="button" onclick="history.back()" class="btn btn-outline-success" style="min-width:50%;">Zurück</button>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <!-- Quantity && + und - -->
+                    <div class="col-md-3">
+                        <p class="article-column-headline">Anzahl</p>
+                        <div class="cont-add-prod">
+                            @if (Model?.WarenkorbItemsListe.FirstOrDefault(x => x.ProduktName == "Container-Box")?.Quantity > 0)
+                            {
+                                <button class="minus" style="display:block;" value="99">-</button>
+                                <p class="product-counter">@Model?.WarenkorbItemsListe.FirstOrDefault(x => x.ProduktName == "Container-Box")?.Quantity</p>
+                            }
+                            else
+                            {
+                                <button class="minus" value="99">-</button>
+                                <p class="product-counter">0</p>
+                            }
+
+                            <button class="plus" value="99">+</button>
+                        </div>
+                    </div>
+                    <!-- Preis  -->
+                    <div class="col-md-3 ps-5">
+                        <p class="article-column-headline">Preis</p>
+                        <span class="article-price-amount">
+                            @if (Model?.WarenkorbItemsListe.FirstOrDefault(x => x.ProduktName == "Container-Box")?.Quantity > 0)
+                            {
+                                <span class="result">@Model?.WarenkorbItemsListe.FirstOrDefault(x => x.ProduktName == "Container-Box")?.Total.ToString("C2")</span>
+                            }
+                            else
+                            {
+                                <span class="result"></span>
+                            }
+
+                            <span class="proMonat">Pro Monat</span>
+                        </span>
+                    </div>
+                </div>
+                <span class="price-info">ab <span class="price"> 99,00 €</span> pro Container-Box</span>
+            </div>
+        </div>
+        
+    </div>
+</div>*@
+
+
+

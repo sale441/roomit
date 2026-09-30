@@ -1,0 +1,322 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Email Template for Order Confirmation Email</title>
+
+    <!-- Start Common CSS -->
+
+    <style type="text/css">
+        #outlook a {
+            padding: 0;
+        }
+
+        body {
+            width: 100% !important;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: Helvetica, arial, sans-serif;
+        }
+
+        .ExternalClass {
+            width: 100%;
+        }
+
+            .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {
+                line-height: 100%;
+            }
+
+        .backgroundTable {
+            margin: 0;
+            padding: 0;
+            width: 100% !important;
+            line-height: 100% !important;
+        }
+
+        .main-temp table {
+            border-collapse: inherit;
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+            font-family: Helvetica, arial, sans-serif;
+        }
+
+        .main-temp table td {
+            border-collapse: inherit;
+        }
+        .tdImage{
+
+        }
+        .tdArtikelName {
+            font-size: 15px;
+            font-weight: bold;
+            color: #666666;
+            padding-bottom: 5px;
+            text-align: left;
+        }
+        .tdText {
+            font-size: 14px;
+            line-height: 18px;
+            color: gray;
+            text-align: left;
+        }
+
+        .tdTextValue {
+            font-size: 14px;
+            line-height: 18px;
+            color: #757575;
+            text-align: right;
+            width: 25%;
+            padding-right:1%;
+        }
+
+        a {
+            color: #00469b;
+            text-decoration: none;
+        }
+        .alte-linien-farbe {
+            border-bottom: 3px solid #eeeeee;
+            
+        }
+        .aktuele-linien-farbe {
+       
+            border-bottom: 3px solid #61b300;
+        }
+    </style>
+
+    <!-- End Common CSS -->
+</head>
+
+<body>
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" class="backgroundTable main-temp" style="background-color: #d5d5d5; width:1200px;">
+        <tbody>
+            <tr>
+                <td>
+                    <table width="800" align="center" cellpadding="15" cellspacing="0" border="0" class="devicewidth" style="background-color: #ffffff;">
+
+                        <!-- Start header Section -->
+
+                        <tr>
+                            <td style="padding-top: 30px;">
+                                <table width="700" align="center" cellpadding="0" cellspacing="0" border="0" class="devicewidthinner" style="border-bottom: 3px solid #61b300; text-align: center;">
+                                    <tbody>
+                                        <tr>
+                                            <td style="padding-bottom: 10px;border:none;">
+                                                <a href="https://www.roomit-selfstorage.de/"><img src="$logo$" alt="roomitlogo" /></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-size: 14px; line-height: 18px; color: #666666;font-weight:bold;">Rhenus Data Office GmbH</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-size: 14px; line-height: 18px; color: #666666; font-weight: bold;">Industriestraße 5</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-size: 14px; line-height: 18px; color: #666666; font-weight: bold;">48301 Nottuln</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-size: 14px; line-height: 18px; color: #666666; padding-bottom: 15px; font-weight: bold;"> Telefon: 08131 27 92 92 0 &nbsp;|&nbsp; E-Mail: info@roomit-selfstorage.de </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+
+                        <!-- End header Section -->
+                        <!-- Start address Section -->
+                        <tr>
+                            <td>
+                                <table width="700" align="center" cellpadding="0" cellspacing="0" border="0" class="devicewidthinner" style="border-bottom: 3px solid #61b300; ">
+
+                                    <tbody>
+
+                                        <tr>
+                                            <td colspan="2" style="font-size: 30px; line-height: 22px; color: #61b300; padding-bottom: 25px; text-align: center;"><strong>Bestellbestätigung</strong></td>
+                                        </tr>
+                                        <tr><td><br /><br /></td></tr>
+                                        <tr>
+                                            <td style="font-size: 14px; line-height: 18px; color: #666666; padding-bottom: 25px;width:61%;"><strong>Auftragsnummer:</strong> $Auftragsnummer$</td>
+                                        </tr>
+                                        <tr><td><br /><br /></td></tr>
+                                        <tr>
+                                            <td style="width: 55%; font-size: 16px; font-weight: bold; color: #666666; padding-bottom: 5px;">
+                                                RECHNUNGSADRESSE
+                                            </td>
+                                            <td style="width: 45%; font-size: 16px; font-weight: bold; color: #666666; padding-bottom: 5px;">
+                                                LIEFERADRESSE
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 55%; font-size: 14px; line-height: 18px; color: #666666;">
+                                                $Anrede$
+                                            </td>
+                                            <td style="width: 55%; font-size: 14px; line-height: 18px; color: #666666;">
+                                                $Anrede$
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 55%; font-size: 14px; line-height: 18px; color: #666666;">
+                                                $RVorname$ $RNachname$
+                                            </td>
+                                            <td style="width: 45%; font-size: 14px; line-height: 18px; color: #666666;">
+                                                $LVorname$ $LNachname$
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 55%; font-size: 14px; line-height: 18px; color: #666666;">
+                                                $RStrasse$
+                                            </td>
+                                            <td style="width: 45%; font-size: 14px; line-height: 18px; color: #666666;">
+                                                $LStrasse$
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 55%; font-size: 14px; line-height: 18px; color: #666666; padding-bottom: 10px;">
+                                                $RPLZ$ &nbsp;&nbsp; $ROrt$
+                                            </td>
+                                            <td style="width: 45%; font-size: 14px; line-height: 18px; color: #666666; padding-bottom: 10px;">
+                                                $LPLZ$ &nbsp;&nbsp; $LOrt$
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+
+                                </table>
+                            </td>
+                        </tr>
+                        <!-- End address Section -->
+                        <!-- Start product Section -->
+
+                        <tr>
+                            <td>$Positionen$</td>
+                        </tr>
+
+
+                        <!-- Orginale statische tr Tags-->
+                        <!--<tr>
+                            <td style="padding-top: 0;">
+                                <table width="560" align="center" cellpadding="0" cellspacing="0" border="0" class="devicewidthinner" style="border-bottom: 1px solid #eeeeee;">
+                                    <tbody>
+                                        <tr>
+                                            <td rowspan="4" style="padding-right: 10px; padding-bottom: 10px; min-width: 35%; max-width: 35%;">
+                                                <img style="height: 80px;" src="$image$" alt="Product Image" />
+                                            </td>
+                                            <td style="font-size: 15px; font-weight: bold; color: #666666; padding-bottom: 5px; text-align: left;">$ArtikelName$</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" style="font-size: 14px; line-height: 18px; color: gray; text-align: left;">Preis:</td>
+                                            <td colspan="2" style=" font-size: 14px; line-height: 18px; color: #757575; text-align: right; width: 25%; padding-right: 1%;">$Pries$ </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" style="font-size: 14px; line-height: 18px; color: gray; text-align: left;"> Menge: </td>
+                                            <td colspan="2" style=" font-size: 14px; line-height: 18px; color: #757575; text-align: right; width: 25%; padding-right: 1%;"> $Menge$ </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" style="font-size: 14px; line-height: 18px; color: gray; text-align: left;"> Gesamt: </td>
+                                            <td colspan="2" style=" font-size: 14px; line-height: 18px; color: #757575; text-align: right; width: 25%; padding-right: 1%;">
+                                                <b style="color: #666666;">$Total$</b>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>-->
+                        <!-- End product Section -->
+                        <!-- Start calculation Section -->
+
+
+                        <tr>
+                            <td style="padding-top: 0;">
+                                <table width="700" align="center" cellpadding="0" cellspacing="0" border="0" class="devicewidthinner" style="border-bottom: 3px solid #61b300; margin-top: 0px;">
+                                    <tbody>
+                                        <tr>
+                                            <td rowspan="4" style="width: 280px;padding-right:10px;"></td>
+                                            <td style="font-size: 14px; line-height: 18px; color: #666666;">
+                                                Gesamt ohne MwSt:
+                                            </td>
+                                            <td style="font-size: 14px; line-height: 18px; color: #666666; min-width: 170px; text-align: right; padding-right: 5%;">
+                                                $TotalOhneMwSt$
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-size: 14px; line-height: 18px; color: #666666; padding-bottom: 10px; border-bottom: 3px solid #eeeeee;">
+                                                MwSt.
+                                            </td>
+                                            <td style="font-size: 14px; line-height: 18px; color: #666666; padding-bottom: 10px; border-bottom: 3px solid #eeeeee; text-align: right; padding-right: 5%;">
+                                                $MwSt$ %
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-size: 14px; font-weight: bold; line-height: 18px; color: #666666; padding-top: 10px;">
+                                                Gesamt:
+                                            </td>
+                                            <td style="font-size: 14px; font-weight: bold; line-height: 18px; color: #666666; padding-top: 10px; text-align: right; padding-right: 5%;">
+                                                $TotalMitMwSt$
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        <!-- End calculation Section -->
+
+                        <!-- Footer-->
+                        <tr>
+                            <td style="padding-top:60px;">
+                                <table align="center" bgcolor="#6d6b6b" border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed; COLOR: #6d6b6b; PADDING-LEFT: 15px; PADDING-RIGHT: 15px; min-height: 120px; height: auto; width: auto;">
+                                    <tbody>
+
+                                        <tr style="border-top: 3px solid #fff; border-top-color: white; FONT-SIZE: 15px;padding-top:5px;">
+
+                                            <td style="font-size: 11px; VERTICAL-ALIGN: central; FONT-WEIGHT: normal; COLOR: #fff; PADDING-TOP: 5px; PADDING-BOTTOM: 5px; PADDING-RIGHT: 0px; PADDING-LEFT: 5px; LINE-HEIGHT: 2px; " width="10%">
+                                                <a href="https://www.roomit-selfstorage.de/Kontakt" style="COLOR: #fff;">Kontakt</a>
+                                            </td>
+
+                                            <td style="font-size: 11px; VERTICAL-ALIGN: central; FONT-WEIGHT: normal; COLOR: #fff; PADDING-TOP: 5px; PADDING-BOTTOM: 5px; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; LINE-HEIGHT: 2px; " width="10%">
+                                                <a href="https://www.roomit-selfstorage.de/FAQ" style="COLOR: #fff;">FAQ</a>
+                                            </td>
+
+                                            <td style="font-size: 11px; VERTICAL-ALIGN: central; FONT-WEIGHT: normal; COLOR: #fff; PADDING-TOP: 5px; PADDING-BOTTOM: 5px; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; LINE-HEIGHT: 2px; " width="10%">
+                                                <a href="https://www.roomit-selfstorage.de/Packanleitung" style="COLOR: #fff;">Packanleitung</a>
+                                            </td>
+
+                                            <td style="FONT-SIZE: 9px; VERTICAL-ALIGN: central; FONT-WEIGHT: normal; COLOR: #fff; PADDING-TOP: 5px; PADDING-BOTTOM: 5px; PADDING-RIGHT: 0px; PADDING-LEFT: 0px;  PADDING-RIGHT: 15px; TEXT-ALIGN: right; LINE-HEIGHT: 2px; width:50% ">
+                                                <span style="margin-left: auto; word-break: break-all;">*Alle Preise inkl. gesetzl. Mehrwertsteuer und ggf.zzgl. Versandkosten, wenn nicht anders beschrieben</span>
+                                            </td>
+
+                                        </tr>
+
+                                        <tr style="border-top: 3px solid #fff; border-top-color: white; FONT-SIZE: 15px;padding-top:5px;width:75%;">
+
+                                            <td style="font-size: 11px; border-top: 3px solid #fff; border-top-color: white; VERTICAL-ALIGN: central; FONT-WEIGHT: normal; COLOR: #fff; PADDING-TOP: 5px; PADDING-BOTTOM: 5px; PADDING-RIGHT: 0px; PADDING-LEFT: 5px; LINE-HEIGHT: 2px;" width="10%">
+                                                <a href="https://www.roomit-selfstorage.de/Impressum" style="COLOR: #fff;">Impressum</a>
+                                            </td>
+
+                                            <td style="font-size: 11px; border-top: 3px solid #fff; border-top-color: white; VERTICAL-ALIGN: central; FONT-WEIGHT: normal; COLOR: #fff; PADDING-TOP: 5px; PADDING-BOTTOM: 5px; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; LINE-HEIGHT: 2px;" width="10%">
+                                                <a href="https://www.roomit-selfstorage.de/AGP" style="COLOR: #fff;">AGB</a>
+                                            </td>
+
+                                            <td style="font-size: 11px; border-top: 3px solid #fff; border-top-color: white; VERTICAL-ALIGN: central; FONT-WEIGHT: normal; COLOR: #fff; PADDING-TOP: 5px; PADDING-BOTTOM: 5px; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; LINE-HEIGHT: 2px;" width="10%">
+                                                <a href="https://www.roomit-selfstorage.de/Datenschutzerklärung" style="COLOR: #fff;">Datenschutzerklärung</a>
+                                            </td>
+
+                                            <td colspan="3" style="font-size: 10px; border-top: 3px solid #fff; border-top-color: white; VERTICAL-ALIGN: central; FONT-WEIGHT: normal; COLOR: #fff; PADDING-TOP: 5px; PADDING-BOTTOM: 5px; PADDING-RIGHT: 15px; PADDING-LEFT: 0px; LINE-HEIGHT: 2px; PADDING-RIGHT: 15px; TEXT-ALIGN: right; ">
+                                                <span style="margin-left: auto;">©2024 - Rhenus Data Office GmbH</span>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

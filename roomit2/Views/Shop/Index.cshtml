@@ -1,0 +1,687 @@
+﻿
+
+@{
+    //ViewData["Title"] = "Dein Partner für Lagerboxen | room it!";
+    //ViewData["Description"] = "Wir lagern deine Gegenstände einfach und unkompliziert für dich ein ✓ Erfahre mehr über unseren Service!";
+    //ViewData["Keywords"] = "Lagerbox, Einlagerung, externes Lager, Service, Container-Box, Karton-Box, Einzelstücke, Auslagerung";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section metatags{
+    <title>Dein Partner für mobile Lagerboxen, Container-Box, und Karons - room it!</title>
+    <meta name="description" content="Wir lagern deine Gegenstände einfach und unkompliziert für dich ein ✓ Erfahre mehr über unseren Service!">
+    <meta name="keywords" content="Lagerbox, Einlagerung, externes Lager, Service, Container-Box, Karton-Box, Einzelstücke, Auslagerung">
+}
+
+<style>
+
+.box-item{
+    cursor:pointer;
+}
+
+.background-10{
+        max-width: 100%;
+        background-color: #eeeeed;
+        height: 650px;
+        position: absolute;
+        margin: 10rem 0;
+}
+.row{
+    margin-right:auto!important;
+}
+
+</style>
+
+
+
+    <!-- ***** Section-1 Carusel-1 Main Banner Area Start ***** -->
+    <section class="section main-banner carousel-section" id="top" data-section="section1">
+        <section class="section main-banner carousel-hight" id="top" data-section="section1">
+
+        <div id="demo" class="carousel background carousel-hight" data-bs-ride="true" data-interval="2000">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+            <div class="carousel-inner carousel-hight">
+
+                <div class="carousel-item active carousel-hight">
+                    <img src="assets/images/slide-1.jpg" class="d-block w-100 carousel-hight" alt="deine mobile lagerbox" />
+                        <div class="carousel-caption add" role="option">
+                        <h1 style="text-transform:none;">Du brauchst Platz?</h1>
+                            @*<p class="mb-5" >Du bestellst. wir liefern. Hol dir jetzt den Platz <br />den du brauchst</p>*@
+                            <p class="mb-4" style="color:white; font-weight:normal;">
+                                Wir kümmern uns um die sichere Einlagerung deiner Gegenstände.
+                            </p>
+                            <div class="btn-roomit-div xx-1" style="align-items:center;">
+                            <a href="/Ablauf" class="btn btn-roomit abs w-x1">
+                                <p style="line-height:26px;">So funktioniert es</p>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                <div class="carousel-item carousel-hight">
+                    <img src="assets/images/slide-2.jpg" class="d-block w-100 carousel-hight" alt="Einlagerung externes Lager" />
+                        <div class="carousel-caption add" role="option">
+                        <h1 style="text-transform:none;">Deine mobile Lagerbox</h1>
+                        <p class="mb-4" style="color:white;font-weight:normal;">
+                                In unserem Lager sind deine Gegenstände in deiner persönlichen Box bestens aufgehoben – sicher, sauber, trocken und videoüberwacht.
+                            </p>
+                        <div class="btn-roomit-div" style="align-items:center;">
+                            <a href="/Ablauf" class="btn btn-roomit abs w-x1">
+                                <p style="line-height:26px;">So funktioniert es</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                <div class="carousel-item carousel-hight">
+                    <img src="assets/images/slide-3.jpg" class="d-block w-100 carousel-hight" alt="Anhänger Karton-Box Auslagerung" />
+                        <div class="carousel-caption add" role="option">
+                        <h1 style="text-transform:none;">Noch nie war Platz schaffen so einfach</h1>
+                        <p class="mb-4" style="color:white;font-weight:normal;">
+                                In deine persönliche Lagerbox passt alles, was du gerade nicht mehr brauchst – und noch viel mehr!
+                            </p>
+
+                        <div class="btn-roomit-div xx-1" style="align-items:center;">
+                            <a href="/Ablauf" class="btn btn-roomit abs w-x1">
+                                <p style="line-height:26px;">So funktioniert es</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="carousel-control-prev carouselBtn-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next carouselBtn-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </section>
+
+    </section>
+
+    <!-- ***** Section-2  Bei uns bist Du gut aufgehoben***** -->
+    <section class="container mt-4 Fliestext" style="max-width:1620px;">
+        <div class="teil2">
+            <div class="aufheben-innen-1 mb-3">
+                <div class="mt-3" @*style="width:30%;"*@>
+                <img class="" src="/assets/images/roomit_signet.png" alt="Selfstorage roomit logo" width="240" height="100">
+                </div>
+
+            </div>
+            <div class="aufheben-innen-2">
+
+                <h1 class="mt-2 mb-2 ueberschrift">Bei uns bist du gut aufgehoben!</h1>
+
+                <div class="mt-4 lineX"></div>
+
+                <div class="aufheben-innen-2-a">
+                    <p>
+                        <strong>Selfstorage - Lagerbox mieten, aber mobil! </strong>
+                    </p>
+                    <p class="Fliestext">Bei room it! Selfstorage – deiner mobilen Lagerbox – funktioniert die Lagerung deiner Möbel, Saisonartikel und allem, was du sonst noch <br /> gern auslagern möchtest, so einfach wie nie zuvor!</p>
+                </div>
+
+                <div class="mt-4 aufheben-innen-2-a">
+                    <p>
+                        <strong>Schaff dir schnell, komfortabel und günstig, den Platz, den du brauchst!</strong>
+                        
+                    </p>
+                    <p class="Fliestext">Du bestellst online deine Container oder Kartons, wir liefern sie dir zu einem vereinbarten Termin an deine Wunschadresse. Wenn die  <br /> Boxen fertig beladen sind, nehmen wir diese mit und lagern sie in einem unserer Sicherheitslager in deiner Nähe ein.</p>
+                    
+                </div> 
+                <div class="mt-4 lineX"></div>
+                <h3 class="mb-5" style="text-align: center;"><strong>Wir sind ein Teil der Rhenus Data Office GmbH.</strong></h3>
+            </div>
+        </div>
+    </section>
+
+    <div class="rasterfooter-0">
+        <div class="rasterfooter">
+            <a href="/Ablauf" class="btn btn-roomit"><p>So einfach geht`s</p></a>
+        </div>
+    </div>
+
+    
+    <!-- ***** Section-3  3 Pictuers Cards ***** -->
+    <!--Noch nie war Platz schaffen so einfach!-->
+    <section class="container mt-4 Fliestext" style="max-width:1620px;">
+        <div class="teil2">
+            <div class="platzSchafenRaster">
+
+                <h2 class="mt-2 mb-2 ueberschrift">Noch nie war Platz schaffen so einfach!</h2>
+
+                <div class="mt-4 lineX"></div>
+
+                <div class="text-center" style="margin-bottom:100px;">
+                    <h4><strong>Du bestellst. Wir liefern. Hol dir jetzt den Platz du brauchst!</strong></h4>
+                </div>
+
+                <div class="mt-4 pictures row">
+                    <div class="card col-lg-3">
+                        <div class="down-content kreis-nr">1</div>
+                    <img src="assets/images/1.png" class="card-img-top" alt="Lagerbox Einlagerung und externes Lager">
+                        <div class="card-body">                            
+                            <p class="card-text Fliestext" style="text-align:center;">Bestell deine Boxen online – bequem von zuhause aus!</p>
+                        </div>
+                    </div>
+                    <div class="card col-lg-3" >
+                            <div class="down-content kreis-nr">2</div>
+                    <img src="assets/images/2.jpg" class="card-img-top" alt="Service und Container-Box und Karton-Box">
+                            <div class="card-body">
+                                <p class="card-text Fliestext" style="text-align:center;">Wir liefern die Boxen an deinen Wunschort.</p>
+                            </div>
+                        </div>
+                    <div class="card col-lg-3" >
+                        <div class="down-content kreis-nr">3</div>
+                    <img src="assets/images/3.jpg" class="card-img-top" alt="Einzelstücke und Auslagerung mit LKW">
+                        <div class="card-body">
+                            <p class="card-text Fliestext" style="text-align:center;">Wir holen die beladenen Boxen ab und lagern diese für dich ein. </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="rasterfooter-0">
+        <div class="rasterfooter">
+            <a href="/Ablauf" class="btn btn-roomit"><p>Entdecke deine Vorteile</p></a>
+        </div>
+    </div>
+
+    <!-- ***** Section-4  3 Großen Boxen ***** -->
+    <section class="upcoming-meetings Fliestext" id="meetings" style="padding:0px;">
+
+        <div class="row">
+            <!-- Title Upcoming Meetings -->
+            <div class="col-lg-12 mb-5" style="margin-top: 80px;">
+                <div class="mb-4">
+                    <h1 style="color:#61b300;text-align:center;font-weight:bold;">Unsere Produkte im Überblick</h1>
+                </div>
+            </div>
+        </div>
+        <div class="container teil2 background-10"></div>
+        <div class="container teil2">
+            <div class="container teil2" style="max-width:1200px;">
+                <div class="row containerBox" style="background-color:#f6f9f5;">
+
+                    <div class="col-lg-4">
+                        <div class="box-item containerBox-item">
+                            <div class="box-item-link">
+                                <div class="tab-item">
+                                    <p class="price-header-title-sub">
+                                        Container-Box
+                                        <br>
+                                        <span style="color:black;">einlagern</span>
+                                    </p>
+                                    <hr style="color:gray;">
+                                    <p class="fw-bolder">ab 99 €/Monat</p>
+                                    <hr style="color:gray;">
+                                </div>
+
+                            <img class="box-item-img img-item" src="/assets/images/Produkte_Container.png" alt="lagere dein Container" title="Container">
+
+                                <ul class="box-item-list">
+                                    <li>Aus Metall oder Holz </li>
+                                    <li>Max. Gewicht: 0,8 Tonnen</li>
+                                    <li>Geeignet für: Wohnungsinventar (30 m2) </li>
+                                </ul>
+
+                            </div>
+
+                            <div class="price-footer">
+                                <form class="" asp-controller="shop" asp-action="Container">
+                                    <input type="text" name="zipcode" class="price-footer-input" placeholder="Deine Postleitzahl">
+                                    <button type="submit" class="price-footer-btn btn btn-roomit">
+                                        <span class="price-footer-text">Los</span>
+                                    </button>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="box-item containerBox-item">
+                            <div title="Einzelstücke" class="box-item-link">
+
+                                <div class="tab-item">
+                                    <p class="price-header-title-sub">Einzelstücke <br> <span style="color:black;">einlagern</span></p>
+                                    <hr style="color:gray;">
+                                    <p class="fw-bolder"> ab 12 €/Monat</p>
+                                    <hr style="color:gray;">
+                                </div>
+
+                            <img class="box-item-img img-item" src="/assets/images/Produkte_Einstuecke.png" alt="lagere deine Einstücke im Lager" title="Einstuecke Bild">
+
+                                <ul class="box-item-list">
+                                    <li>Max. Maße (L x B x H): 120 x 80 x 40 cm</li>
+                                    <li>Max. Gewicht: 30 kg</li>
+                                    <li>Geeignet für: Sessel, Fahrräder, Skier etc.</li>
+                                </ul>
+
+                            </div>
+                            <div class="price-footer">
+                                <form class="" asp-controller="Shop" asp-action="Einzelstueck">
+                                    <input type="text" name="zipcode" class="price-footer-input" placeholder="Deine Postleitzahl">
+                                    <button type="submit" class="price-footer-btn btn btn-roomit">
+                                        <span class="price-footer-text">Los</span>
+                                    </button>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="box-item containerBox-item">
+                            <div title="Karton-Box" class="box-item-link">
+
+                                <div class="tab-item">
+                                    <p class="price-header-title-sub"> Karton-Box  <br>  <span style="color:black;">einlagern</span> </p>
+                                    <hr style="color:gray;">
+                                    <p class="fw-bolder"> ab 4 €/Monat </p>
+                                    <hr style="color:gray;">
+                                </div>
+
+                            <img class="box-item-img img-item" src="/assets/images/Produkte_Karton3.png" alt="Kartonbox kaufen oder mieten lagern" title="Kartonbox-item-img">
+
+                                <ul class="box-item-list">
+                                    <li>Maße (L x B x H): 57 x 37 x 32 cm</li>
+                                    <li>Max. Gewicht: 25 kg</li>
+                                    <li>Geeignet für: T-Shirts, DVDs etc.</li>
+                                </ul>
+                            </div>
+
+                            <div class="price-footer">
+                                <form class="zipcode-form" asp-controller="Shop" asp-action="Karton">
+                                    <input type="text" name="zipcode" class="price-footer-input" placeholder="Deine Postleitzahl">
+                                    <button type="submit" class="price-footer-btn btn btn-roomit">
+                                        <span class="price-footer-text">Los</span>
+                                    </button>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- ***** rasterfooter ***** -->
+        <div class="container rasterfooter-0 mt-4 mb-5 Fliestext">
+            <div class="rasterfooter Fliestext" style="max-width:1260px;">
+            <div class="col-7 rasterfooter-2">
+                <p class="rasterfooter-ueberschrift">
+                        <span>Hast du noch eine Frage?</span><br /><br />
+                        <span>08131 2792920</span><br />
+                        <span>Mo.- Fr.: 09:00 - 17:00 Uhr</span><br />
+                    </p>
+                </div>
+            <div class="col-5 sos-2">
+                    <button onclick="location.href='/Kontakt'" class="btn btn-roomit"><p style="margin-bottom:0;margin-top:0;">Kontaktformular</p></button>
+                    <button onclick="location.href='/FAQ'" class="btn btn-roomit"><p style="margin-bottom:0;margin-top:0;">FAQ</p></button>
+                </div>
+
+            </div>
+
+        </div>
+        
+    </section>
+
+ <!-- ***** Bis Hierhin  ***** -->
+
+    <!-- ***** Section-  das kleine Bild Begrüßung  ***** -->
+
+@*   
+    <section class="container aufheben" style="max-width:1620px;">
+        <div class="aufheben-innen">
+            <div class="aufheben-innen-1">
+                <div class="mt-3">
+                    <img class="" src="https://www.roomit-selfstorage.de/media/image/df/b3/e4/signet.png" alt="" width="240" height="100">
+                </div>
+
+            </div>
+            <div class="aufheben-innen-2">
+
+                <h2 class="mt-2 mb-2">Bei uns bist Du gut aufgehoben!</h2>
+
+                <div class="mt-5 aufheben-innen-2-a">
+                    <p>Wir sind Teil der Rhenus Logistics<br>Erfahrener Spezialist in Sachen Transport, Lagerung und Logistik seit 1912.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ***** Carusel-2 Main Banner Area End ***** -->
+    <div style="position:relative;">
+        <section class="services">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="owl-service-item owl-carousel">
+
+                            <div class="div1">
+                                <div class="down-content kreis-nr">1</div>
+                                <div>
+                                    <img src="assets/images/1.png" alt="">
+                                    <div class="down-content">
+                                        <p>Boxen Online bestellen - bequem von zuhause aus</p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="div1">
+                                <div class="down-content kreis-nr">2</div>
+                                <img src="assets/images/2.jpg" alt="">
+                                <div class="down-content">
+                                    <p>Die Boxen werden an deinen Wunschort geliefert</p>
+                                </div>
+                            </div>
+
+                            <div class="div1">
+                                <div class="down-content kreis-nr">3</div>
+                                <img src="assets/images/3.jpg" alt="">
+                                <div class="down-content">
+                                    <p>Wir holen die beladenen Boxen ab und lagern Sie für dich ein</p>
+                                </div>
+                            </div>
+
+                            <!-- <div class="item">
+                              <div class="icon">
+                                <img src="assets/images/service-icon-01.png" alt="">
+                              </div>
+                              <div class="down-content">
+                                <h4>Best Education</h4>
+                                <p>Suspendisse tempor mauris a sem elementum bibendum. Praesent facilisis massa non vestibulum.</p>
+                              </div>
+                            </div>
+
+                            <div class="item">
+                              <div class="icon">
+                                <img src="assets/images/service-icon-03.png" alt="">
+                              </div>
+                              <div class="down-content">
+                                <h4>Best Networking</h4>
+                                <p>Suspendisse tempor mauris a sem elementum bibendum. Praesent facilisis massa non vestibulum.</p>
+                              </div>
+                            </div> -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>*@
+
+    @*
+    <section class="apply-now" id="apply" style="max-width:1620px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-6" style="background-color:white;">
+                            <img src="~/assets/images/map.png" width="100%" />
+                        </div>
+                        <div class="col-lg-6 div-plz ps-5 ps-1">
+                            <div class="text-plz" style="color:#61b300;">
+                                <h2 class="mt-2 mb-2" style="font-weight: 800;">room it! Selfstorage in Deiner Nähe</h2>
+                                <form class="form-plz" asp-controller="Shop" asp-action="Produkte">
+                                    <div class="form-floating mb-3 col-auto form-plz-input">
+                                        <input type="text" name="zipcode" class="form-control zipcode-field" id="floatingInput" placeholder="Deine Postleitzahl" value="">
+                                        <label for="floatingInput">Deine Postleitzahl</label>
+                                    </div>
+                                    <div class="main-button-red" style="width:50%;">
+                                        <button type="submit" class="scroll-to-section btn btn-danger" style="width:80%;">Los</button>
+                                    </div>
+
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+               APPLY FOR BACHELOR DEGREE
+            <div class="row mt-4" style="padding:0;">
+                <div class="col-lg-6 align-self-center" style="background-color: whitesmoke;">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="item" style="padding-bottom:0px;">
+                                <div class="imgIcon">
+                                    <img src="~/assets/images/icons8-frage-stellen-94.png" style="width:16%;" />
+                                    <h2>Hast Du noch eine Frage?</h2>
+                                </div>
+
+                                <h1 style="color:#61b300;">0800 100 41 93</h1>
+                                <h2 class="mt-2">Mo. - Fr.: 09:00 - 17:00 Uhr</h2>
+                                <div class="mt-3" style="display:flex;gap:2%;">
+                                    <div class="main-button-red" style="color:#ff6000">
+                                        <div class="scroll-to-section"><a href="#contact">Rückruf vereinbaren</a></div>
+                                    </div>
+                                    <div class="main-button-red" style="color:#ff6000">
+                                        <div class="scroll-to-section"><a href="#contact">FAQs</a></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="item" style="padding-top:5px;padding-bottom:0px;">
+                                <div class="imgIcon">
+                                    <img src="~/assets/images/daume hoch_1_Tranz.png" style="width:16%;" />
+                                    <h2>DEINE VORTEILE</h2>
+                                </div>
+                                <ul class="ul-vorteile">
+                                    <li><span class="checkIcon ms-3">&#10003;</span>Bequem online bestellen und bezahlen</li>
+                                    <li><span class="checkIcon ms-3">&#10003;</span>Anlieferung und Abholung ab 0,00 €</li>
+                                    <li><span class="checkIcon ms-3">&#10003;</span>Sichere Lagerung</li>
+                                    <li><span class="checkIcon ms-3">&#10003;</span>Jederzeit kündbar</li>
+                                    <li><span class="checkIcon ms-3">&#10003;</span>Monatliche Abrechnung</li>
+                                    <li><span class="checkIcon ms-3">&#10003;</span>Einzelrücklieferung möglich</li>
+                                    <li><span class="checkIcon ms-3">&#10003;</span>Hotline und Beratung</li>
+                                </ul>
+                                <div class="main-button-red" style="color:#ff6000">
+                                    <div class="scroll-to-section"><a href="#contact">Alle Vorteile entdecken</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="accordions is-first-expanded">
+                        <article class="accordion">
+                            <div class="accordion-head">
+                                <span>Selfstorage - Lagerbox mieten, aber mobil!</span>
+                                <span class="icon">
+                                    <i class="icon fa fa-chevron-right"></i>
+                                </span>
+                            </div>
+                            <div class="accordion-body">
+                                <div class="content">
+                                    <p>
+                                        Bei room it! Selfstorage - Deiner mobilen Lagerbox funktioniert die Einlagerung Deiner Möbel, Saisonartikel und allem was Du sonst gern Auslagern möchtest, so schnell, einfach und bequem wie nie zuvor!
+                                        <a rel="nofollow" href="https://www.toocss.com/" target="_blank">Too CSS website</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="accordion">
+                            <div class="accordion-head">
+                                <span>Was unterscheidet uns von gewöhnlichen Selfstorage-Anbietern?</span>
+                                <span class="icon">
+                                    <i class="icon fa fa-chevron-right"></i>
+                                </span>
+                            </div>
+                            <div class="accordion-body">
+                                <div class="content">
+                                    <p>
+                                        Ein Transportfahrzeug mieten? Deine Gegenstände ins Fahrzeug einladen? Einen herkömmlichen Lagerplatz anmieten? <br><br>
+                                        Die Gegenstände vom Fahrzeug ins Lager hieven? Das Fahrzeug wieder zurück bringen? Mehrere Verträge mit unterschiedlichen Dienstleistern schließen?
+
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="accordion">
+                            <div class="accordion-head">
+                                <span>Das alles war gestern!!! - 1</span>
+                                <span class="icon">
+                                    <i class="icon fa fa-chevron-right"></i>
+                                </span>
+                            </div>
+                            <div class="accordion-body">
+                                <div class="content">
+                                    <p>
+                                        Mit room it! Selfstorage - Deiner mobilen Lagerbox schaffst Du Dir schnell, komfortabel und günstig, den Platz den Du brauchst! Es geht ganz einfach: Du bestellst online<br><br>
+                                        Deine Container-Boxen oder Karton-Boxen, room it! Selfstorage liefert sie Dir zu einem vereinbarten Termin an Deine Wunschadresse. Wenn die Boxen von Dir oder unseren starken <br><br>
+                                        Ladehelfern beladen wurden, nehmen wir die Boxen mit und lagern sie in eines unserer speziell ausgestatteten Sicherheits-Lägern in Deiner Nähe ein.
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="accordion last-accordion">
+                            <div class="accordion-head">
+                                <span>Das alles war gestern!!! - 2</span>
+                                <span class="icon">
+                                    <i class="icon fa fa-chevron-right"></i>
+                                </span>
+                            </div>
+                            <div class="accordion-body">
+                                <div class="content">
+                                    <p>
+                                        Über die room it! Selfstorage Website oder unsere App für iOS und Android kannst Du Deine Boxen ganz einfach bequem von zuhause aus verwalten. Du kannst zu jeder einzelnen Box Fotos hochladen oder Notizen hinterlegen<br><br>
+                                        so verlierst Du nie den Überblick! Du benötigst eine, mehrere oder alle deiner gemieteten Container-Boxen zurück? Kein problem - auch die Rücklieferung Deiner eingelagerten Möbel funktioniert genau so einfach und bequem, <br><br>
+                                        wie bei der Einlagerung! Einfach per App oder über www.roomit-selfstorage.de die eingelagerten Boxen auswählen und zurück an Deine Wunschadresse bestellen. Einfacher geht's nicht!
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="accordion last-accordion">
+                            <div class="accordion-head">
+                                <span>Das alles war gestern!!! - 3</span>
+                                <span class="icon">
+                                    <i class="icon fa fa-chevron-right"></i>
+                                </span>
+                            </div>
+                            <div class="accordion-body">
+                                <div class="content">
+                                    <p>
+                                        room it! Selfstorage - Deine mobile Lagerbox kannst Du in weiten Teilen Deutschlands nutzen, darunter München, Augsburg, Ingolstadt, Nürnberg, Hamburg, Frankfurt, Mainz, Offenbach, Köln, Düsseldorf, <br><br>
+                                        Leverkusen, Bonn, Oberhausen, Duisburg, Essen, Gelsenkirchen, Bochum und Dortmund. Regelmäßig erschließen wir weitere Gebiete, um unseren mobilen Selfstorage-Dienst schnellstmöglich flächendeckend anzubieten.
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                        <br />
+                        <div class="main-button-red" style="color:#ff6000">
+                            <div class="scroll-to-section"><a href="#contact">Jetzt bestellen</a></div>
+                        </div>
+                    </div>
+                </div>
+
+                @*About Edu Meeting HTML Template
+
+
+
+        </div>
+        </div>
+    </section>
+
+    *@
+
+    <!--#region Region courses-->
+
+    <!--#endregion-->
+@*
+    <section id="our-facts">
+        <div class="container">
+            <div class="row">
+                <!-- <div class="embed-responsive embed-responsive-1by1"> -->
+                <!--   <iframe class="embed-responsive-item" style="width:inherit;" height="450" src="https://www.youtube.com/embed/dbBvJ4-1a3s" allowfullscreen></iframe> -->
+                <!-- </div> -->
+
+                <video height="450" class="embed-responsive-item" style="width:inherit;" controls>
+                    <source src="/assets/images/roomit Video Abgeschnitten.mp4" type="video/mp4">
+                    <source src="movie.ogg" type="video/ogg">
+                    Your browser does not support the video tag.
+                </video>
+
+            </div>
+        </div>
+    </section>
+ *@
+
+ <!--#region Region Script-->
+    <!-- Scripts -->
+    <!-- Bootstrap core JavaScript -->
+@*   <script src="assets/js/isotope.min.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/lightbox.js"></script>
+    <script src="assets/js/tabs.js"></script>
+    <script src="assets/js/video.js"></script>
+    <script src="assets/js/slick-slider.js"></script>
+    <script src="assets/js/custom2.js"></script>*@
+   @*<script>
+        //according to loftblog tut
+        $('.nav li:first').addClass('active');
+
+        var showSection = function showSection(section, isAnimate) {
+            var
+                direction = section.replace(/#/, ''),
+                reqSection = $('.section').filter('[data-section="' + direction + '"]'),
+                reqSectionPos = reqSection.offset().top - 0;
+
+            if (isAnimate) {
+                $('body, html').animate({
+                    scrollTop: reqSectionPos
+                },
+                    800);
+            } else {
+                $('body, html').scrollTop(reqSectionPos);
+            }
+
+        };
+
+        var checkSection = function checkSection() {
+            $('.section').each(function () {
+                var $this = $(this),
+                    topEdge = $this.offset().top - 80,
+                    bottomEdge = topEdge + $this.height(),
+                    wScroll = $(window).scrollTop();
+                if (topEdge < wScroll && bottomEdge > wScroll) {
+                    var currentId = $this.data('section'),
+                        reqLink = $('a').filter('[href*=\\#' + currentId + ']');
+                    reqLink.closest('li').addClass('active').
+                        siblings().removeClass('active');
+                }
+            });
+        };
+
+        $('.main-menu, .responsive-menu, .scroll-to-section').on('click', 'a', function (e) {
+            e.preventDefault();
+            showSection($(this).attr('href'), true);
+        });
+
+        $(window).scroll(function () {
+            checkSection();
+        });
+    </script>
+ *@
+
+<!--#endregion-->
+
+

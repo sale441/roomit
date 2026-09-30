@@ -1,0 +1,344 @@
+﻿@using System.Globalization;
+@model Warenkorb
+@{
+    ViewData["Title"] = "ShoppingCart";
+    var Model1 = TempData["WarenkorbImSession"] as Warenkorb;
+}
+
+<!-- hier muss noch nach dem PLZ geteilt werden-->
+<style>
+    @@media (min-width: 1025px) {
+        .h-custom {
+            height: 100vh !important;
+        }
+    }
+
+    .registration .select-input.form-control[readonly]:not([disabled]) {
+        font-size: 1rem;
+        line-height: 2.15;
+        padding-left: .75em;
+        padding-right: .75em;
+    }
+
+    .card-registration .select-arrow {
+        top: 13px;
+    }
+
+    .bg-grey {
+        background-color: #eae8e8;
+    }
+
+    @@media (min-width: 992px) {
+        .card-registration-2 .bg-grey {
+            border-top-right-radius: 16px;
+            border-bottom-right-radius: 16px;
+        }
+    }
+
+    @@media (max-width: 991px) {
+        .card-registration-2 .bg-grey {
+            border-bottom-left-radius: 16px;
+            border-bottom-right-radius: 16px;
+        }
+    }
+
+    tbody, td, tfoot, th, thead, tr {
+        border-color: inherit;
+        border-style: solid;
+        border-width: 0;
+        border-bottom-width: 0px;
+        text-align: center;
+    }
+   p,h6{
+       text-align:center;
+   }
+</style>
+
+<section id="cart" class="h-100" style="min-height:1000px;height:auto;">
+    @if (Model.WarenkorbItemsListe.Count() > 0)
+    {
+        <div class="container py-5 h-100" style="max-width:1600px;">
+
+            <div class="pt-5">
+                <h6 class="mb-0 ueberschrift2" style="margin:0;text-align:start;margin-bottom: 20px;font-weight:normal;color:#FF6000;">
+                    <a href="@Url.Action("Shop", "Shop",new{zipcode = @Model.Postleitzahl})" style="color:#FF6000;text-decoration:none;">
+                        <!--<i class="fas fa-long-arrow-alt-left me-2"></i> --> zurück
+                </a>
+                </h6>
+            </div>
+
+            <p hidden class="zipcodeResult mb-0 mt-5">
+                <span>@Model.Postleitzahl</span>
+                <span>@Model.Stadtname</span>
+            </p>
+            <div style="text-align:center;position:relative;margin-bottom:80px;">
+                <h1 class="zipcodeResult-2 mb-0">
+                    Warenkorb      
+                </h1>
+                <div class="mb-0 mt-0 lineX text"></div>
+            </div>
+
+            <div class="row g-0 registration">
+
+                <div class="col-md-12 col-lg-9">
+            <!-- Hier unten Alte Table Code Design -->
+            @* <table class="table">
+                <thead>
+                <tr>
+                <th class="col-md-2 col-lg-2 col-xl-2"></th>
+                <th class="col-md-2 col-lg-2 col-xl-2">Bezeichnung</th>
+                <th class="col-md-2 col-lg-2 col-xl-2">Preis</th>
+                <th class="col-md-2 col-lg-2 col-xl-2">Anzahl</th>
+                <th class="col-md-2 col-lg-2 col-xl-2">Gesamt</th>
+                </tr>
+                </thead>
+                <tbody class="mt-5">
+                @foreach (var item in Model.WarenkorbItemsListe)
+                {
+                var id = @item.ProduktName + "_Cart";
+                <tr id='@id' class="korp">
+                <th class="col-md-2 col-lg-2 col-xl-2"><img src=@item.ProductImage class="img-fluid rounded-3" alt="@item.ProduktName"></th>
+
+                <td class="col-md-2 col-lg-2 col-xl-2"> <h6 class="text-black mb-0 name ueberschrift2">@item.ProduktName</h6></td>
+
+                <td class="col-md-2 col-lg-2 col-xl-2">
+                <h6>
+                <span>@item.UnitPrice</span>
+                <span>€</span>
+                </h6>
+                </td>
+                <td class="col-md-2 col-lg-2 col-xl-2 cont-add-prod" style="width:auto;">
+
+                <button class="_minus btn-roomit" onclick="korpIdit(this,'@item.ProduktName')" style="display:block;margin-inline:0;left:0;">  - </button>
+
+                <p class="product-counter" style="width: -moz-available;">0</p>
+                <!-- <input disabled min="0" name="quantity" value="@item.Quantity" type="text" class="quantity" style="text-align:center;color:#61b300;font-weight:500;" /> -->
+
+
+                <button class="plus plus2 btn-roomit" onclick="korpIdit(this,'@item.ProduktName')" style="margin-inline:0;right:0;"> + </button>
+
+                </td>
+                <td class="col-md-2 col-lg-2 col-xl-2">
+                <h6 class="mb-0 total icon-korp-Size price-value">
+                <span>@item.Total</span>
+                <span>€</span>
+                </h6>
+                </td>
+                </tr>
+                }
+
+
+                </tbody>
+             </table>
+                *@
+                    <!-- Div Code Design -->
+                    <div class="p-5">
+                        <div class="d-flex align-items-center gap-5 mb-5">
+                            <!--Produkt Image-->
+                            <div class="col-md-2"></div>
+                            <!--Produktname-->
+                            <div class="col-md-2"><p class="fw-bold mb-0 Fliestext fs-4">Bezeichnung</p> </div>
+                            <!--item.UnitPrice -->
+                            <div class="col-md-1"><p class="fw-bold mb-0 Fliestext fs-4">Preis</p></div>
+                            <!--minus quantity plus-->
+                            <div class="col-md-3"><p class="fw-bold mb-0 Fliestext fs-4">Anzahl</p></div>
+                            <!--item.Total-->
+                            <div class="col-md-2"> <p class="fw-bold mb-0 Fliestext fs-4">Gesamt</p></div>
+
+                        </div>
+
+                        <hr class="my-4" style="height:8px;color:lightgray;background-color: gray;">
+
+                        @foreach (var item in Model.WarenkorbItemsListe)
+                        {
+                            var id = @item.ProduktName + "_Cart";
+
+                            <div id='@id' class="d-flex align-items-center gap-5 korp mb-5">
+
+                                <!--Produkt Image-->
+                                @if (item.ProduktName == "Container-Box-Metall" || item.ProduktName == "Container-Box-Holz")
+                                {
+                                    <div class="col-md-2 col-lg-2 col-xl-2">
+                                        <img src=@item.ProductImage class="img-fluid rounded-3" alt="@item.ProduktName" style="width:80%;">
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="col-md-2 col-lg-2 col-xl-2">
+                                        <img src=@item.ProductImage class="img-fluid rounded-3" alt="@item.ProduktName" style="width:auto;">
+                                    </div>
+                                }
+                             
+                                <!--Produktname-->
+                                <div class="col-md-2 mb-0 Fliestext">
+                                    <p class="text-black mb-0 name ueberschrift2 fs-5">@item.ProduktName</p>
+                                </div>
+
+                                <!--minus quantity plus-->
+                                <!--item.UnitPrice -->
+                                <div class="col-md-1 fw-bold mb-0 Fliestext">
+                                    <h6 class="mb-0 unitPrice icon-korp-Size fs-3">
+                                        <span>@item.UnitPrice.ToString("C2",CultureInfo.CreateSpecificCulture("de-DE"))</span>
+                                    </h6>
+                                </div>
+
+                                <!--minus quantity plus-->
+                                <div class="col-md-3">
+                            
+                                    <div class="cont-add-prod btn-roomit-div mt-0">
+                                        <button class="_minus btn-roomit btn-center abs" style="margin-left:0!important;" onclick="korpIdit(this,'@item.ProduktName')"> - </button>
+                                        <p class="product-counter quantity" style="margin-top:8px;z-index:0;">@item.Quantity</p>
+                                        <!-- <input min="0" name="quantity" value="@item.Quantity" type="text" class="form-control form-control-sm icon-korp-Size quantity" style="text-align:center;color:#61b300;font-weight:500;" />-->
+                                        <button class="btn-roomit abs btn-center plus" onclick="korpIdit(this,'@item.ProduktName')"> + </button>
+                                    </div>
+
+                                     @*<div class="cont-add-prod btn-roomit-div mt-0">
+                                        <button class="_minus btn-roomit btn-center abs" onclick="korpIdit(this,'@item.ProduktName')"> - </button>
+                                        <p class="product-counter">@item.Quantity</p>
+                                        <!-- <input min="0" name="quantity" value="@item.Quantity" type="text" class="form-control form-control-sm icon-korp-Size quantity" style="text-align:center;color:#61b300;font-weight:500;" />-->
+                                        <button class="btn-roomit abs btn-center plus" onclick="korpIdit(this,'@item.ProduktName')"> + </button>
+                                    </div>*@
+
+                                </div>
+                               
+
+                                <!--item.Total-->
+                                <div class="col-md-2">
+                                    <p class="mb-0 total icon-korp-Size fw-bold mb-0 Fliestext fs-4">
+                                        <span>@item.Total.ToString("C2",CultureInfo.GetCultureInfo("de-DE"))</span>
+                                    </p>
+                                </div>
+                                <!--delete-->
+                                <!--     <button class="col-md-2 col-lg-2 col-xl-2 btn btn-link delete price-value" onclick="korpIdit(this,'@item.ProduktName')">
+                                <i class="fas fa-times icon-korp-Size"></i>
+                                </button>
+                                -->
+                                <hr style="height:4px;color:lightgray;background-color: gray;">
+                            </div>
+                            <!--<hr class="my-4">  -->
+                        }
+<!-- alte Buttons -->
+
+                        <!-- <div class="pt-5">
+                        <h6 class="mb-0">
+                        <a href="javascript:history.back()" class="text-body">
+                        <i class="fas fa-long-arrow-alt-left me-2"></i>zurück zur Bestellung
+                        </a>
+                        </h6>
+                        </div>-->
+
+
+                        <!-- <button type="button" class="btn btn-dark btn-block btn-lg" onclick="location.href='@Url.Action("Shop", "Shop",new{zipcode = Model.Postleitzahl})'" data-mdb-ripple-color="dark" style="display: block ruby;">
+                            <i class="fas fa-long-arrow-alt-left me-2"></i>zurück zur Anfrage
+                        </button>
+                        -->
+
+                    </div>
+
+                </div>
+                <!-- hier hier-->
+                <div class="col-md-12 col-lg-3 bg-grey">
+                    <div class="cart-right-div p-5">
+                        <h3 class="fw-bold mb-4 mt-2 pt-1">Summe</h3>
+
+                        <hr style="height: 13px;color: lightgray;background-color: gray;margin: 0;margin-bottom: 20px;">
+                        <!-- Klassen namen ( grayCartList, grayCartList-1, article-counter, grayCartList-2, prductname, totalAmount)  sind kein CSS Klassen sondern JS bzw. Jquery Klassen-->
+                        @foreach (var item in Model.WarenkorbItemsListe)
+                        {
+                            <div class="d-flex justify-content-between mb-4 Fliestext @item.ProduktName">
+                                <h5 class="grayCartList-1">
+                                    <span class="article-counter">@item.Quantity</span>
+                                    <span>x</span>
+                                    <span class="prductname">@item.ProduktName</span>
+                                </h5>
+                                <h5 class="totalAmount grayCartList-2">@item.Total.ToString("C2",CultureInfo.GetCultureInfo("de-DE"))</h5>
+                            </div>
+                            
+                        }
+
+                        <h5 class="mb-3 Fliestext"> Lieferkosten werden im Nachgang berechnet!</h5>
+
+                        @*
+                    <div class="mb-4 pb-2">
+                    <select class="select">
+                    <option value="1">Standard-Delivery- €5.00</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                    <option value="4">Four</option>
+                    </select>
+                    </div>
+
+                    <h5 class="text-uppercase mb-3">Give code</h5>
+
+                    <div class="mb-5">
+                    <div class="form-outline">
+                    <input type="text" id="form3Examplea2" class="form-control form-control-lg" />
+                    <label class="form-label" for="form3Examplea2">Enter your code</label>
+                    </div>
+                    </div>*@
+
+                        <hr style="height: 13px;color: lightgray;background-color: gray;">
+
+                        <div id="totalAmount-x" class="d-flex justify-content-between mb-5">
+                            <h5 class="text-uppercase">Gesamtpreis</h5>
+                            <h5 class="totalAmount-1">@Model.TotalAmount.ToString("C2",CultureInfo.GetCultureInfo("de-DE"))</h5>
+                        </div>
+
+                        <div class="cart-right-div-btn">
+                            <button type="button" class="btn btn-roomit" onclick="location.href='@Url.Action("Checkout", "Shop")'" data-mdb-ripple-color="dark" style="display: block ruby;float:inline-end;">
+                                <h4 style="padding:8px;">Weiter zur Anfrage</h4>
+                                <!-- <img src="/assets/images/Gif_Rights.gif">-->
+                            </button>
+                        </div>
+                       
+
+
+                        @*  <div class="row div-1">
+                    <a asp-action="shippingPayment" style="display:flex;justify-content:center;gap:20px;">
+                    <h4 style="margin-top:8px;">Weiter zur Kasse</h4>
+                    <img src="/assets/images/Gif_Rights.gif">
+                    </a>
+                    </div>
+                    *@
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    }
+    else
+    {
+        <div class="container pt-5 mt-5 border" style="max-width:1600px;height:600px;">
+            <div class="row" style="min-height:110px;">
+                <h6 class="mb-0 ueberschrift2" style="margin:0;text-align:start;margin-bottom: 20px;font-weight:normal;color:#FF6000;">
+                    <a href="@Url.Action("Shop", "Shop",new{zipcode = @Model.Postleitzahl})" style="color:#FF6000;;">
+                        <!--<i class="fas fa-long-arrow-alt-left me-2"></i> --> zurück
+                </a>
+                </h6>
+            </div>
+            <div class="row text-md-center align-items-center" style="min-height:250px;"><h1>Warenkorb ist Leer</h1></div>
+        </div>
+        
+    }
+
+</section>
+
+
+
+
+@*<div class="cont-add-prod">
+    @if (Model?.WarenkorbItemsListe.FirstOrDefault(x => x.ProduktName == "Container-Box")?.Quantity > 0)
+    {
+        <button class="minus minus2 btn-roomit" value="99">-</button>
+        <p class="product-counter">@Model?.WarenkorbItemsListe.FirstOrDefault(x => x.ProduktName == "Container-Box")?.Quantity</p>
+    }
+    else
+    {
+        <button class="minus minus2 btn-roomit" value="99">-</button>
+        <p class="product-counter">0</p>
+    }
+    <button class="plus plus2 btn-roomit" value="99">+</button>
+</div>*@ 

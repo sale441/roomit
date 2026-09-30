@@ -1,0 +1,671 @@
+﻿@{
+    ViewData["Title"] = "FAQ | room it!";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section metatags{
+    <title>FAQ | room it!</title>
+    <meta name="description" content="Für mehr Komfort: Antworten auf die häufig gestellten Fragen rund um die Einlagerung und unseren Qualitätsstandard » Jetzt mehr erfahren!">
+    <meta name="keywords" content="häufig gestellte Fragen, Fragen, Antworten, FAQ, Antworten auf Fragen">
+}
+
+
+<style>
+.accordionContainer{
+    min-height:700px;
+}
+
+.accordion-body {
+    min-height:100px;
+    height:auto;
+}
+
+.accordion-item-body{
+    font-size: 20px !important;
+    min-height: 200px;
+    height:auto;
+    padding: 20px;
+    unicode-bidi: isolate;     
+    /*background: linear-gradient(0deg, transparent 25px, #f5f4f0 25px);*/
+}
+
+.accordion-button::after {
+    flex-shrink: 0;
+    width: var(--bs-accordion-btn-icon-width);
+    height: 40px; /*var(--bs-accordion-btn-icon-width);*/
+    margin-left: auto;
+    content: "";
+    background-image: none;
+    background-repeat: no-repeat;
+    background-size: var(--bs-accordion-btn-icon-width);
+    transition: var(--bs-accordion-btn-icon-transition);
+}
+
+.accordion-item {
+    position: relative;
+    cursor: pointer;
+    min-height: 90px;
+    padding-left: 20px;
+    padding-right: 32px;
+    /*margin-bottom:8px;*/
+    /*display: -webkit-box;
+    /*display: -ms-flexbox;*/
+    /*display: flex;*/
+    align-items:center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    /*-ms-flex-direction: row;*/
+    flex-direction: row;
+    /*background: #cce0ee;*/
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    text-transform: uppercase;
+    line-height: 1.5rem;
+    overflow: hidden;
+      
+}
+
+.accordion-button{
+    background: linear-gradient(315deg, transparent 25px, #6E6E6E 25px); /* HIer ist die Hintergrundfarbe Unausgeklappt */
+    color: #FFFFFF;                                                    /* font-color im Balken selbst der Title */
+    font-size: 20px;                                                     /* font-size im Balken selbst der Title */
+
+}
+
+.accordion-button:not(.collapsed)::after {
+    background-image: none;
+    transform: none;
+}
+
+ .accordion-button:not(.collapsed) {
+  color: none!important;
+  background-color: none!important;
+  box-shadow: none!important;
+  background: linear-gradient(315deg, transparent 25px, #6E6E6E 25px); /* HIer ist die Hintergrundfarbe Ausgeklappt */
+  color: white; 
+}
+
+.accordion {
+    --bs-accordion-border-color: none;
+    --bs-accordion-active-bg: none;
+    border:0;
+    --bs-accordion-btn-focus-box-shadow: none;
+}
+
+.accordion-item:first-of-type .accordion-button {
+    border-top-left-radius: none;
+    border-top-right-radius: none;
+}
+
+.accordion-button:focus {
+  z-index: 3;
+  border-color: none;
+  outline: 0;
+  box-shadow: var(--bs-accordion-btn-focus-box-shadow);
+}
+
+.accordionContainer .plus {
+    background: linear-gradient(315deg, transparent 25px, #8AA8CA63 25px);
+    color: #4d4d4d;
+}
+   
+
+.accordionContainer .minus {
+    background: linear-gradient(315deg, transparent 25px, #00469B 25px);
+    color: white;       
+}
+
+.noCollapse{
+    display:block;
+}
+
+.okCollapse {
+    display: none;
+}
+
+.accordion-item {
+  cursor: pointer;
+  text-transform: none;
+  text-transform: none;
+  line-height: 1.5rem;
+  text-align: justify;
+}
+
+.title-size{
+        font-size: 16px!important;
+}
+
+  
+</style>
+
+<div>
+
+    <div class="container" style="max-width: 1600px;">
+        <!-- ***** Section-2  Video ***** -->
+        <div class="row">
+
+            <div class="teil2 mt-5">
+
+                @*<div class="aufheben-innen-1 mb-4">
+                <div class="mt-3">
+                <img class="" src="/assets/images/roomit_signet.png" alt="" width="240" height="100">
+                </div>
+                </div>*@
+
+                <div class="pt-5">
+                    <h6 class="mb-0 ueberschrift2" style="margin:0;text-align:start;margin-bottom: 20px;font-weight:normal;color:#FF6000;">
+                        <a href="javascript:history.back()" style="color:#FF6000;text-decoration:none;">
+                            zurück
+                        </a>
+                    </h6>
+                </div>
+
+                <div class="aufheben-innen-2 Fliestext">
+                    <h1 class="mt-2 mb-2 ueberschrift">Häufig gestellte Fragen</h1>
+
+                    <div class="mt-2 lineX" style="margin-bottom:80px;width:35%;"></div>
+
+                    <!-- Region My Accordion, Es funktioniert es soll nur in der Style die klasse .accordion-item  die Display: flex wieder aktiviert werden und der Jquery Funktion in JS wieder aktiviert werden, NUR hier werden die Accordion geöffnet bleiben, wenn andere raster geöffnet wurde   -->
+                    @*
+                    <div class="accordionContainer mt-5">
+                    <div>
+                    <div class="accordion-item plus">
+                    <h2 class="accordion-header">
+                    <i class="fas fa-plus float-right"></i>
+                    &emsp;
+                    C++
+                    </h2>
+
+                    </div>
+                    <p class="accordion-item-body okCollapse">
+
+                    C++ is a high level programming
+                    language used for developing
+                    applications, games, etc.
+
+                    </p>
+                    </div>
+                    <div>
+                    <div class="accordion-item plus">
+                    <h2 class="accordion-header">
+                    <i class="fas fa-plus float-right"></i>
+                    &emsp;
+                    C++
+                    </h2>
+
+                    </div>
+                    <p class="accordion-item-body okCollapse">
+
+                    C++ is a high level programming
+                    language used for developing
+                    applications, games, etc.
+
+                    </p>
+                    </div>
+                    <div>
+                    <div class="accordion-item plus">
+                    <h2 class="accordion-header">
+                    <i class="fas fa-plus float-right"></i>
+                    &emsp;
+                    C++
+                    </h2>
+
+                    </div>
+                    <p class="accordion-item-body okCollapse">
+
+                    C++ is a high level programming
+                    language used for developing
+                    applications, games, etc.
+
+                    </p>
+                    </div>
+                    <div>
+                    <div class="accordion-item plus">
+                    <h2 class="accordion-header">
+                    <i class="fas fa-plus float-right"></i>
+                    &emsp;
+                    C++
+                    </h2>
+
+                    </div>
+                    <p class="accordion-item-body okCollapse">
+
+                    C++ is a high level programming
+                    language used for developing
+                    applications, games, etc.
+
+                    </p>
+                    </div>
+                    <div>
+                    <div class="accordion-item plus">
+                    <h2 class="accordion-header">
+                    <i class="fas fa-plus float-right"></i>
+                    &emsp;
+                    C++
+                    </h2>
+
+                    </div>
+                    <p class="accordion-item-body okCollapse">
+
+                    C++ is a high level programming
+                    language used for developing
+                    applications, games, etc.
+
+                    </p>
+                    </div>
+                    <div>
+                    <div class="accordion-item plus">
+                    <h2 class="accordion-header">
+                    <i class="fas fa-plus float-right"></i>
+                    &emsp;
+                    C++
+                    </h2>
+
+                    </div>
+                    <p class="accordion-item-body okCollapse">
+
+                    C++ is a high level programming
+                    language used for developing
+                    applications, games, etc.
+
+                    </p>
+                    </div>
+                    </div>
+                    *@
+
+
+                    <!-- Region Bootsrab Accordion, Es wurde per CSS un JS editiert werden und nach der Wünsche der Kunde angepasst werden -->
+                    <div class="accordion Fliestext" id="accordionExample" style="list-style:decimal;font-weight:bold;line-height:30px;text-align:justify;">
+
+                        <div class="accordion-item Fliestext">
+                            <h2 class="accordion-header" id="heading1">
+                                <button class="accordion-button collapsed title-size" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
+                                    <i class="fas fa-plus float-right fa-sm me-3 opacity-70 fs-4"></i>
+                                    Wann bekomme ich meine Boxen/Kartons geliefert?
+                                </button>
+                            </h2>
+                            <div id="collapse1" class="accordion-collapse collapse" aria-labelledby="heading1" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p>Nach Eingang deiner Bestellung bekommst du eine E-Mail oder einen Anruf von unserem Team, um einen Termin für die Lieferung zu vereinbaren.</p>
+                                </div>
+                            </div>
+                        </div>                     
+                        <div class="accordion-item Fliestext">
+                            <h2 class="accordion-header" id="heading3">
+                                <button class="accordion-button collapsed title-size" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                    <i class="fas fa-plus float-right fa-sm me-3 opacity-70 fs-4"></i>
+                                    Muss ich bei der Anlieferung anwesend sein?
+                                </button>
+                            </h2>
+                            <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p>Ja, für einen reibungslosen Ablauf musst du bei der Lieferung vor Ort sein. Solltest du es trotzdem nicht schaffen vor Ort zu sein, kannst du eine dritte Person bevollmächtigen.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item Fliestext">
+                            <h2 class="accordion-header" id="heading4">
+                                <button class="accordion-button collapsed title-size" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                                    <i class="fas fa-plus float-right fa-sm me-3 opacity-70 fs-4"></i>
+                                    Wie viel Zeit habe ich, bis die bepackten Boxen wieder abgeholt werden?
+                                </button>
+                            </h2>
+                            <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p>Für die Beladung der Lager-Box hast du ein Zeitfenster von 30 Minuten. Pro weitere 15 Minuten Standzeit fällt eine zusätzliche Gebühr i. H. v. 15,00 € an.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item Fliestext">
+                            <h2 class="accordion-header" id="heading5">
+                                <button class="accordion-button collapsed title-size" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                                    <i class="fas fa-plus float-right fa-sm me-3 opacity-70 fs-4"></i>
+                                    Kann ich meine room it! Boxen nach dem Bepacken abschließen oder versiegeln?
+                                </button>
+                            </h2>
+                            <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="heading5" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p>Ja, für die Lager-Box kannst du dein persönliches Vorhängeschloss benutzen oder ein Schloss von uns erwerben. Die Karton-Boxen kannst du mit unseren Plomben versiegeln.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item Fliestext">
+                            <h2 class="accordion-header" id="heading6">
+                                <button class="accordion-button collapsed title-size" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                                    <i class="fas fa-plus float-right fa-sm me-3 opacity-70 fs-4"></i>
+                                    Was darf alles in die Boxen?
+                                </button>
+                            </h2>
+                            <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="heading6" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p>
+                                        Mit den Boxen kannst du beispielsweise folgende Dinge einlagern:
+                                        Kleidung, Möbel, Akten, Fernseher, Computer, Möbel, Haushaltsgeräte, Gartenmöbel, Sportgeräte, Fahrräder ohne Akku, Sportgeräte u. v. m..
+                                        Bitte beachte, dass die einzulagernden Gegenstände von dem Typ der Box abhängt.
+                                    </p>
+                                 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item Fliestext">
+                            <h2 class="accordion-header" id="heading7">
+                                <button class="accordion-button collapsed title-size" type="button" data-bs-toggle="collapse" data-bs-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
+                                    <i class="fas fa-plus float-right fa-sm me-3 opacity-70 fs-4"></i>
+                                    Gibt es Ausnahmen bei Dingen, die ich nicht einlagern bzw. in die Boxen packen darf?
+                                </button>
+                            </h2>
+                            <div id="collapse7" class="accordion-collapse collapse" aria-labelledby="heading7" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <h4>Folgendes sollst Du bitte auf keinen Fall einlagern:</h4>
+                                    <ul style="list-style:decimal;line-height:30px;text-align:justify;">
+
+                                        <li>Gegenstände, die dem Verderb oder Fäulnis ausgesetzt sind und/oder geeignet sind, Ungeziefer anzulocken, insbesondere Lebensmittel, ungeachtet ihrer Verpackung</li>
+                                        <li>
+                                            Solche Güter, von denen Gefahren für die vom Kunden gemietete Box oder den Lagerraum ausgehen, insbesondere leicht entflammbare, zu erhöhtem Brandrisiko neigende, 
+                                            explosive, zur Selbstzündung neigende Stoffe wie z. B. Feuerwerkskörper, Munition, Waffen, Sprengstoffe, Chemikalien, toxische Stoffe oder radioaktive Materialien.
+                                        </li>
+                                        <li>Lebende Tiere und Pflanzen</li>
+                                        <li>Abfälle jeglicher Art</li>
+                                        <li>Bargeld, Edelmetalle, Edelsteine, Schmuck oder Wertpapiere</li>
+                                        <li>Flüssigkeiten</li>
+                                        <li>Lithium-Ionen-Batterien / Akkus wie z. B. von Fahrrädern, Elektrogeräten</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item Fliestext">
+                            <h2 class="accordion-header" id="heading8">
+                                <button class="accordion-button collapsed title-size" type="button" data-bs-toggle="collapse" data-bs-target="#collapse8" aria-expanded="false" aria-controls="collapse8">
+                                    <i class="fas fa-plus float-right fa-sm me-3 opacity-70 fs-4"></i>
+                                    Gibt es bei der Container-Box etwas Bestimmtes zu beachten?
+                                </button>
+                            </h2>
+                            <div id="collapse8" class="accordion-collapse collapse" aria-labelledby="heading8" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p>
+                                        Bitte sorge am Abholtag für eine ausreichend große Stellfläche, an der das Abholfahrzeug parken kann (ca. 15 Meter Länge). 
+                                        Die Box wird dir im Anhänger zur Verfügung gestellt und du kannst diese bequem innerhalb von 30 Minuten vor Ort beladen.
+                                        Solltest du eine Halteverbotsgenehmigung -und Schilder benötigen, kannst du diese bequem online beantragen.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item Fliestext">
+                            <h2 class="accordion-header" id="heading9">
+                                <button class="accordion-button collapsed title-size" type="button" data-bs-toggle="collapse" data-bs-target="#collapse9" aria-expanded="false" aria-controls="collapse9">
+                                    <i class="fas fa-plus float-right fa-sm me-3 opacity-70 fs-4"></i>
+                                    Wo werden meine Boxen eingelagert?
+                                </button>
+                            </h2>
+                            <div id="collapse9" class="accordion-collapse collapse" aria-labelledby="heading9" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p>
+                                        Deine Boxen werden an unseren Standorten in Köln und München eingelagert. Room it! ist eine Marke der Rhenus Data Office GmbH und kann dadurch auf eine über 100-jährige Erfahrung in Sachen Logistik bauen. 
+                                        Deine Sachen bleiben sicher, sauber und verschlossen in unserem Lager. Unsere Lager werden nur von unserem geschulten Personal betreten.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item Fliestext">
+                            <h2 class="accordion-header" id="heading10">
+                                <button class="accordion-button collapsed title-size" type="button" data-bs-toggle="collapse" data-bs-target="#collapse10" aria-expanded="false" aria-controls="collapse10">
+                                    <i class="fas fa-plus float-right fa-sm me-3 opacity-70 fs-4"></i>
+                                    Sind die Inhalte meiner Boxen versichert?
+                                </button>
+                            </h2>
+                            <div id="collapse10" class="accordion-collapse collapse" aria-labelledby="heading10" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p>
+                                        Ja, in der Regel deckt deine Hausratsversicherung die ersten drei Monate komplett ab. Solltest du keine Versicherung besitzen, bist du trotzdem rundum abgesichert. Der Inhalt jeder Karton-Box ist mit der maximalen Deckungssumme in Höhe von 100,00 € und jede Container-Box in Höhe von 3.000,00 € versichert.
+                                        Ausgenommen sind natürlich die Schäden, die durch verbotene Gegenstände (siehe <span><a href="/AGB">AGB</a></span> ) verursacht wurden.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item Fliestext">
+                            <h2 class="accordion-header" id="heading11">
+                                <button class="accordion-button collapsed title-size" type="button" data-bs-toggle="collapse" data-bs-target="#collapse11" aria-expanded="false" aria-controls="collapse11">
+                                    <i class="fas fa-plus float-right fa-sm me-3 opacity-70 fs-4"></i>
+                                    Welche Bezahlmöglichkeiten habe ich bei room-it!?
+                                </button>
+                            </h2>
+                            <div id="collapse11" class="accordion-collapse collapse" aria-labelledby="heading11" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p>Bei uns kannst du einfach und sicher per Rechnung oder bequem via Lastschrifteinzug bezahlen.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item Fliestext">
+                            <h2 class="accordion-header" id="heading12">
+                                <button class="accordion-button collapsed title-size" type="button" data-bs-toggle="collapse" data-bs-target="#collapse12" aria-expanded="false" aria-controls="collapse12">
+                                    <i class="fas fa-plus float-right fa-sm me-3 opacity-70 fs-4"></i>
+                                    Wie funktioniert die Abrechnung?
+                                </button>
+                            </h2>
+                            <div id="collapse12" class="accordion-collapse collapse" aria-labelledby="heading12" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p>Sämtliche Mietabrechnungen und Dienstleistungen werden zum Ende des Leistungsmonats berechnet. </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item Fliestext">
+                            <h2 class="accordion-header" id="heading13">
+                                <button class="accordion-button collapsed title-size" type="button" data-bs-toggle="collapse" data-bs-target="#collapse13" aria-expanded="false" aria-controls="collapse13">
+                                    <i class="fas fa-plus float-right fa-sm me-3 opacity-70 fs-4"></i>
+                                    Muss ich bei der Lagerboxanmietung eine Kaution hinterlegen?
+                                </button>
+                            </h2>
+                            <div id="collapse13" class="accordion-collapse collapse" aria-labelledby="heading13" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p>Ja, die Kaution beträgt 300,00 €.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item Fliestext">
+                            <h2 class="accordion-header" id="heading14">
+                                <button class="accordion-button collapsed title-size" type="button" data-bs-toggle="collapse" data-bs-target="#collapse14" aria-expanded="false" aria-controls="collapse14">
+                                    <i class="fas fa-plus float-right fa-sm me-3 opacity-70 fs-4"></i>
+                                    Gibt es eine Mindestmietdauer für die room-it! Boxen?
+                                </button>
+                            </h2>
+                            <div id="collapse14" class="accordion-collapse collapse" aria-labelledby="heading14" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p>Ja, die Mindestmietdauer beträgt zwei Monate. Du bekommst deine Boxen natürlich jederzeit zurück, jedoch werden mindestens 2 Monate berechnet. </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item Fliestext">
+                            <h2 class="accordion-header" id="heading15">
+                                <button class="accordion-button collapsed title-size" type="button" data-bs-toggle="collapse" data-bs-target="#collapse15" aria-expanded="false" aria-controls="collapse15">
+                                    <i class="fas fa-plus float-right fa-sm me-3 opacity-70 fs-4"></i>
+                                    Wie bekomme ich meine eingelagerten Boxen wieder zurück?
+                                </button>
+                            </h2>
+                            <div id="collapse15" class="accordion-collapse collapse" aria-labelledby="heading15" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p>Nichts leichter als das. Kontaktiere uns hierzu einfach telefonisch oder per E-Mail und wir vereinbaren einen Abholtermin. </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item Fliestext">
+                            <h2 class="accordion-header" id="heading16">
+                                <button class="accordion-button collapsed title-size" type="button" data-bs-toggle="collapse" data-bs-target="#collapse16" aria-expanded="false" aria-controls="collapse16">
+                                    <i class="fas fa-plus float-right fa-sm me-3 opacity-70 fs-4"></i>
+                                    Ist die Rücklieferung meiner Einlagerung aus dem room-it! Lager kostenlos?
+                                </button>
+                            </h2>
+                            <div id="collapse16" class="accordion-collapse collapse" aria-labelledby="heading16" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p>Für die Rücklieferung/Bereitstellung der Containerboxen berechnen wir dir einen Pauschalbetrag für den Transport, der von deiner Postleitzahl abhängt. Du kannst die Kosten gerne bei uns unverbindlich anfragen.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item Fliestext">
+                            <h2 class="accordion-header" id="heading17">
+                                <button class="accordion-button collapsed title-size" type="button" data-bs-toggle="collapse" data-bs-target="#collapse17" aria-expanded="false" aria-controls="collapse17">
+                                    <i class="fas fa-plus float-right fa-sm me-3 opacity-70 fs-4"></i>
+                                    Wann und wie kündige ich das Mietverhältnis meiner room-it! Boxen?
+                                </button>
+                            </h2>
+                            <div id="collapse17" class="accordion-collapse collapse" aria-labelledby="heading17" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p>Der Vertrag ist binnen einer Frist von sieben Tagen zum Monatsende schriftlich zu kündigen. (s. <a href="/AGB">AGB</a> ).</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item Fliestext">
+                            <h2 class="accordion-header" id="heading18">
+                                <button class="accordion-button collapsed title-size" type="button" data-bs-toggle="collapse" data-bs-target="#collapse18" aria-expanded="false" aria-controls="collapse18">
+                                    <i class="fas fa-plus float-right fa-sm me-3 opacity-70 fs-4"></i>
+                                    Kann ich auch als Geschäftskunde Boxen der room it! beanspruchen?
+                                </button>
+                            </h2>
+                            <div id="collapse18" class="accordion-collapse collapse" aria-labelledby="heading18" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p>Ja selbstverständlich. Trage dafür im Laufe der Bestellung einfach Deine Unternehmensdaten ein.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item Fliestext">
+                            <h2 class="accordion-header" id="heading19">
+                                <button class="accordion-button collapsed title-size" type="button" data-bs-toggle="collapse" data-bs-target="#collapse19" aria-expanded="false" aria-controls="collapse19">
+                                    <i class="fas fa-plus float-right fa-sm me-3 opacity-70 fs-4"></i>
+                                    Kann ich meine zu lagernden Sachen auch direkt bei room it! befüllen?
+                                </button>
+                            </h2>
+                            <div id="collapse19" class="accordion-collapse collapse" aria-labelledby="heading19" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p>Ja, das ist selbstverständlich möglich. Vereinbare hierzu einfach einen Termin mit dem room it!-Team vor Ort, bei dem dir die gewünschten Boxen zur Verfügung gestellt werden.  </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item Fliestext">
+                            <h2 class="accordion-header" id="heading20">
+                                <button class="accordion-button collapsed title-size" type="button" data-bs-toggle="collapse" data-bs-target="#collapse20" aria-expanded="false" aria-controls="collapse20">
+                                    <i class="fas fa-plus float-right fa-sm me-3 opacity-70 fs-4"></i>
+                                    Was ist ein Einzelstück?
+                                </button>
+                            </h2>
+                            <div id="collapse20" class="accordion-collapse collapse" aria-labelledby="heading20" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p>Einzelstücke sind Gegenstände, die nicht in eine Lager-Box passen oder zu schwer sind. Beispielsweise Motorräder, Surfbretter, große Sportgeräte, Maschinen etc.  </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item Fliestext">
+                            <h2 class="accordion-header" id="heading2">
+                                <button class="accordion-button collapsed title-size" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                    <i class="fas fa-plus float-right fa-sm me-3 opacity-70 fs-4"></i>
+                                    Kann ich meine Boxen auch am Samstag angeliefert bekommen?
+                                </button>
+                            </h2>
+                            <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p>Ja, das ist nach Absprache möglich. Für Samstagslieferungen wird ein Zuschlag erhoben. Dieser richtet sich nach der Entfernung zur Postleitzahl.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Noch weitere 2 accordion-item -->
+                        <!--
+                           <div class="accordion-item Fliestext">
+                              <h2 class="accordion-header" id="heading21">
+                                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse21" aria-expanded="false" aria-controls="collapse21">
+                                      <i class="fas fa-plus float-right fa-sm me-3 opacity-70 fs-2"></i>
+                                      Accordion Item #2
+                                  </button>
+                              </h2>
+                              <div id="collapse21" class="accordion-collapse collapse" aria-labelledby="heading21" data-bs-parent="#accordionExample">
+                                  <div class="accordion-body">
+                                      <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="accordion-item Fliestext">
+                              <h2 class="accordion-header" id="heading22">
+                                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse22" aria-expanded="false" aria-controls="collapse22">
+                                      <i class="fas fa-plus float-right fa-sm me-3 opacity-70 fs-2"></i>
+                                      Accordion Item #3
+                                  </button>
+                              </h2>
+                              <div id="collapse22" class="accordion-collapse collapse" aria-labelledby="heading22" data-bs-parent="#accordionExample">
+                                  <div class="accordion-body">
+                                      <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                  </div>
+                              </div>
+                          </div>
+                          -->
+
+                    </div>
+                </div>
+
+               
+            </div>
+        </div>
+    </div>
+
+    <div class="container rasterfooter-0 mt-4 mb-5 Fliestext">
+        <div class="rasterfooter Fliestext" style="max-width:1260px;">
+            <div class="col-7">
+                <p style="font-size:30px!important;color:white;font-weight:bold;">
+                    <span>Hast du noch eine Frage?</span><br /><br />
+                    <span class="fw-bolder" style="font-size:larger;">08131 2792920</span><br />
+                    <span style="font-size:large;">Mo.- Fr.: 09:00 - 17:00 Uhr</span><br />
+                </p>
+            </div>
+
+            <div class="col-5 sos-2">
+                <button onclick="location.href='/Kontakt'" class="btn btn-roomit"><p style="margin-bottom:0;margin-top:0;">Kontaktformular</p></button>
+                <button onclick="location.href='/FAQ'" class="btn btn-roomit"><p style="margin-bottom:0;margin-top:0;">FAQ</p></button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+@*
+<style>
+    .div {
+        border: solid 1px;
+        /*height:250px;*/
+        text-align: center;
+        padding: 200px;
+        background-color:antiquewhite;
+    }
+
+    .div2 {
+        border: solid 1px;
+        height: 200px;
+    }
+</style>
+
+<div class="container" style="max-width: 1600px;">
+    <div class="row div">
+        @*<div class="col-md-8 div h-auto">
+        <div class="d-flex flex-row justify-content-center mt-3">
+        <div class="col-md-4 div2 h-auto">
+        <div class="d-flex flex-row justify-content-center mt-5">
+        <div class="col-md-4 div2"></div>
+        <div class="col-md-4 div2"></div>
+        </div>
+        </div>
+        <div class="col-md-4 div2"></div>
+        </div>
+        </div>
+        <div class="col-md-4 div">x</div>
+
+       
+        <h1 id="announcement" class=".div">FAQ</h1>
+    </div>
+
+</div>
+<script>
+    (function blinktext() {
+        var f = document.getElementById('announcement');
+        setInterval(function () {
+            f.style.visibility = (f.style.visibility == 'hidden' ? '' : 'hidden');
+        }, 100);
+    })();
+</script>
+*@

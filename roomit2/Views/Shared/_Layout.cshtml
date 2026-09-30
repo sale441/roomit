@@ -1,0 +1,420 @@
+﻿@using System.Globalization;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   @* <meta name="viewport" width=device-width, initial-scale=1.0 />*@
+
+    @RenderSection("metatags", required: false)
+
+@*  <title>Dein Partner für Lagerboxen | room it!</title>
+    <meta name="description" content="Wir lagern deine Gegenstände einfach und unkompliziert für dich ein ✓ Erfahre mehr über unseren Service!">
+    <meta name="keywords" content="Lagerbox, Einlagerung, externes Lager, Service, Container-Box, Karton-Box, Einzelstücke, Auslagerung">*@
+
+    <meta name="robots" content="index,follow">
+    <meta name="revisit-after" content="15 days">
+    <meta http-equiv="content-language" content="de">
+    <meta name="DC.Language" content="de">
+    <meta name="publisher" content="Rhenus Data Office">
+    <meta name="copyright" content="©2024-Rhenus Data Office">
+    <meta name="DC.Rights" content="©2024 - Rhenus Data Office">
+    <meta name="page-topic" content="Dienstleistung">
+    <meta name="page-type" content="Produktinfo">
+    <meta name="author" content="Saleh Khalil">
+    <meta name="DC.Creator" content="Saleh Khalil">
+     
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="3600" />
+    <meta http-equiv="refresh" content="3600; " />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#cedddd">
+    <meta name="theme-color" content="#ffffff">
+
+
+    <meta property="og:image" content="https://onedrive.live.com/embed?resid=5C7DBA71D835A974%21341&authkey=%21AGj-Yx8Y9uHXwgE&width=153&height=76">
+    <meta property="og:image:url" content="https://onedrive.live.com/embed?resid=5C7DBA71D835A974%21341&authkey=%21AGj-Yx8Y9uHXwgE&width=153&height=76">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+  
+
+    <link rel="shortcut icon" sizes="100x100" type="image/x-icon" href="/assets/images/room-it-logo.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/room-it-logo.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/room-it-logo.png">
+    <link rel="manifest" href="/Pictures/manifest.json">
+
+    <link rel="stylesheet" href="/assets/css/fontawesome.css">
+    @*<link rel="stylesheet" href="/css/templatemo-edu-meeting1.css" asp-append-version="true">*@
+    @*<link rel="stylesheet" href="/assets/css/templatemo-edu-meeting1.css">*@
+    <link rel="stylesheet" href="/assets/css/owl.css">
+    <link rel="stylesheet" href="/assets/css/lightbox.css">
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/roomit2.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/myStylesheet.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+    <meta name="google-site-verification" content="_wxd-5dfSaXyxcejnLi6n8diYdQ_a2Yi2kGP2yFSI3U" />
+
+        <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-WK3MB3XV');
+    </script>
+    <!-- End Google Tag Manager -->
+
+
+@*     <link rel="stylesheet" href="/jquery-ui-1.13.3.custom/jquery-ui-1.13.3.custom/jquery-ui.css">
+    <link rel="stylesheet" href="/jquery-ui-1.13.3.custom/jquery-ui-1.13.3.custom/jquery-ui.structure.css">
+    <link rel="stylesheet" href="/jquery-ui-1.13.3.custom/jquery-ui-1.13.3.custom/jquery-ui.theme.css">
+    <link rel="stylesheet" href="/jquery-ui-1.13.3.custom/jquery-ui-1.13.3.custom/08_jQueryUiCss-style-tinyslidercss.css">*@
+</head>
+<body>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src='https://www.googletagmanager.com/ns.html?id=GTM-WK3MB3XV' height="0" width="0" style="display:none;visibility:hidden">
+        </iframe>
+    </noscript>
+
+    <!-- End Google Tag Manager (noscript) -->
+
+
+    <!-- #region ***** Header Orginal vom .Net ***** -->
+    <header>
+        @*<div class="kontakt">
+            <div class ="kontakt-1">
+                    <span>Tel: 0800 100 41 93</span>
+                    <span>E-Mail: info@roomit-selfstorage.de</span>
+                </div>
+            <div class="kontakt-facInst">
+                    <span class="facebook"><img src="/assets/images/icons8-facebook-64.png" width="50" height="50" /></span>
+                    <span class="Instagram"><img src="/assets/images/icons8-instagram-64.png" width="50" height="50" /></span>
+                </div>
+        </div>*@
+        <!-- die Grüne Lange Bereich-->
+        <div class="container kontakt Fliestext" style="max-width:inherit;color:white!important;">
+            <div class="kontakt-1">
+                <span>Tel: 08131 2792920</span>
+                <span>E-Mail: info@roomit-selfstorage.de</span>
+                <span><a class="a-kontakt Fliestext" href="/Kontakt" style="color:white!important;text-decoration:none;font-weight:bold!important;">Kontakt</a></span>
+            </div>
+            
+        </div>
+
+        <!-- die Grüne Lange Bereich -->
+        <div class="container" style="max-width: inherit;justify-content: center;display: flex;padding-left:0;padding-right:0;">
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white navUls1">
+                <div class="navbar-1">
+                    <div style="margin-left:20px;margin-bottom:20px;">
+                        <a class="navbar-brand" style="margin:0;padding:0;" asp-area="" asp-controller="Shop" asp-action="Index"><img src="/assets/images/room-it-logo.png" width="180" height="100" /></a>
+                    </div>
+                    <!-- # Button -->
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="navbar-collapse collapse d-sm-inline align-self-lg-end justify-content-between div-ul Fliestext">
+                        <ul class="align-self-lg-end navUls2">
+                            <li style="margin-left:1%;">
+                                <a class="nav-link hover-x" asp-controller="Shop" asp-action="Ablauf">So einfach geht's</a>
+                            </li>
+
+                            <li>
+                                <a class="nav-link hover-x" asp-controller="Shop" asp-action="vorteile">Vorteile</a>
+                            </li>
+                            <li>
+                                <a class="nav-link hover-x" asp-controller="Shop" asp-action="faq">FAQ</a>
+                            </li>
+
+                            <li class="nav-li li-last">
+                                <a class="nav-a nav-link shop-link fw-bold" style="color:#61B300;" asp-controller="Shop" asp-action="Postleitzahl">Shop</a>
+                            </li>
+                            <li class="nav-li mein-konto li-last">
+                                <a class="nav-link korb-link" asp-controller="Shop" asp-action="warenkorb" style="color:dimgray;">
+
+                                    <img src="/assets/images/warenkorb.png" alt="warenkorb" width="35" height="35" style="opacity: 0.6;" />
+                                    <span class="" style="font-size:22px;font-weight:bold;/*padding-left: 5px;*/"></span>
+                                    <span>
+                                        @if (TempData["Quantity"] != null && TempData["TotalAmount"] != null)
+                                        {
+                                            double? value = @TempData["TotalAmount"] as double?;
+
+                                            <span><h4 id="warenkorbCountity">@TempData["Quantity"]</h4></span>
+                                            <span id="warenkorbAmount" style="padding-left:40px;font-weight:bold;font-size: 25px;color:#6E6E6E;min-width:30px;width:auto;">@value!.Value.ToString("C2",CultureInfo.CreateSpecificCulture("de-DE"))</span>
+
+                                        }
+                                        else
+                                        {
+                                            <span><h4 id="warenkorbCountity"></h4></span>
+                                            <span id="warenkorbAmount" style="padding-left:40px;font-weight:bold;font-size: 25px;color:#6E6E6E;min-width:30px;width:auto;">0.00 €</span>
+
+                                        }
+                                    </span>
+
+
+                                </a>
+                            </li>
+                            @*<partial name="_LoginPartial" />*@
+                        </ul>
+                    </div>
+                </div>
+               
+            </nav>
+        </div>
+
+    </header>
+
+
+  
+    <main role="main" style="width:inherit;min-height:730px;height: auto;">
+        @RenderBody()
+    </main>
+ 
+
+
+    <!-- Hier soll besser mit row und col-md- Containers vom Bootsrabs gearbeitet werden oder einen Footer vom Bootsrap rünterladen -->  
+    <footer class="border-top text-muted">
+
+        <div class="xx Fliestext">
+
+            <div class="footer-social" style="width:100%;width: 94.87%;margin-left: 2%;">
+                <a class="" asp-area="" asp-controller="Shop" asp-action="Kontakt">Kontakt</a>
+                <a class="" asp-area="" asp-controller="Shop" asp-action="faq">FAQ</a>   
+                <a class="" asp-area="" asp-controller="Shop" asp-action="Packanleitung">Packanleitung</a>
+                <span style="margin-left: auto;">*Alle Preise inkl. gesetzl. Mehrwertsteuer und ggf. zzgl. Versandkosten, wenn nicht anders beschrieben</span>
+            </div>
+
+            <hr class="footerHr" style="margin-top: 10px;" />
+
+            <div class="footer-impressum">
+                <div class="footer-social" style="width:70%;">
+                    <a class="k" asp-area="" asp-controller="Shop" asp-action="Impressum">Impressum</a>
+                    <a class="" asp-area="" asp-controller="Shop" asp-action="Datenschutz">Datenschutzerklärung</a>
+
+                    <a class="" asp-area="" asp-controller="Shop" asp-action="AGB">AGB</a>
+                   @* <span class="">Bildnachweise</span>*@
+                   
+                    <!--<div id="ot-sdk-btn" class="ot-sdk-show-settings">Cookie-Präferenzen</div> --> <!-- der alte vorherige-->
+                    <a href="#" onClick="UC_UI.showSecondLayer();">Privacy Settings</a>
+
+                    @*  <div class="d-flex flex-column gap-2 xx-3">
+                        <span class="">Cookie-Präferenzen</span>
+                        <button id="ot-sdk-btn" class="ot-sdk-show-settings">Cookie-Einstellungen</button>
+                    </div>*@
+                   
+                    <!-- Schaltfläche OneTrust Cookie-Einstellungen – Ende -->
+                </div>
+
+                <div class="text-xxl-end" style="width:30%;">
+                    <div>
+                        <script async
+                                data-desktop-y-offset="0"
+                                data-mobile-y-offset="0"
+                                data-desktop-disable-reviews="false"
+                                data-desktop-enable-custom="false"
+                                data-desktop-position="right"
+                                data-desktop-custom-width="156"
+                                data-desktop-enable-fadeout="false"
+                                data-disable-mobile="false"
+                                data-disable-trustbadge="false"
+                                data-mobile-custom-width="156"
+                                data-mobile-disable-reviews="false"
+                                data-mobile-enable-custom="false"
+                                data-mobile-position="left"
+                                data-mobile-enable-topbar="false"
+                                data-mobile-enable-fadeout="true"
+                                data-color-scheme="light"
+                                charset="UTF-8"
+                                src="//widgets.trustedshops.com/js/XFC8F1EFCDA2F8B19E95D4F1308FB4788.js">
+
+                        </script>
+                    </div>
+                    <div><p>©2024 - Rhenus Data Office GmbH</p></div>
+                </div>
+                
+            </div>
+
+        </div>
+
+    </footer>
+
+    <!-- Alte Footer Style-->
+    @*<footer class="text-center text-lg-start bg-light text-muted" style="background-color: rgba(0, 0, 0, 0.05)!important;margin-top:-12px;">
+        <div class="container-lg" style="max-width: 1600px;">
+            <!-- Section: Service Hotline ; Sitemap; Information -->
+            <div class="row">      
+                    <!-- Left -->
+                <div class="col-lg-6 mt-5">
+                        <h4>Service Hotline</h4>
+                        <hr />
+                        <p>Telefonische Unterstützung und Beratung unter unserer kostenlosen Hotline:</p>
+                        <h3 class="mt-3">0800 100 41 93</h3>
+                        <h4>Mo-Fr, 09:00 - 17:00 Uhr</h4>
+                    </div>
+                  
+                <div class="col-lg-3 col-md-6 mt-5 Sitemap">
+                    <h4>Sitemap</h4>
+                    <hr />
+                    <ul>
+                    <li><a class="navi-link" href="#produkte"><p>Produkte</p></a></li>
+                        <li><a href="#produkte"><p>So einfach geht das</p></a></li>
+                        <li><a href="#produkte"><p>FAQs</p></a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mt-5 info">
+                        <h4>Information</h4>
+                        <hr />
+                    <ul class="">
+                            <li><a href="#produkte"><p>Packanleitung </p></a></li>
+                            <li><a href="#produkte"><p>AGB</p></a></li>
+                            <li><a href="#produkte"><p>Datenschutz</p></a></li>
+
+                            <li><a href="#produkte"><p>Impressum</p></a></li>
+                            <li><a href="#produkte"><p>Widerrufsrecht</p></a></li>
+                            <li><a href="#produkte"><p>Kontakt</p></a></li>
+                            <li><a href="#produkte"><p>Compliance</p></a></li>
+                        </ul>
+                    </div>              
+            </div>
+            
+            <hr />
+
+            <!-- Section: Powered by and CONTACT -->
+            <div class="row mb-5 mb-5">
+                 <!-- Grid column -->
+                <div class="col-lg-6">
+                    <!-- Content -->
+                    <h6 class="text-uppercase fw-bold mb-4">Powered by</h6>
+                    <img src="/assets/images/rhenusLogo.png" width="40" style="width:40%;"/>
+                    <p>
+                        Sie sind dabei, unsere Webseite zu verlassen. Bitte beachten Sie, dass ein Klick auf die Logos der sozialen Netzwerke eine Website öffnet, für deren Inhalt wir nicht verantwortlich sind und auf die unsere Datenschutzbestimmungen keine Anwendung finden.
+                    </p>
+                </div>
+                <!-- Grid column -->
+                <!-- Grid column -->
+
+                <div class="col-lg-2">
+                    <!-- Kontakt -->
+                    <h6 class="text-uppercase fw-bold mb-4">Kontakt</h6>
+                    <ul>
+                        <li><p> Industriestraße 5, 48301 Nottuln, DE</p></li>
+                        <li><p>info@roomit-selfstorage.de</p></li>
+                        <li><p>Tel: 0800 100 41 93</p></li>
+                        <li><p>Tel: +49 2509 890</p></li>
+                    </ul>
+                    
+                </div>
+
+                <div class="col-lg-4 d-flex align-items-center">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        * Alle Preise inkl. gesetzl. Mehrwertsteuer und ggf. zzgl. Versandkosten, wenn nicht anders beschrieben.
+                    </h6>
+
+                </div>
+
+                      
+                
+                  
+            </div>
+            <!-- Section: Links Copyright  -->
+            <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+                © 2023 Copyright:
+                <a class="text-reset fw-bold" href="https://www.rhenus.group/de/de/"><p>Rhenus Group</p></a>
+            </div>
+            <hr />
+            
+           
+            
+            
+
+        </div>
+
+    </footer>*@
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    
+    <script src="~/js/site.js" asp-append-version="true"></script>
+   
+    @*<script src="https://kit.fontawesome.com/68ddaea32b.js" crossorigin="anonymous"></script>*@
+   
+
+
+    <script src="/assets/js/isotope.min.js"></script>
+     <script src="/assets/js/owl-carousel.js"></script>
+    <script src="/assets/js/lightbox.js"></script>
+    <script src="/assets/js/tabs.js"></script>
+    <script src="/assets/js/video.js"></script>
+    <script src="/assets/js/slick-slider.js"></script>
+    <script src="/assets/js/custom3.js"></script>
+
+    @*
+    <script src="/jquery-ui-1.13.3.custom/jquery-ui-1.13.3.custom/jquery-ui.js"></script>
+<script src="https://shop.aktenvernichtung.de/RDO_mynature/CustomUpload/374O357O340O370O356O369O350O337O323O334O350O303O304O304O/WebPortal/webshop/img/09_animate.css"></script>*@
+    
+   @*<script>
+        //according to loftblog tut
+        $('.nav li:first').addClass('active');
+
+        var showSection = function showSection(section, isAnimate) {
+            var
+                direction = section.replace(/#/, ''),
+                reqSection = $('.section').filter('[data-section="' + direction + '"]'),
+                reqSectionPos = reqSection.offset().top - 0;
+
+            if (isAnimate) {
+                $('body, html').animate({
+                    scrollTop: reqSectionPos
+                },
+                    800);
+            } else {
+                $('body, html').scrollTop(reqSectionPos);
+            }
+
+        };
+
+        var checkSection = function checkSection() {
+            $('.section').each(function () {
+                var $this = $(this),
+                    topEdge = $this.offset().top - 80,
+                    bottomEdge = topEdge + $this.height(),
+                    wScroll = $(window).scrollTop();
+                if (topEdge < wScroll && bottomEdge > wScroll) {
+                    var currentId = $this.data('section'),
+                        reqLink = $('a').filter('[href*=\\#' + currentId + ']');
+                    reqLink.closest('li').addClass('active').
+                        siblings().removeClass('active');
+                }
+            });
+        };
+
+        $('.main-menu, .responsive-menu, .scroll-to-section').on('click', 'a', function (e) {
+            e.preventDefault();
+            showSection($(this).attr('href'), true);
+        });
+
+        $(window).scroll(function () {
+            checkSection();
+        });
+    </script>*@
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

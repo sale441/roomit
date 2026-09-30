@@ -1,0 +1,342 @@
+﻿@using System.Globalization;
+@model Warenkorb
+@{
+    ViewData["Title"] = "Bestelluebersicht";
+    var TotalAmount = TempData["TotalAmount"];
+    var Model1 = TempData["WarenkorbImSession"] as Warenkorb;
+}
+
+
+<!-- hier muss noch nach dem PLZ geteilt werden-->
+<style>
+    @@media (min-width: 1025px) {
+        .h-custom {
+            height: 100vh !important;
+        }
+    }
+
+    .registration .select-input.form-control[readonly]:not([disabled]) {
+        font-size: 1rem;
+        line-height: 2.15;
+        padding-left: .75em;
+        padding-right: .75em;
+    }
+
+
+    .card-registration .select-arrow {
+        top: 13px;
+    }
+
+    .bg-grey {
+        background-color: #eae8e8;
+    }
+
+    @@media (min-width: 992px) {
+        .card-registration-2 .bg-grey {
+            border-top-right-radius: 16px;
+            border-bottom-right-radius: 16px;
+        }
+    }
+
+    @@media (max-width: 991px) {
+        .card-registration-2 .bg-grey {
+            border-bottom-left-radius: 16px;
+            border-bottom-right-radius: 16px;
+        }
+    }
+
+    tbody, td, tfoot, th, thead, tr {
+        border-color: inherit;
+        border-style: solid;
+        border-width: 0;
+        border-bottom-width: 0px;
+        text-align: center;
+    }
+
+    p, h6 {
+        text-align: center;
+    }
+</style>
+
+<section id="cart" class="h-100" style="min-height:1000px;height:auto;">
+    @if ((ViewBag.TotalAmount > 0 && ViewBag.WarenkorbItemsCount > 0) || (Model?.WarenkorbItemsListe.Count > 0))
+    {
+        <div class="container py-5 h-100" style="max-width:1600px;">
+            <div class="pt-5">
+                <h6 class="mb-0 ueberschrift2" style="margin:0;text-align:start;margin-bottom: 20px;font-weight:normal;color:#FF6000;">
+                    <a href="@Url.Action("Shop", "Shop",new{zipcode = @Model?.Postleitzahl})" style="color:#FF6000;;">
+                        <!--<i class="fas fa-long-arrow-alt-left me-2"></i> --> zurück
+                </a>
+                </h6>
+            </div>
+            <p hidden class="zipcodeResult mb-0 mt-5">
+                <span>@Model?.Postleitzahl</span>
+                <span>@Model?.Stadtname</span>
+            </p>
+            <div style="text-align:center;position:relative;margin-bottom:80px;">
+                <h1 class="zipcodeResult-2 mb-0">
+                    Bestellübersicht
+                </h1>
+                <div class="mb-0 mt-0 lineX text"></div>
+            </div>
+
+            <div class="row g-0 registration">
+                <!-- Linke Seite-->
+                <div class="col-lg-8">
+
+                    <!-- Table Code Design -->
+                    @* <table class="table">
+                <thead>
+                <tr>
+                <th class="col-md-2 col-lg-2 col-xl-2"></th>
+                <th class="col-md-2 col-lg-2 col-xl-2">Bezeichnung</th>
+                <th class="col-md-2 col-lg-2 col-xl-2">Preis</th>
+                <th class="col-md-2 col-lg-2 col-xl-2">Anzahl</th>
+                <th class="col-md-2 col-lg-2 col-xl-2">Gesamt</th>
+                </tr>
+                </thead>
+                <tbody class="mt-5">
+                @foreach (var item in Model.WarenkorbItemsListe)
+                {
+                var id = @item.ProduktName + "_Cart";
+                <tr id='@id' class="korp">
+                <th class="col-md-2 col-lg-2 col-xl-2"><img src=@item.ProductImage class="img-fluid rounded-3" alt="@item.ProduktName"></th>
+
+                <td class="col-md-2 col-lg-2 col-xl-2"> <h6 class="text-black mb-0 name ueberschrift2">@item.ProduktName</h6></td>
+
+                <td class="col-md-2 col-lg-2 col-xl-2">
+                <h6>
+                <span>@item.UnitPrice</span>
+                <span>€</span>
+                </h6>
+                </td>
+                <td class="col-md-2 col-lg-2 col-xl-2 cont-add-prod" style="width:auto;">
+
+                <button class="_minus btn-roomit" onclick="korpIdit(this,'@item.ProduktName')" style="display:block;margin-inline:0;left:0;">  - </button>
+
+                <p class="product-counter" style="width: -moz-available;">0</p>
+                <!-- <input disabled min="0" name="quantity" value="@item.Quantity" type="text" class="quantity" style="text-align:center;color:#61b300;font-weight:500;" /> -->
+
+
+                <button class="plus plus2 btn-roomit" onclick="korpIdit(this,'@item.ProduktName')" style="margin-inline:0;right:0;"> + </button>
+
+                </td>
+                <td class="col-md-2 col-lg-2 col-xl-2">
+                <h6 class="mb-0 total icon-korp-Size price-value">
+                <span>@item.Total</span>
+                <span>€</span>
+                </h6>
+                </td>
+                </tr>
+                }
+
+
+                </tbody>
+                </table>
+                *@
+
+                    <!-- Div Code Design -->
+                    <div class="p-5">
+
+                        <div class="d-flex align-items-center gap-5 mb-5">
+                            <!--Produkt Image-->
+                            <div class="col-md-2 col-lg-2 col-xl-2"></div>
+                            <!--Produktname-->
+                            <div class="col-md-3 col-lg-3 col-xl-3"><p class="fw-bold mb-0 Fliestext fs-4">Bezeichnung</p> </div>
+                            <!--item.UnitPrice -->
+                            <div class="col-md-2 col-lg-2 col-xl-2"><p class="fw-bold mb-0 Fliestext fs-4">Preis</p></div>
+                            <!--minus quantity plus-->
+                            <div class="col-md-1 col-lg-1 col-xl-1"><p class="fw-bold mb-0 Fliestext fs-4">Anzahl</p></div>
+                            <!--item.Total-->
+                            <div class="col-md-2 col-lg-2 col-xl-2"> <p class="fw-bold mb-0 Fliestext fs-4">Gesamt</p></div>
+
+                        </div>
+
+                        <hr class="my-4" style="height:4px;color:lightgray;background-color: gray;">
+
+                        @foreach (var item in Model?.WarenkorbItemsListe!)
+                        {
+                            var id = @item.ProduktName + "_Cart";
+
+                            <div id='@id' class="d-flex align-items-center gap-5 korp mb-5">
+
+                                <!--Produkt Image-->
+                                <div class="col-md-2 col-lg-2 col-xl-2">
+                                    <img src=@item.ProductImage class="img-fluid rounded-3" alt="@item.ProduktName">
+                                </div>
+
+                                <!--Produktname-->
+                                <div class="col-md-3 col-lg-3 col-xl-3 mb-0 Fliestext" style="background-color:#f7f7f7;padding:16px;">
+                                    <p class="text-black mb-0 name ueberschrift2 fs-4">@item.ProduktName</p>
+                                </div>
+
+                                <!--minus quantity plus-->
+                                <!--item.UnitPrice -->
+                                <div class="col-md-3 col-lg-2 col-xl-2 d-flex justify-content-center" style="background-color: #f7f7f7;">
+                                    <div style="margin-top:0;min-width:50%;">
+                                        <p class="mb-0 unitPrice icon-korp-Size Fliestext p-3 fs-3 px-1">
+                                            <span>@item.UnitPrice.ToString("C2",CultureInfo.GetCultureInfo("de-DE"))</span>
+                                        </p>
+                                    </div>
+
+                                </div>
+
+                                <!--minus quantity plus-->
+                                <div class="col-md-1 col-lg-1 col-xl-1 d-flex justify-content-center" style="background-color: #f7f7f7;">
+                                    <div style="margin-top:0;width:50%;">
+                                        <p class="product-counter icon-korp-Size quantity p-3 Fliestext fs-3">@item.Quantity</p>
+                                    </div>
+                                </div>
+
+
+                                <!--item.Total-->
+                                <div class="col-md-3 col-lg-2 col-xl-2 d-flex justify-content-center" style="background-color: #f7f7f7;">
+                                    <div style="margin-top:0;min-width:50%;background-color:#f7f7f7;">
+                                        <p class="mb-0 unitPrice icon-korp-Size Fliestext p-3 fs-3 px-1">
+                                            <span>@item.Total.ToString("C2",CultureInfo.GetCultureInfo("de-DE"))</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <!--delete-->
+                                <!--     <button class="col-md-2 col-lg-2 col-xl-2 btn btn-link delete price-value" onclick="korpIdit(this,'@item.ProduktName')">
+                                <i class="fas fa-times icon-korp-Size"></i>
+                                </button>
+                                -->
+                                <hr style="height:4px;color:lightgray;background-color: gray;">
+                            </div>
+
+                            <!--<hr class="my-4">  -->
+                        }
+                        <p class="Fliestext text-xl-end">Lieferkosten werden im Nachgang berechnet!</p>
+                        <hr class="my-4" style="height:4px;color:lightgray;background-color: gray;">
+
+
+                        <!-- <div class="pt-5">
+                        <h6 class="mb-0">
+                        <a href="javascript:history.back()" class="text-body">
+                        <i class="fas fa-long-arrow-alt-left me-2"></i>zurück zur Bestellung
+                        </a>
+                        </h6>
+                        </div>-->
+                        <!-- <button type="button" class="btn btn-dark btn-block btn-lg" onclick="location.href='@Url.Action("Shop", "Shop",new{zipcode = Model.Postleitzahl})'" data-mdb-ripple-color="dark" style="display: block ruby;">
+                            <i class="fas fa-long-arrow-alt-left me-2"></i>zurück zur Anfrage
+                        </button>
+                        -->
+
+                    </div>
+                </div>
+
+                <!-- hier hier-->
+                <!-- Richte Seite-->
+                <div class="col-lg-4 mt-4 mb-2 Fliestext" style="border-top-left-radius: 16px;border-bottom-left-radius: 16px;background-color: #eae8e8;">
+                   
+                    <div class="p-3">
+
+                        <h3 class="fw-bold mb-3 mt-3 pt-1">Kunden Daten</h3>
+
+                        <hr class="my-1 mb-3" style="height:4px;border-width:0;color:gray;background-color:gray">
+
+                        <div class="d-flex justify-content-between mb-2 mt-3">
+                            <h5>
+                                <span>@Model?.GastKunde?.Anrede</span>
+                            </h5>
+                            <h5>
+                                <span>@Model?.GastKunde?.Vorname</span>
+                                <span>@Model?.GastKunde?.Nachname</span>
+                            </h5>
+                        </div>
+
+                        <div class="d-flex justify-content-between mb-2 mt-3">
+                            <h5 class="">
+                                <span>Telefon</span>
+                            </h5>
+                            <h5>
+                                <span>@Model?.GastKunde?.Telefon</span>
+                            </h5>
+                        </div>
+
+                        <div class="d-flex justify-content-between mb-4 mt-3">
+                            <h5 class="">
+                                <span>E-mail</span>
+                            </h5>
+                            <h5>
+                                <span>@Model?.GastKunde?.Email</span>
+                            </h5>
+                        </div>
+
+                        <div>
+                            <h5 class="mt-5">
+                                <span>Rechnungsadresse</span>
+                            </h5>
+
+                            <hr class="my-2 mb-3" style="height:4px;border-width:0;color:gray;background-color:gray">
+
+                            <div class="mb-5">
+
+                                <h5 class="mb-2">
+                                    <span>@Model?.GastKunde?.RechStraße</span>
+                                </h5>
+                                <h5 class="d-flex gap-5">
+                                    <span>@Model?.GastKunde?.RechOrt</span>
+                                    <span>@Model?.GastKunde?.RechPLZ</span>
+                                </h5>
+                            </div>
+                        </div>
+
+
+                        @if (Model?.GastKunde?.LiefStraße != null)
+                        {
+                            <div>
+                                <h5 class="mt-5">
+                                    <span>Lieferadresse</span>
+                                </h5>
+
+                                <hr class="my-2 mb-3" style="height:4px;border-width:0;color:gray;background-color:gray">
+
+                                <div class="mb-5">
+                                    <h5 class="mb-2">
+                                        <span>@Model?.GastKunde?.LiefStraße</span>
+                                    </h5>
+                                    <h5 class="d-flex gap-5">
+                                        <span>@Model?.GastKunde?.LiefOrt</span>
+                                        <span>@Model?.GastKunde?.LiefPLZ</span>
+                                    </h5>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+
+                </div>
+                <form method="post" asp-action="Danke" asp-controller="Shop">
+                    <div class="row d-flex justify-content-between" style="height:70px; height: 60px;width: 34%;float: right;">
+                        <input hidden value="@Model?.IPAdresse" name="_ip" />
+                        <input type="button" class="btn btn-roomit btn-center" value="Zurück zur Warenkorb" onclick="location.href='@Url.Action("warenkorb", "Shop")'" />
+                        <input type="submit" class="btn btn-roomit btn-center" value="Zahlungspflichtig bestellen" />
+                    </div>
+                </form>
+            </div>
+
+
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            <div class="lg-6">
+                <div class="container-nodata"><h1>Etwas ist Schief gelaufen!</h1></div>
+
+                <div class="d-flex gap-5 ms-5 mt-3">
+                    <input type="button" class="btn btn-dark btn-block btn-lg mt-1" value="Zurück" onclick="location.href='@Url.Action("Checkout", "Shop")'" />
+                </div>
+            </div>
+        </div>
+    }
+
+</section>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

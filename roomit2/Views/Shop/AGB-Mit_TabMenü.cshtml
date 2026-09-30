@@ -1,0 +1,453 @@
+﻿
+@{
+    ViewData["Title"] = "AGB";
+}
+
+@section metatags{
+    <title>Allgemeine Geschäftsbedingungen | room it!</title>
+    <meta name="description" content="Unsere AGB einfach online für dich einsehbar » Mehr erfahren!">
+    <meta name="keywords" content="AGB, allgemeine Geschäftsbedingungen">
+}
+
+
+<style>
+
+    .zeile-1 {
+        line-height: 45px;
+    }
+
+    .title-1 {
+        font-weight: bold;
+        line-height: 45px;
+        letter-spacing: 7px;
+        font-size: 20px;
+    }
+
+    .title-2 {
+        font-weight: bold;
+        line-height: 45px;
+        font-size: 20px;
+    }
+
+    .title-2x {
+        font-weight: bold;
+        line-height: 45px;
+        font-size: 20px;
+        color: #61b300;
+    }
+
+    .title-3 {
+        font-weight: bold;
+        line-height: 45px;
+        font-size: 16px;
+    }
+
+    .text-0 {
+        line-height: 40px;
+        font-size: 16px;
+    }
+
+    ul, li {
+        list-style: disc !important;
+        list-style-type: disc !important;
+        margin-left: 2%;
+    }
+
+    .list-x {
+        list-style: none !important;
+        list-style-type: none !important;
+        margin-left: 2%;
+    }
+
+    .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+        color: var(--bs-nav-pills-link-active-color);
+        background-color: #61b300;
+    }
+
+</style>
+
+
+<div class="container">
+    <div class="container-fliud">
+
+        <div class="pt-5">
+            <h6 class="mb-0 ueberschrift" style="margin:0;text-align:start;margin-bottom: 20px;font-weight:normal;color:#FF6000;">
+                @*<a href="@Url.Action("Shop", "Shop",new{zipcode = @Model.Postleitzahl})" style="color:#FF6000;;">
+                <!--<i class="fas fa-long-arrow-alt-left me-2"></i> --> zurück
+                </a>*@
+            </h6>
+        </div>
+
+        <div style="text-align:center;margin-bottom:80px;position:relative;margin-left: 10%;">
+            <h1 class="zipcodeResult-2 mb-0 mt-5 ueberschrift2">
+                <span>AGB</span>
+            </h1>
+            <div class="mb-0 mt-0 lineX text"></div>
+        </div>
+
+        <div class="d-flex align-items-start Fliestext">
+
+            <!--Informationen-->
+
+            <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <h3 class="mb-3">Informationen</h3>
+                <ul class="nav flex-column list-x">
+
+                    <li class="nav-item list-x"> <a class="nav-link" href="@Url.Action("Packanleitung","shop")">Packanleitung</a> </li>
+
+                    <li class="nav-item list-x"><a class="nav-link active" href="@Url.Action("AGB","shop")">AGB</a></li>
+
+                    <li class="nav-item list-x"><a class="nav-link" aria-current="page" href="@Url.Action("Impressum","shop")">Impressum</a></li>
+
+                    <li class="nav-item list-x"><a class="nav-link" href="@Url.Action("Datenschutz","shop")">Datenschutz</a> </li>
+
+                </ul>
+            </div>
+
+            <!--AGBs-->
+
+            <div class="tab-content ms-5" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+
+                    <p style="text-align:justify; font-size: 15px!important;">
+                        <span class="title-1">AGB</span><br />
+                        <span class="title-1">1. Allgemeines</span><br /><br />
+
+                        <span style="font-weight:bold;">1.1</span> Nachstehende Allgemeine Geschäftsbedingungen gelten für alle Verträge, Lieferungen und
+                        sonstige Leistungen, die die Rhenus Data Office GmbH (RDO) unter der Marke „room it!“ anbietet
+                        und die zwischen der Rhenus Data Office GmbH, Industriestraße 5, 48301 Nottuln (Sitz: Nottuln, AG
+                        Coesfeld, HRB 2671), nachfolgend „RDO“ und dem Kunden (nachfolgend „Kunde“) vereinbart
+                        werden.
+                        <br /><br />
+
+                        Das Produkt „room it!“ besteht aus der zeitweisen Überlassung (Vermietung von Boxen) von Aufbewahrungsbehältnissen unterschiedlicher Art und Volumina und oder deren Verbringen an und Abholen von vom Kunden 
+                        definierten Orte, an denen der Kunde diese befüllt bzw. entleert und der Lagerung der befüllten Aufbewahrungsbehältnisse (Lagerung von Boxen) sowie der dem Abholen und Verbringen von in Transportbehältnisse 
+                        des Kunden (Drittbehältnisse) verpackten Gegenständen und deren Lagerung jeweils gegen Entgelt.<br /><br />
+
+                        <span style="font-weight:bold;">1.2</span> Abweichende Bedingungen des Kunden werden nicht anerkannt, es sei denn RDO hat ihrer Geltung ausdrücklich schriftlich zugestimmt.<br /><br />
+
+
+
+                        <span class="title-1">2. Leistungen</span><br /><br />
+
+                        <span class="zeile-1 fw-bold">Die Leistungen sind im Folgenden definiert und erfolgen stets entgeltlich gemäß Preisliste.</span><br />
+
+                        <span class="zeile-1 fw-bold">2.1 Mietgegenstände können folgende Boxen (Oberbegriff) sein:</span> <br />
+
+                        <span class="zeile-1">- die Container-Box aus Holz (ca. 3,00 m Länge x 1,70 m Breite x 2,50 m Höhe), die im Vertrag näher mit einer Nummer bezeichnet ist, oder</span><br />
+
+                         <span class="zeile-1">- die Container-Box aus Metall (ca. 2,20 m Länge x 1,60 m Breite x 2,445 m Höhe), die im Vertrag näher mit einer Nummer bezeichnet ist, oder</span><br />
+
+                         <span class="zeile-1">- die Karton-Box aus Kartonage (ca. 57,5 cm Länge x 37,5 cm Breite x 32 cm Höhe), die im Vertrag näher mit einer Nummer bezeichnet ist.</span> <br />
+
+                         <span class="zeile-1">Der Kunde darf die Boxen nur zu Lagerungszwecken von nicht unter Ziffer 3 fallenden Gegenständen nutzen.</span><br /><br />
+
+                        <span class="fw-bold">2.2 Lagerung von Boxen: Gegenstand des Vertrages ist die Lagerung vom Kunden gemieteter und befüllter Boxen in Lagerräumen der RDO oder Dritter Lageristen.</span><br /><br />
+
+                        <span>Die Container-Box (Holz/Metall) ist vom Kunden vor Übergabe an RDO mit einem Vorhängeschloss zu verschließen. Passende Schlösser können von RDO erworben werden.</span><br />
+
+                        <span class="zeile-1">Die Box ist vom Kunden mit der mitgelieferte Plombe zu verschließen.</span><br />
+
+                        <span>
+                            Zugriff (z.B. zur Sichtung, Teil-Befüllung bzw. Leerung) am Lagerort während der Lagerung ist nur durch vorübergehende Auslagerung und nur bei der Container-Box gegen eine Bereitstellungsgebühr möglich. Dies kann nur nach vorheriger Absprache und innerhalb
+                            der Öffnungszeiten des jeweiligen Standortes erfolgen.[1]
+                        </span>
+                        <br /><br />
+
+                        Soweit in diesen AGB nicht von den gesetzlichen Regelungen abgewichen wird, sind für dieses Vertragsverhältnis neben den Regelungen des BGB auch die Regelungen der §§ 343 bis 347, §§ 352 bis 372, §§ 407 bis 450 und §§ 467 bis 475h des HGB anwendbar, 
+                        und zwar selbst dann, wenn der Kunde Verbraucher ist.
+                        <br /><br />
+
+                       <span style="font-weight:bold;">2.3 Lieferung und Abholung leerer und vom Kunden befüllter Boxen: RDO liefert leere und vom Kunden befüllte Boxen an vom Kunden benannte Orte und holt sie leer oder befüllt ab.<br /><br />
+                       </span>
+                        Die Überlassung der Boxen auch nur zur Sichtung gleich für welche Dauer oder an welchem Ort erfolgt nur gegen Vorlage eine gültigen Reisepasses, eines Personalausweises oder eines anderen amtlichen Bildausweisdokuments 
+                        an den im Vertrag benannten Kunden oder eine von diesem schriftlich bevollmächtigte Person.<br /><br />
+
+                        Die Container-Box wird in einem Anhänger mit den Maßen (ca. 4,80 m Länge x 2,35 m Breite x 3,20 m Höhe) an die vom Kunden angegebene Adresse geliefert. Während der Beladung bleibt die Container-Box in dem Anhänger stehen. 
+                        Der Kunde hat RDO auf Besonderheiten der Örtlichkeiten, insbesondere (enge) Einbahnstraßen, Sackgassen zeitlich oder in Hinsicht auf das Gewicht des Fahrzeugs beschränkte Befahrbarkeit oder ähnliches, hinzuweisen. Ferner 
+                        hat der Kunde dafür Sorge zu tragen und sicherzustellen, dass ein für den Anhänger ausreichend großer Stellplatz zur Verfügung steht. Für das Abstellen des Anhängers eventuell erforderliche Genehmigungen bei Anlieferung 
+                        hat der Kunde rechtzeitig vor dem Anlieferungsdatum bei der zuständigen Behörde einzuholen und RDO bei Anlieferung vorzulegen. Auch auf Weisung des Kunden ist RDO nicht verpflichtet, den Anhänger verbotswidrig abzustellen. 
+                        Der Kunde ist während der Abstellzeit verpflichtet, RDO über neu verhängte Abstellverbote zu informieren. Werden berechtigte Verwarnungs-, Bußgelder erhoben oder wird berechtigt gleich durch wen (Behörde, gestörte Grundstücksbesitzer)
+                        eine Abschleppmaßnahme durchgeführt, wird RDO daraus entstehende Kosten an den Kunden weiterbelasten, es sei denn, dieser weist nach, dass er dies nicht zu vertreten hat, er insbesondere RDO über neue Abstellverbote unverzüglich informiert hat.
+                        <br /><br />
+
+                        Optional kann der Kunde Beladehilfen für das Be- oder Entladen der Container-Box in Anspruch nehmen. Dies muss vor der Ein- oder Auslagerung mit room it! vereinbart werden. Die Beladehilfen werden pro Person pro angefangener Stunde
+                        mit 40€ (inkl. USt). berechnet. Sie sind ausschließlich für das Tragen der Gegenstände und deren Be- oder Entladung in die Box zuständig, nicht jedoch für die Demontage oder den Aufbau von Möbelstücken.
+                        <br /><br />
+
+                        <span style="font-weight:bold;">2.4 Termine zur Anlieferung und Abholung oder (Teil-)Befüllung/Leerung werden unter Einhaltung von Mindestankündigungsfristen vereinbart:<br />
+                        </span><br />
+
+                        <span class="zeile-1" style="font-weight:bold;">Lieferung und Abholung leerer oder</span><br />
+
+                        <span class="zeile-1">befüllter Container-Box:           &emsp;&emsp;&emsp;&emsp;            5 Werktage</span><br />
+
+                        <span class="zeile-1">Auslagerung Container-Box zwecks</span><br />
+
+                        <span class="zeile-1">(Teil-)Befüllung/Leerung[1]:       &emsp;&emsp;&emsp;&emsp;             5 Werktage</span><br />
+
+                        <span class="zeile-1">Lieferung/Abholung Box:             &emsp;&emsp;&emsp;&emsp;           5 Werktage.</span><br />
+
+                        Sollte der Kunde den vereinbarten Termin nicht einhalten können, hat er dies ebenfalls rechtzeitig RDO mitzuteilen. Rechtzeitigkeit erfordert die Mitteilung wenigstens zwei Arbeitstage (Mo-Fr, ohne gesetzliche Feiertage am Lieferort, 
+                        am Lagerort oder am Sitz der RDO) vor dem bisher vereinbarten Termin. Nicht rechtzeitige Mitteilung führt zu Stornogebühren in Höhe des Entgelts der terminierten Leistung.
+                        <br /><br />
+
+                        <span class="zeile-1" style="font-weight:bold;">2.5 Transport und Lagerung von Drittbehältnissen</span><br />
+
+                        Die RDO holt die Behältnisse beim Kunden ab und lagert diese ein. Zum Ende der Einlagerung bringt die RDO die Gegenstände zurück zum Kunden.<br /><br />
+
+                        Der Kunde muss die Gegenstände so verpacken, dass das Gut nicht durch transporttypische Beanspruchungen (z.B.: Stöße, Temperaturschwankungen) beschädigt werden kann. Die RDO behält sich das Recht vor, mangelhaft verpackte
+                        Gegenstände nicht mitzunehmen oder kostenpflichtig neu zu verpacken.<br /><br />
+
+                        Eine Hilfestellung für die ordnungsgemäße Verpackung kann der Homepage <span style="color:#61b300">(www.roomit-selfstorage.de)</span> entnommen werden.<br /><br />
+
+                        Ein Gegenstand (maximale Abmessungen 1,2 m Länge x 0,8 m Breite x 0,4 m Höhe) darf das Maximalgewicht von 30 kg nicht überschreiten. Gegenstände, die die Voraussetzungen nicht erfüllen, werden nur nach Absprache mit der RDO mitgenommen. Es können zusätzliche Kosten anfallen.
+
+                        Sollte der Kunde zum vereinbarten Termin nicht anzutreffen sein, behält sich die RDO das Recht vor, für eine weitere Anfahrt kosten zu berechnen.<br /><br />
+
+                        Die Mindesteinlagerungsmenge beträgt zwei Gegenstände. Die Mindestmiete beträgt zwei Monate.<br /><br />
+
+
+
+                        <span class="title-1">3. Ausgeschlossene Lagergegenstände</span><br /><br />
+
+                        <span class="zeile-1">Von der Einlagerung ausgeschlossen sind:</span><br />
+                        <ul class="list-group-numbered">
+                            <li class="list-group-item">Gegenstände, die dem Verderb oder Fäulnis ausgesetzt sind und/oder geeignet sind, Ungeziefer anzulocken, insbesondere Lebensmittel ungeachtet ihrer Verpackung,</li>
+                            <li class="list-group-item">
+                                solche Güter, von denen Gefahren für die vom Kunden gemietete Box oder den Lagerraum, insbesondere leicht entflammbare, zu erhöhtem Brandrisiko neigende, explosive,
+                                zur Selbstzündung neigende Stoffe wie z.B. Feuerwerkskörper, Munition, Waffen, Sprengstoffe, Chemikalien, toxische Stoffe, radioaktive Materialien
+                            </li>
+                            <li class="list-group-item">lebende Tiere und Pflanzen</li>
+                            <li class="list-group-item">Abfälle jeglicher Art</li>
+                            <li class="list-group-item">Bargeld, Edelmetalle, Edelsteine, Schmuck, Wertpapiere.</li>
+                            <li class="list-group-item">Flüssigkeiten</li>
+                        </ul>
+                        <br /><br />
+
+
+                        <span class="title-1">4. Widerrufsbelehrung für Verbraucher</span><br /><br />
+
+                        <!--
+                        Widerrufsrecht<br /><br />
+
+                        Der Kunde kann seine Vertragserklärung innerhalb von 14 Tagen ohne Angabe von Gründen in Textform (z.B. Brief, Fax, E-Mail) widerrufen. Die Frist beginnt nach Erhalt dieser Belehrung in Textform, jedoch nicht vor Vertragsschluss und auch nicht vor Erfüllung der Informationspflichten 
+                        von RDO gem. Art. 246 § 2 in Verbindung mit § 1 Abs. 1 und 2 EGBGB sowie den Pflichten von RDO gemäß § 312 g Abs. 1 Satz 1 BGB in Verbindung mit Art. 246 § 3 EGBG. Zur Wahrung der Widerrufsfrist genügt die rechtzeitige Absendung des Widerrufs.
+                        <br /><br />
+
+                        Der Widerruf ist zu richten an:<br /><br />
+
+                        Rhenus Data Office GmbH, Industriestraße 5, 48301 Nottuln, Tel.: 02509-87-285, E-Mail: fibu.data-office@de.rhenus.com<br /><br />
+
+                        <span class="fw-bold">Widerrufsfolgen</span><br /><br />
+
+                        Im Falle eines wirksamen Widerrufs sind die beiderseits empfangenen Leistungen zurück zu gewähren und ggf. gezogene Nutzungen (z.B. Zinsen) herauszugeben. Kann der Kunde RDO die empfangene Leistung sowie Nutzungen (z.B. Gebrauchsvorteile) nicht oder teilweise
+                        nicht oder nur in verschlechtertem Zustand zurückgewähren beziehungsweise herausgeben, muss der Kunde RDO insoweit Wertersatz leisten. Dies kann dazu führen, dass der Kunde die vertraglichen Zahlungsverpflichtungen für den Zeitraum bis zum Widerruf gleichwohl 
+                        erfüllen muss. Verpflichtungen zur Erstattung von Zahlungen müssen innerhalb von 30 Tagen erfüllt werden.<br /><br />
+
+                        Die Frist beginnt für den Kunden mit der Absendung der Widerrufserklärung, für RDO mit deren Empfang.<br /><br />
+
+                        Besondere Hinweise<br /><br />
+
+                        Das Widerrufsrecht des Kunden erlischt vorzeitig, wenn der Vertrag von beiden Seiten auf ausdrücklichen Wunsch des Kunden vollständig erfüllt ist, bevor der Kunde sein Widerrufsrecht ausgeübt hat.<br /><br />
+
+                        Ende der Widerrufsbelehrung<br /><br />
+
+                        <span class="zeile-1" style="font-weight:bold;">4a. Schlichtungsverfahren nach VSBG</span><br /><br />
+
+                        Die RDO ist nicht verpflichtet an Schlichtungsverfahren nach dem Gesetz über die alternative Streitbeilegung in Verbrauchersachen (VSBG) teilzunehmen und wird sich auch nicht auf freiwilliger Basis daran beteiligen.<br /><br />
+                        -->
+
+                        Rhenus Data Office GmbH, Industriestraße 5, 48301 Nottuln, Tel.: 49(0)2509 89-0, E-Mail: Info.Data-office@rhenus.com<br /><br />
+
+                        <span class="title-1">5. Transport und Transportkosten</span><br /><br />
+
+                       @* <span style="font-weight:bold;">5.1</span> Bei Vereinbarung der Anlieferung der Karton-Boxen bzw. Container-Box ist RDO für den Transport der Karton-Boxen bzw. Container-Box zu und von der vom Kunden angegebenen Adresse verantwortlich. Transporte werden nur bis maximal 30 km 
+                            einfacher Entfernung (kürzeste mit einem Fahrzeug bis 7,5 t befahrbare Strecke) angeboten. Alles darüber hinaus nur nach Vereinbarung.
+                        <br /><br />*@
+                        <span style="font-weight:bold;"></span> Der Kunde hat für die Anlieferung die vereinbarten Transportkosten an RDO zu zahlen. Für die Anlieferung der Container-Box zu Mietbeginn werden die Transportkosten mit Abschluss des Mietvertrages fällig. Die einfachen Transportkosten werden mit 2,15€/km Brutto in Rechnung gestellt.
+                        <br /><br />
+
+
+                        <span class="title-1">6. Mietzeit und Kündigung</span><br /><br />
+
+                        <span style="font-weight:bold;">6.1</span> Der Kunde hat für die Anlieferung die vereinbarten Transportkosten an RDO zu zahlen. Für die
+                        Anlieferung der Container-Box zu Mietbeginn werden die Transportkosten mit Abschluss des
+                        Mietvertrages fällig. Die einfachen Transportkosten werden mit 2,15€/km Brutto in Rechnung gestellt.
+                        <br /><br />
+
+                        <span style="font-weight:bold;">6.2</span> Der Kunde hat der RDO eine Woche vor Ablauf der Mietzeit schriftlich mitzuteilen, an welche
+                        Adresse die Karton-Boxen bzw. Container-Box geliefert werden soll oder wann er diese am Lager von
+                        room it! entladen / abholen möchte. Die Container-Box ist bis zum Ende der Mietzeit zu entladen und
+                        room it! zur Abholung bereit zu stellen<br /><br />
+
+                        <span style="font-weight:bold;">6.3</span> Jede Partei kann den Vertrag binnen einer Frist von sieben Tagen zum Monatsende schriftlich
+                        kündigen. Die Regelungen der Absätze 7.2 gelten entsprechend.
+                        <br /><br />
+
+                        <span style="font-weight:bold;">6.4</span> Das Recht zur außerordentlichen Kündigung bleibt unberührt. Ein Recht zur außerordentlichen
+                        Kündigung von der RDO liegt insbesondere dann vor, wenn der Kunde mit seinen Mietzahlungen
+                        mehr als drei Monatsmieten im Verzug ist<br /><br />
+
+
+
+                        <span class="title-1">7. Zahlung des Mietzins</span><br /><br />
+
+                        <span style="font-weight:bold;">7.1</span> Der Kunde schuldet den im Mietvertrag vereinbarten Mietzins, der monatlich in Rechnung gestellt wird.<br /><br />
+
+                        <span style="font-weight:bold;">7.2</span> Für alle weiteren, während der Mietzeit anfallenden Mieten, stehen dem Kunden die Zahlungsarten SEPA-Mandat, PayPal oder Kreditkarte (Visa oder Mastercard) zur Verfügung. Die RDO übersendet die Rechnungen an die vom Kunden angegebene E-Mailadresse.<br /><br />
+
+                        <span style="font-weight:bold;">7.3</span> Kommt der Kunde mit der Zahlung des vereinbarten Mietzinses in Verzug, gelten die gesetzlichen Vorschriften.<br /><br />
+
+
+
+                        <span class="title-1">8. Pflichten von RDO</span><br /><br />
+
+                        RDO ist verpflichtet, die vom Kunden beladenen Boxen sicher für den Transport in dem 
+                        Transportmittel zu befestigen, an den Lagerort bzw. von diesem an die vom Kunden zum Ende der 
+                        Mietzeit angegebenen Adresse zu transportieren. Die Boxen sind sicher am Lagerort ordnungsgemäß 
+                        in einem Lager unterzubringen.
+                        <br /><br />
+
+
+                        <span class="title-1"> 9. Pflichten des Kunden</span><br /><br />
+
+                        <span style="font-weight:bold;">9.1</span> Der Kunde darf keine baulichen Veränderungen an den Boxen vornehmen.<br /><br />
+
+                        <span style="font-weight:bold;">9.2</span> Der Kunde ist verpflichtet, die von ihm in die Boxen zu verstauenden Gegenstände so zu
+                        verpacken, dass sie vor Verlust und Beschädigung geschützt sind und dass auch RDO keine
+                        Schäden entstehen. Hat der Fahrer Zweifel an der Transportsicherheit der Ladung, kann er
+                        verlangen, dass ihm die Box zur Einsicht geöffnet wird. Wird dies verweigert, begründet dies für RDO
+                        ein Leistunsgverweigerungsrecht in Bezug auf den Transport
+                        <br /><br />
+
+                        <span style="font-weight:bold;">9.3</span> Der Kunde ist verpflichtet, eine Änderung seines Namens und seiner Kontaktdaten RDO unverzüglich schriftlich mitzuteilen.<br /><br />
+
+                        <span style="font-weight:bold;">9.4</span> Der Kunde ist nicht berechtigt, die Boxen an einen Dritten unter zu vermieten.<br /><br />
+
+
+
+                        <span class="title-1">10. Gewährleistung</span><br /><br />
+
+                        Mit Übernahme der Boxen zum Beladen hat der Kunde die Boxen auf offensichtliche Mängel zu
+                        untersuchen und diese unverzüglich RDO mitzuteilen. Andernfalls gilt die Box als mangelfrei, es sei
+                        denn, RDO hat den Mangel arglistig verschwiegen. Stellen sich während des Beladens Schäden an
+                        der Box heraus, hat der Kunde RDO diese unverzüglich mitzuteilen. Über die an der Box
+                        bestehenden Mängel oder Schäden wird ein von dem Kunden und von RDO zu unterschreibendes
+                        Protokoll angefertigt.
+                        <br /><br />
+
+
+                        <span class="title-1">11. Versicherung</span><br /><br />
+
+                        RDO hat eine Haftpflichtversicherung abgeschlossen. Diese beläuft sich für die gemietete ContainerBox auf eine maximale Deckungssumme bei Sachschäden von 3.000 EUR und bei einer Karton-Box
+                        von 100 EUR. Sie ist auf Deutschland beschränkt. Ausgenommen von der Versicherung sind solche
+                        Schäden, die durch die Einlagerung von unzulässigen Lagergegenständen entstehen. Auf Wunsch
+                        und auf Kosten des Kunden kann diese Deckungssummen angehoben werden.
+                        <br /><br />
+
+
+                        <span class="title-1">12. Rückgabe der Mietsache</span><br /><br />
+
+                        <span style="font-weight:bold;">12.1</span> Mit Ablauf der Mietzeit hat der Kunde die Container-Box leer und besenrein entweder zur Abholung zur Verfügung zu stellen oder aber am Lager von RDO zu übergeben.<br /><br />
+
+                        <span style="font-weight:bold;">12.2</span>  Gibt der Kunde die Container-Box nach Beendigung des Mietverhältnisses nicht zurück, wird
+                        RDO für die Dauer der Vorenthaltung als Entschädigung die vereinbarte Miete verlangen. Die
+                        Geltendmachung eines weiteren Schadens ist dadurch nicht ausgeschlossen
+                        <br /><br />
+
+                        <span style="font-weight:bold;">12.3</span> 
+                        Hat der Kunde Gegenstände in der Box nach Rückgabe der Mietsache zurückgelassen oder
+                        räumt der Kunde die Box nicht binnen einer Frist von drei Monaten, nachdem RDO den Kunden
+                        hierzu schriftlich aufgefordert hat, steht RDO das Recht zu, die Box zu öffnen und die darin
+                        verbliebenen Gegenstände entweder durch Versteigerung zu verwerten oder zu entsorgen. Fallen für
+                        die Verwertung oder Entsorgung Kosten an, sind diese vom Kunden zu erstatten. Stehen RDO aus
+                        dem Mietverhältnis noch Ansprüche auf Mietzahlung gegen den Kunden zu, ist RDO berechtigt, diese
+                        mit dem Erlös aus der Verwertung zu verrechnen.
+                        <br /><br />
+
+
+                        <span class="title-1">13. Haftung von RDO</span><br /><br />
+
+                        <span style="font-weight:bold;">13.1</span> Für den Transport jeglicher Boxen sowie Drittbehältnisse vom Kunden und nach Ablauf der Mietzeit zum Kunden haftet RDO nach den gesetzlichen Bestimmungen (§§ 425 ff. HGB).<br /><br />
+
+                        <span style="font-weight:bold;">13.2</span>
+                        Die Haftung der RDO für Schäden am Inhalt ist auf die Versicherungsleistung (16.) begrenzt, es
+                        sei denn der Schaden ist auf grobe Fahrlässigkeit oder Vorsatz zurückzuführen oder der Schaden
+                        entsteht wegen einer Verletzung wesentlicher Pflichten dieses Vertrags. Wesentliche Pflichten sind
+                        solche, deren Einhaltung für die Erreichung des Vertragszwecks zwingend erforderlich ist. Dies sind
+                        insbesondere Pflicht zur sorgfältigen Behandlung der Boxen bei Transport und Lagerung. Die
+                        Erhöhung der Versicherungsdeckung auf Wunsch des Kunden (11.) bleibt unbenommen.
+                        <br /><br />
+
+                        <span style="font-weight:bold;">13.3</span> Darüber hinaus haftet RDO nicht in Fällen Höherer Gewalt, wie insbesondere Naturkatastrophen.<br /><br />
+
+                        <span style="font-weight:bold;">13.4</span> 
+                        Die in den vorangehenden Absätzen genannten Haftungsbeschränkungen gelten auch 
+                        zugunsten der gesetzlichen Vertreter und Erfüllungsgehilfen von RDO, wenn Ansprüche direkt gegen 
+                        diese geltend gemacht werden
+                        <br /><br />
+
+                        <span style="font-weight:bold;">13.5</span> Die Vorschriften des Produkthaftungsgesetzes bleiben von den vorgenannten Haftungsbeschränkungen unberührt.<br /><br />
+
+
+
+                        <span class="title-1">14. Datenschutz</span><br /><br />
+
+                        <span style="font-weight:bold;">14.1</span> 
+                        RDO erhebt im Rahmen des Mietvertrages mit dem Kunden dessen Daten. RDO beachtet dabei
+                        die Vorschriften des Bundesdatenschutzgesetztes. Ohne Einwilligung des Kunden wird RDO
+                        Bestands- und Nutzungsdaten, wie Name, Adresse, Geburtsdatum, Personalausweisnummer und
+                        Bankverbindung, des Kunden nur erheben, verarbeiten oder nutzen, soweit dies für die Abwicklung
+                        des Vertragsverhältnisses erforderlich ist.
+
+                        <br /><br />
+                        <span style="font-weight:bold;">14.2</span>  Ohne vorherige schriftliche Einwilligung des Kunden wird RDO die Daten des Kunden nicht für Zwecke der Werbung, Markt- oder Meinungsforschung nutzen und nicht an Dritte weitergeben.<br /><br />
+
+                        <span style="font-weight:bold;">14.3</span>  Der Kunde hat jederzeit die Möglichkeit, Auskunft über die von ihm gespeicherten Daten, deren Änderung oder Löschung zu verlangen. Hierzu genügt eine E-Mail an
+
+                        <span style="font-weight:bold;"> datenschutz.rdo@de.rhenus.com. </span> Veranlasst der Kunde die Löschung seiner Daten während der Vertragslaufzeit, kann die ordnungsgemäße Vertragsabwicklung nicht gewährleistet werden.<br /><br />
+
+
+
+
+<!--
+
+                        <span class="title-1">15. Änderungen der Allgemeinen Geschäftsbedingungen</span><br /><br />
+
+                        RDO behält sich das Recht vor, diese Allgemeinen Geschäftsbedingungen jederzeit und ohne Angabe von Gründen zu ändern. Solche Änderungen gelten nicht für bereits geschlossene Mietverträge. Diese werden nach den bis zum Datum des Abschlusses des Mietvertrags gültigen Bedingungen abgewickelt, es sei denn, die Änderung ist auf eine gesetzliche Änderung oder eine behördliche oder gerichtliche Anordnung zurückzuführen.
+
+                        Erfolgen die Änderungen zuungunsten des Kunden, kann dieser den Vertrag binnen eines Monats nach Zugang der Änderungsmitteilung kündigen. Kündigt der Kunde nicht, wird die Änderung ihm gegenüber mit Ablauf der Monatsfrist wirksam.<br /><br />
+
+
+
+                        <span class="title-1">16. Sonstiges</span><br /><br />
+
+                        <span style="font-weight:bold;">16.1</span> Die Aufrechnung gegenüber Forderungen von RDO ist nur mit unbestrittenen oder rechtskräftig festgestellten Forderungen des Kunden möglich.<br /><br />
+
+                        <span style="font-weight:bold;">16.1</span>  Änderungen und Ergänzungen des Vertrags bedürfen der Schriftform. Dies gilt auch für die Änderung dieser Ziffer.<br /><br />
+
+                        <span style="font-weight:bold;">16.1</span>  Auf die Verträge zwischen RDO und dem Kunden findet das Recht der Bundesrepublik Deutschland unter Ausschluss des UN-Kaufrechts (CISG) Anwendung.<br /><br />
+
+                        <span style="font-weight:bold;">16.1</span>  Sofern es sich beim Kunden um einen Kaufmann, eine juristische Person des öffentlichen Rechts oder um ein öffentlich rechtliches Sondervermögen handelt, ist Gerichtsstand für alle Streitigkeiten aus Vertragsverhältnissen
+                        zwischen RDO und dem Kunden Dortmund. RDO ist aber auch berechtigt, den Kunden an seinem allgemeinen Gerichtsstand zu verklagen.<br /><br />
+
+                        <span style="font-weight:bold;">16.1</span>  Sollte eine Bedingung dieses Vertrages unwirksam sein oder werden, berührt dies die Wirksamkeit der übrigen Bedingungen und des Vertrages nicht. An die Stelle der unwirksamen Bedingung treten die gesetzlichen Bestimmungen.<br /><br />
+
+                        <span style="font-weight:bold;">16.1</span>  Die Vertragssprache ist deutsch.<br /><br />
+
+                        <hr />
+
+                        <span style="font-weight:bold;"><span style="color:#61b300">[1]</span> Teilentleerung/-beladung am Lager nicht verfügbar bei Lagerung an den Standorten: Leverkusen, Hamburg, Berlin.</span><br /><br />
+
+-->
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

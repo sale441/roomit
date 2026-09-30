@@ -1,0 +1,329 @@
+﻿@using System.Globalization;
+@model Warenkorb
+@{
+    ViewData["Title"] = "ShoppingCart";
+    var Model1 = TempData["WarenkorbImSession"] as Warenkorb;
+}
+
+<!-- hier muss noch nach dem PLZ geteilt werden-->
+<style>
+ /*   @@media (min-width: 1025px) {
+        .h-custom {
+            height: 100vh !important;
+        }
+    }
+
+    .registration .select-input.form-control[readonly]:not([disabled]) {
+        font-size: 1rem;
+        line-height: 2.15;
+        padding-left: .75em;
+        padding-right: .75em;
+    }
+
+    .card-registration .select-arrow {
+        top: 13px;
+    }
+
+    .bg-grey {
+        background-color: #eae8e8;
+    }
+
+    @@media (min-width: 992px) {
+        .card-registration-2 .bg-grey {
+            border-top-right-radius: 16px;
+            border-bottom-right-radius: 16px;
+        }
+    }
+
+    @@media (max-width: 991px) {
+        .card-registration-2 .bg-grey {
+            border-bottom-left-radius: 16px;
+            border-bottom-right-radius: 16px;
+        }
+    }
+
+    tbody, td, tfoot, th, thead, tr {
+        border-color: inherit;
+        border-style: solid;
+        border-width: 0;
+        border-bottom-width: 0px;
+        text-align: center;
+    }
+   p,h6{
+       text-align:center;
+   }*/
+
+.abstand-40{
+    text-align: center;
+    position: relative;
+    margin-bottom: 80px;
+}
+
+
+.bg-grey {
+background-color: #eae8e8;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-width: thin 0 0 thin;
+    margin: 0 0 1em;
+    table-layout: auto;
+    max-width: 100%;
+}
+
+    table, th, td {
+        border-collapse: collapse;
+    }
+    tbody{
+        height:130px;
+    }
+ 
+   th,td{
+       width:20%;
+       text-align:center;
+   }
+   /* das hier für td img */
+   .tdImg{
+        width: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+   }
+
+    .plusMinus{
+        display:flex;
+        justify-content:space-between;
+        width:100%!important;
+        background-color:aliceblue!important;
+    }
+    .tr-underline{
+        border-bottom: 4px solid #b9bdbc;
+        height: 100px;
+    }
+
+    .tab2-p tr:first-child{
+        padding-top:30px;
+        display:block;
+    }
+
+    @@media only screen and (max-width: 700px) {
+        .imgx1 {
+            width: 80px !important;
+        }
+
+        .imgx2 {
+            width: 100px !important;
+        }
+
+        .abstand-40 {
+            margin-bottom: 40px;
+        }
+    }
+
+</style>
+
+<section id="cart" class="h-100" style="min-height:1000px;height:auto;">
+    @if (Model.WarenkorbItemsListe.Count() > 0)
+    {
+        <div class="container py-5 h-100" style="max-width:1630px;">
+
+            <div class="pt-5">
+                <h6 class="mb-0 fs-3" style="margin:0;text-align:start;margin-bottom: 20px;font-weight:normal;color:#FF6000;">
+                    <!--  <a href="@Url.Action("Shop", "Shop",new{zipcode = @Model.Postleitzahl})" style="color:#FF6000;"> <i class="fas fa-long-arrow-alt-left me-2"></i> zurück </a>  -->
+                    <a href="javascript:history.back()" style="color:#FF6000;text-decoration:none;font-weight:bold;">zurück</a>
+                </h6>
+            </div>
+
+        @*    <div class="pt-5">
+                <h6 class="mb-0 ueberschrift2" style="margin:0;text-align:start;margin-bottom: 20px;font-weight:normal;color:#FF6000;">
+                    <a href="@Url.Action("Shop", "Shop",new{zipcode = @Model.Postleitzahl})" style="color:#FF6000;text-decoration:none;">
+                       zurück
+                </a>
+                </h6>
+            </div>*@
+
+            <p hidden class="zipcodeResult mb-0 mt-5">
+                <span>@Model.Postleitzahl</span>
+                <span>@Model.Stadtname</span>
+            </p>
+
+            <div class="abstand-40">
+                <h1 class="zipcodeResult-2 mb-0 ueberschrift">
+                    Warenkorb      
+                </h1>
+                <div class="mb-0 mt-0 lineX text"></div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-12 col-lg-9 Fliestext">
+                    <!-- Div Code Design -->
+                    <div class="">
+                        <table class="table-responsive-sm" style="height:100%;">
+                            <thead>
+                                <tr class="tr-underline mb-4">
+                                    <!--Produkt Image-->
+                                    <th scope="col"></th>
+                                    <!--Produktname-->
+                                    <th scope="col">Bezeichnung </th>
+                                    <!--item.UnitPrice -->
+                                    <th scope="col">Preis</th>
+                                    <th scope="col">Anzahl </th>
+                                    <th scope="col">Gesamt </th>
+                                </tr>
+
+                            </thead>
+                            @foreach (var item in Model.WarenkorbItemsListe)
+                            {
+                                var id = @item.ProduktName + "_Cart";
+
+                               <tbody>
+                                    <tr id='@id' class="korp">
+                                        <!--Produkt Image-->
+                                        <td scope="col" class="pt-4">
+                                            @if (item.ProduktName == "Container-Box-Metall" || item.ProduktName == "Container-Box-Holz")
+                                            {
+                                                <img src=@item.ProductImage class="imgx1" alt="@item.ProduktName" style="width:40%;">
+                                            }
+                                            else
+                                            {
+                                                <img src=@item.ProductImage class="imgx2" alt="@item.ProduktName" style="width:60%;">
+                                                
+                                            }
+                                        </td>
+
+                                        <!--Produktname-->
+                                        <td scope="col" class="pt-4"><span>@item.ProduktName</span></td>
+
+                                        <!--item.UnitPrice -->
+                                        <td scope="col" class="unitPrice pt-4">
+                                            <span>@item.UnitPrice.ToString("C2",CultureInfo.CreateSpecificCulture("de-DE")) </span>
+                                        </td>      
+
+                                      <!--minus quantity plus-->
+                                        <td scope="col" class="pt-4">
+                                            <div class ="plusMinus">
+                                                <button class="_minus btn-roomit btn-center" style="min-width: 26%;padding:0;justify-content: center;font-size: 30px;height:40px;border-radius:5px;" onclick="korpIdit(this,'@item.ProduktName')">
+                                                    -
+                                                </button>
+                                                <p class="product-counter quantity" style="margin-top:8px;z-index:0;font-size: 22px!important;">@item.Quantity</p>
+                                                <!-- <input min="0" name="quantity" value="@item.Quantity" type="text" class="form-control form-control-sm icon-korp-Size quantity" style="text-align:center;color:#61b300;font-weight:500;" />-->
+                                                <button class="btn-roomit btn-center plus" style="min-width: 26%;padding:0;justify-content: center;font-size: 30px;height:40px;border-radius:5px;" onclick="korpIdit(this,'@item.ProduktName')">
+                                                    +
+                                                </button>
+                                            </div>
+                                             
+                                        </td>
+
+
+                                        <!--item.Total-->
+                                        <td scope="col" class="total pt-4" style="width: 50%;">
+                                         <span>@item.Total.ToString("C2",CultureInfo.GetCultureInfo("de-DE"))</span>
+                                           
+                                        </td>
+                                    </tr>                                
+                                </tbody>
+
+                            }
+                            <tr class="tr-underline text-muted"></tr>
+                            
+                        </table>
+                    </div>
+
+                </div>
+
+                <!-- hier hier-->
+                <div class="col-lg-3 Fliestext">
+                    <div class="cart-right-div bg-grey  ps-2 pe-2">
+                        <table class="table-responsive-sm">
+                            <thead>
+                                <tr class="tr-underline mb-4">
+                                    <td> <h3 class="fw-bold mb-4 mt-2 pt-1">Summe</h3></td>
+                                </tr>
+                            </thead>
+
+                            <tbody class="tab2-p">
+                                @foreach (var item in Model.WarenkorbItemsListe)
+                                {
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex justify-content-between mb-4 Fliestext @item.ProduktName">
+                                                <p class="grayCartList-1">
+                                                    <span class="article-counter">@item.Quantity</span>
+                                                    <span>x</span>
+                                                    <span class="prductname">@item.ProduktName</span>
+                                                </p>
+                                                <p class="totalAmount grayCartList-2">@item.Total.ToString("C2",CultureInfo.GetCultureInfo("de-DE"))</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                }
+                              <tr>
+                                  <td>
+                                        @*<h5 class="mb-3 Fliestext text-start"> Lieferkosten werden im Nachgang berechnet!</h5>*@
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>
+                                        <div id="totalAmount-x" class="d-flex justify-content-between mb-5">
+                                            <p class="text-uppercase">Gesamtpreis</p>
+                                            <p class="totalAmount-1">@Model.TotalAmount.ToString("C2",CultureInfo.GetCultureInfo("de-DE"))</p>
+                                        </div>
+                                  </td>
+                              </tr>                             
+                              <tr>
+                                  <td>
+                                        <div class="btn-roomit-div2">
+                                            <button type="button" class="btn btn-roomit btn-center" onclick="location.href='@Url.Action("Checkout", "Shop")'" data-mdb-ripple-color="dark" style="display: block ruby;float:inline-end;min-width:50%;">
+                                                <p style="padding-inline:8px;margin-bottom:0;">Weiter</p>
+                                            </button>
+                                        </div>
+                                  </td>
+                              </tr>
+                                </tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    }
+    else
+    {
+        <div class="container pt-5 mt-5 border" style="max-width:1620px;height:600px;">
+            <div>
+                <h6 class="mb-0 fs-3" style="margin:0;text-align:start;margin-bottom: 20px;font-weight:normal;color:#FF6000;">
+                    <!--  <a href="@Url.Action("Shop", "Shop",new{zipcode = @Model.Postleitzahl})" style="color:#FF6000;"> <i class="fas fa-long-arrow-alt-left me-2"></i> zurück </a>  -->
+                    <a href="javascript:history.back()" style="color:#FF6000;text-decoration:none;font-weight:bold;">zurück</a>
+                </h6>
+            </div>
+
+            <div class="row text-md-center align-items-center" style="min-height:250px;"><h1>Warenkorb ist leer</h1></div>
+        </div>
+        
+    }
+
+</section>
+
+
+
+
+@*<div class="cont-add-prod">
+    @if (Model?.WarenkorbItemsListe.FirstOrDefault(x => x.ProduktName == "Container-Box")?.Quantity > 0)
+    {
+        <button class="minus minus2 btn-roomit" value="99">-</button>
+        <p class="product-counter">@Model?.WarenkorbItemsListe.FirstOrDefault(x => x.ProduktName == "Container-Box")?.Quantity</p>
+    }
+    else
+    {
+        <button class="minus minus2 btn-roomit" value="99">-</button>
+        <p class="product-counter">0</p>
+    }
+    <button class="plus plus2 btn-roomit" value="99">+</button>
+</div>*@ 

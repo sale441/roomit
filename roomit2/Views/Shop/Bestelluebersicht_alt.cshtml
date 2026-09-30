@@ -1,0 +1,629 @@
+﻿@model Warenkorb
+@{
+    ViewData["Title"] = "Bestelluebersicht";
+}
+
+
+@{
+    ViewData["Title"] = "Checkout";
+    var TotalAmount = TempData["TotalAmount"];
+}
+
+<style>
+    .register {
+        background: -webkit-linear-gradient(left,#449634,gray);
+        margin-top: 3%;
+        margin-bottom: 3%;
+        padding: 3%;
+        border-radius: 5px;
+        box-shadow: 1px 1px 10px 1px;
+        padding-left: 2%;
+    }
+
+    .register-left {
+        /*text-align: center;*/
+        color: #fff;
+        /*margin-top: 4%;*/
+    }
+
+        .register-left input {
+            border: none;
+            border-radius: 1.5rem;
+            padding: 2%;
+            width: 60%;
+            background: #f8f9fa;
+            font-weight: bold;
+            color: #383d41;
+            margin-top: 30%;
+            margin-bottom: 3%;
+            cursor: pointer;
+        }
+
+    .register-right {
+        background: #f8f9fa;
+        border-top-left-radius: 10% 50%;
+        border-bottom-left-radius: 10% 50%;
+    }
+
+    .register-left img {
+        margin-top: 15%;
+        margin-bottom: 10%;
+        width: 80%;
+        -webkit-animation: mover 2s infinite alternate;
+        animation: mover 1s infinite alternate;
+        border-radius: 20px;
+    }
+
+
+
+    @@keyframes mover {
+        from {
+            transform: translateY(-10);
+        }
+
+        To {
+            transform: translateY(30px);
+        }
+    }
+
+    .register-left p {
+        font-weight: lighter;
+        padding: 12%;
+        margin-top: -9%;
+    }
+
+    .register .register-form {
+        padding: 10%;
+        margin-top: 10%;
+    }
+
+    .btnRegister {
+        float: right;
+        margin-top: 10%;
+        border: none;
+        border-radius: 1.5rem;
+        padding: 2%;
+        background: #0062cc;
+        color: #fff;
+        font-weight: 600;
+        width: 50%;
+        cursor: pointer;
+    }
+
+    .register .nav-tabs {
+        margin-top: 3%;
+        border: none;
+        background: #0062cc;
+        border-radius: 1.5rem;
+        width: 28%;
+        float: right;
+    }
+
+.register .nav-tabs .nav-link {
+    padding: 2%;
+    height: 34px;
+    font-weight: 600;
+    color: #fff;
+    border-top-right-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+}
+
+    .register .nav-tabs .nav-link:hover {
+        border: none;
+    }
+
+    .register .nav-tabs .nav-link.active {
+        width: 100px;
+        color: #0062cc;
+        border: 2px solid #0062cc;
+        border-top-left-radius: 1.5rem;
+        border-bottom-left-radius: 1.5rem;
+    }
+
+    .register-heading {
+        text-align: center;
+        margin-top: 8%;
+        margin-bottom: -15%;
+        color: #61b300;
+    }
+
+    .btn-radio {
+        transform: scale(1.5);
+        /*accent-color: #61b300;*/
+    }
+
+    input[type="radio"]:checked::after {
+        background-color: #61b300;
+    }
+
+    input[type="radio"] {
+        position: relative;
+        display: inline-block;
+        top: 4px;
+        left: 0;
+        width: 19px;
+        height: 19px;
+        background-color: #fff;
+        border-radius: 50%;
+        cursor: pointer;
+        outline: none;
+        -webkit-appearance: none;
+    }
+
+input[type="radio"]::after {
+    position: relative;
+    display: block;
+    width: 7px;
+    height: 7px;
+    background-color: #fff;
+    border-radius: 25px;
+    content: '';
+    left: 6px;
+    top: 6px;
+}
+
+.maxl .radio span {
+margin-left: 5px;
+}
+
+.card {
+border: none;
+}
+
+
+
+@@media (min-width: 1025px) {
+    .h-custom {
+        height: 100vh !important;
+    }
+}
+
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+    font-size: 1rem;
+    line-height: 2.15;
+    padding-left: .75em;
+    padding-right: .75em;
+}
+
+.card-registration .select-arrow {
+    top: 13px;
+}
+.card{
+  --bs-card-bg: null!important;
+}
+
+.bg-grey {
+    background-color: #eae8e8;
+}
+
+@@media (min-width: 992px) {
+    .card-registration-2 .bg-grey {
+        border-top-right-radius: 16px;
+        border-bottom-right-radius: 16px;
+    }
+}
+
+@@media (max-width: 991px) {
+    .card-registration-2 .bg-grey {
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 16px;
+    }
+}
+</style>
+
+<!-- Hier soll stattdessen ein Popup Fenster sein -->
+@if (ViewBag.ServerMessage != string.Empty)
+{
+    <div>
+        <p class="text-danger">@ViewBag.ServerMessage</p>
+
+    </div>
+}
+
+@if ((ViewBag.TotalAmount > 0 && ViewBag.WarenkorbItemsCount > 0 && Model?.ApplicationUser?.RechnungAdresse != null) || (ViewBag.TotalAmount > 0 && ViewBag.WarenkorbItemsCount > 0 && Model?.GastKunde?.RechStraße != null))
+{
+    <div class="container register" style="max-width:1600px;">
+        <div class="row">
+            <div class="col-md-3 register-left">
+                <img src="/assets/images/roomit-it-logo-1.png" alt="" />
+                <h1 style="font-variant: small-caps;margin-bottom:27%;margin-left:4%;"> Willkomen </h1>
+                <h2 class="" style="font-variant: small-caps;text-decoration: underline;margin-left: 4%;margin-bottom:5px;">
+                    Meine Vorteile
+                </h2>
+                <ul class="ul-vorteile">
+
+                   @* <li><span class="ms-3" style="margin-right: 3%">&#10003;</span><span>@Model.ApplicationUser.Anrede</span></li>
+                    <li><span class="ms-3" style="margin-right: 3%">&#10003;</span><span>@Model.ApplicationUser.Vorname</span> <span>@Model.ApplicationUser.Nachname</span></li>
+                    <li><span class="ms-3" style="margin-right: 3%">&#10003;</span>@Model.ApplicationUser.PhoneNumber</li>
+                    <li><span class="ms-3" style="margin-right: 3%">&#10003;</span>@Model.ApplicationUser.Email</li>
+                    
+                    <li><span class="ms-3" style="margin-right: 3%">&#10003;</span> <span>Addresse</span></li>
+                    <li><span class="ms-3" style="margin-right: 3%">&#10003;</span>@Model.ApplicationUser.RechnungAdresse?.Straße</li>
+                    <li><span class="ms-3" style="margin-right: 3%">&#10003;</span><span>@Model.ApplicationUser.RechnungAdresse?.PLZ</span> <span>@Model.ApplicationUser.RechnungAdresse?.Ort</span></li>
+                    *@
+
+                    <li><span class="ms-3" style="margin-right: 3%">&#10003;</span>Bequem online bestellen</li>
+                    <li><span class="ms-3" style="margin-right: 3%">&#10003;</span>Anlieferung und Abholung ab 0,00 €</li>
+                    <li><span class="ms-3" style="margin-right: 3%">&#10003;</span>Sichere Lagerung</li>
+                    <li><span class="ms-3" style="margin-right: 3%">&#10003;</span>Jederzeit kündbar</li>
+                    <li><span class="ms-3" style="margin-right: 3%">&#10003;</span>Monatliche Abrechnung</li>
+                    <li><span class="ms-3" style="margin-right: 3%">&#10003;</span>Einzelrücklieferung möglich</li>
+                    <li><span class="ms-3" style="margin-right: 3%">&#10003;</span>Hotline und Beratung</li>
+                </ul>
+            </div>
+
+            <div class="col-md-9 register-right">
+                <div class="tab-content" id="myTabContent">
+                    <!-- Neukunde -->
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <form method="post" asp-action="Danke" asp-controller="Shop">
+                            <div class="row d-flex justify-content-center align-items-center pt-3 mt-3">
+                                <div class="col-12">
+                                    <div style="text-align:center;position:relative;margin-bottom:40px;text-decoration: solid underline #61b300 4px;text-underline-offset: 70%;">
+                                 @* <h1 class="zipcodeResult">
+                                    <span>@Model.Postleitzahl</span>
+                                    <span>@Model.Stadtname</span>
+                                    </h1>
+                                 *@
+                                     <h1 class="fw-bold mb-0 text-black">Übersicht</h1>
+                                    </div>
+                                    <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+                                        <div class="card-body p-0">
+                                            <div class="row g-0">
+
+                                                <!-- Linke Seite-->
+                                                <div class="col-lg-8">
+                                                    <div class="p-5">
+                                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                                            <h2 class="fw-bold mb-0 text-black">Ihre Anfrage</h2>
+                                                            <h4 class="mb-0 text-muted article-counter"><span>@Model?.WarenkorbItemsListe.Count()</span> Artikel</h4>
+                                                        </div>
+
+                                                        <hr class="my-2 mb-3" style="height:4px;border-width:0;color:gray;background-color:gray">
+                                                        @foreach (var item in Model?.WarenkorbItemsListe!)
+                                                        {
+                                                            var id = @item.ProduktName + "_Cart";
+                                                            <div id='@id' class="row mb-4 d-flex justify-content-between align-items-center korp">
+                                                                <!--Produkt Image-->
+                                                                <div class="col-md-2 col-lg-2 col-xl-2">
+                                                                    <img src=@item.ProductImage class="img-fluid rounded-3" alt="@item.ProduktName">
+                                                                </div>
+                                                                <!--Produktname-->
+                                                                <div class="col-md-3 col-lg-3 col-xl-3">
+                                                                    <h6 class="text-muted">romit</h6>
+                                                                    <h6 class="text-black mb-0 name">@item.ProduktName</h6>
+                                                                </div>
+                                                                <!-- -->
+                                                                <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                                                                   
+                                                                   <input min="0" name="quantity" value="@item.Quantity" readonly type="text" class="form-control form-control-sm icon-korp-Size quantity" style="text-align:center;color:#61b300;font-weight:500;" />
+
+                                                                </div>
+                                                                <!--item.UnitPrice -->
+                                                                <div class="col-md-3 col-lg-2 col-xl-2">
+                                                                    <h6 class="mb-0 unitPrice icon-korp-Size price-value">
+                                                                        <span>@item.UnitPrice</span>
+                                                                        <span>€</span>
+                                                                    </h6>
+                                                                </div>
+                                                                <!--item.Total-->
+                                                                <div class="col-md-3 col-lg-2 col-xl-2">
+                                                                    <h6 class="mb-0 total icon-korp-Size price-value">
+                                                                        <span>@item.Total</span>
+                                                                        <span>€</span>
+                                                                    </h6>
+                                                                </div>
+                                                              @if (Model.WarenkorbItemsListe?.LastIndexOf(item) == Model.WarenkorbItemsListe?.Count() - 1)
+                                                                {
+                                                                    <hr class="mt-5 mb-1" style="height:4px;border-width:0;color:gray;background-color:gray">
+                                                                }
+                                                                else
+                                                                {
+                                                                    <hr class="my-4">
+                                                                }
+                                                                
+                                                            </div>
+                                                            @*<hr class="my-4">*@
+                                                        }
+                                                        <div class="row d-flex justify-content-between align-items-center korp" style="border-top-left-radius: 16px;border-bottom-left-radius: 16px;background-color:#eae8e8;height:60px;">
+
+                                                            <div class="col-md-2 col-lg-2 col-xl-2">
+                                                                
+                                                            </div>
+                                                            <!--Produktname-->
+                                                            <div class="col-md-4 col-lg-4 col-xl-4">
+                                                                <h6 class="mb-0 total icon-korp-Size"><span>Gesamtpreis</span></h6>
+                                                            </div>
+                                                            <!--item.Total-->
+                                                           @* <div class="col-md-2 col-lg-5 col-xl-5 d-flex justify-content-between">                                                             
+                                                                <h5 class="text-uppercase">Gesamtpreis</h5>
+                                                                <h5 class="totalAmount">@Model.TotalAmount €</h5>                                                             
+                                                            </div>*@
+
+                                                            <div class="col-md-3 col-lg-3 col-xl-3">
+                                                                <h6 class="mb-0 total icon-korp-Size price-value">
+                                                                    
+                                                                    <span>@Model.TotalAmount €</span>
+                                                                </h6>
+                                                            </div>
+
+                                                            
+                                                        </div>
+
+
+                                                        @* *****************************************@
+
+                                                       @* 
+                                                     <div class="pt-5">
+                                                        <h4 class="mb-0">
+                                                            <a href="javascript:history.back()" class="text-body">
+                                                                <i class="fas fa-long-arrow-alt-left me-2"></i><span>Zurück</span>
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+
+                                                    <button type="button" class="btn btn-dark btn-block btn-lg" onclick="location.href='@Url.Action("Checkout", "Shop")'" data-mdb-ripple-color="dark" style="display: block ruby;">
+                                                    <h4 style="margin-top:8px;">Weiter zur Kasse</h4>
+                                                    <img src="/assets/images/Gif_Rights.gif">
+                                                    </button>
+                                                        
+                                                        *@
+                                                        @*<div class="d-flex justify-content-between ms-2 mt-3">
+                                                            <input type="button" class="btn btn-primary btn-block btn-lg mt-1" style="background-color:forestgreen" value="Zurück" onclick="javascript:history.back()" />
+                                                            <input type="button" class="btn btn-primary btn-block btn-lg mt-1" style="background-color:forestgreen" value="Zurück zur Warenkorb" onclick="location.href='@Url.Action("ShoppingCart", "Shop")'" />
+                                                        </div>*@
+                                                        
+                                                    </div>
+                                                </div>
+
+                                                <!-- Richte Seite-->
+                                                @if (Model?.ApplicationUser != null && Model?.GastKunde == null)
+                                                {
+                                                    <div class="col-lg-4 mt-4 mb-2" style="border-top-left-radius: 16px;border-bottom-left-radius: 16px;background-color: #eae8e8;">
+                                                        <div class="p-3">
+                                                            <h3 class="fw-bold mb-3 mt-3 pt-1">Kunden Daten</h3>
+
+                                                            <hr class="my-1 mb-3" style="height:4px;border-width:0;color:gray;background-color:gray">
+
+                                                            <div class="d-flex justify-content-between mb-2 mt-3">
+                                                                <h5>
+                                                                    <span>@Model?.ApplicationUser?.Anrede</span>
+                                                                </h5>
+                                                                <h5 class="text-uppercase">
+                                                                    <span>@Model?.ApplicationUser?.Vorname</span>
+                                                                    <span>@Model?.ApplicationUser?.Nachname</span>
+                                                                </h5>
+                                                            </div>
+
+                                                            <div class="d-flex justify-content-between mb-2 mt-3">
+                                                                <h5 class="">
+                                                                    <span>Telefon</span>
+                                                                </h5>
+                                                                <h5 class="text-uppercase">
+                                                                    <span>@Model?.ApplicationUser?.PhoneNumber</span>
+                                                                </h5>
+                                                            </div>
+
+                                                            <div class="d-flex justify-content-between mb-4 mt-3">
+                                                                <h5 class="">
+                                                                    <span>E-mail</span>
+                                                                </h5>
+                                                                <h5 class="text-uppercase">
+                                                                    <span>@Model?.ApplicationUser?.Email</span>
+                                                                </h5>
+                                                            </div>
+
+
+
+                                                            <div>
+                                                                <h5 class="text-uppercase mt-5">
+                                                                    <span>Rechnungsadresse</span>
+                                                                </h5>
+
+                                                                <hr class="my-2 mb-3" style="height:4px;border-width:0;color:gray;background-color:gray">
+
+                                                                <div class="mb-5">
+
+                                                                    <h5 class="text-uppercase mb-2">
+                                                                        <span>@Model?.ApplicationUser?.RechnungAdresse?.Straße</span>
+                                                                    </h5>
+                                                                    <h5 class="text-uppercase d-flex gap-5">
+                                                                        <span>@Model?.ApplicationUser?.RechnungAdresse?.Ort</span>
+                                                                        <span>@Model?.ApplicationUser?.RechnungAdresse?.PLZ</span>
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+
+                                                            @if (Model?.ApplicationUser?.LieferAdresse != null)
+                                                            {
+                                                                <div>
+                                                                    <h5 class="text-uppercase mt-5">
+                                                                        <span>Lieferadresse</span>
+                                                                    </h5>
+
+                                                                    <hr class="my-2 mb-3" style="height:4px;border-width:0;color:gray;background-color:gray">
+
+                                                                    <div class="mb-5">
+                                                                        <h5 class="text-uppercase mb-2">
+                                                                            <span>@Model?.ApplicationUser?.LieferAdresse?.Straße</span>
+                                                                        </h5>
+                                                                        <h5 class="text-uppercase d-flex gap-5">
+                                                                            <span>@Model?.ApplicationUser?.LieferAdresse?.Ort</span>
+                                                                            <span>@Model?.ApplicationUser?.LieferAdresse?.PLZ</span>
+                                                                        </h5>
+                                                                    </div>
+                                                                </div>
+                                                            }
+
+
+                                                            @*    @Html.HiddenFor(m => m.Quantity)
+                                                    @Html.HiddenFor(m => m.IPAdresse)
+                                                    @Html.HiddenFor(m => m.NL)
+                                                    @Html.HiddenFor(m => m.Versandkosten)
+                                                    @Html.HiddenFor(m => m.Postleitzahl)
+                                                    @Html.HiddenFor(m => m.Stadtname)
+                                                    @Html.HiddenFor(m => m.TotalAmount)
+                                                    @Html.HiddenFor(m => m.Versandkosten)
+                                                    @Html.HiddenFor(m => m.ApplicationUser.Id)
+                                                    @Html.HiddenFor(m => m.ApplicationUser.Email)
+                                                    @Html.HiddenFor(m => m.ApplicationUser.Nachname)
+                                                    @Html.HiddenFor(m => m.ApplicationUser.Vorname)
+                                                    @Html.HiddenFor(m => m.ApplicationUser.PhoneNumber)
+                                                    @Html.HiddenFor(m => m.ApplicationUser.KundenType)
+                                                    @Html.HiddenFor(m => m.ApplicationUser.Anrede)
+                                                    @Html.HiddenFor(m => m.ApplicationUser.GeschäftsbedingungenAkzeptiert)
+                                                    @Html.HiddenFor(m => m.ApplicationUser.hasTowAdresse)
+                                                    @Html.HiddenFor(m => m.ApplicationUser.IsOnline)
+                                                    @Html.HiddenFor(m => m.ApplicationUser.KundenArt)
+                                                    @Html.HiddenFor(m => m.ApplicationUser.RechnungAdresse)
+                                                    @Html.HiddenFor(m => m.ApplicationUser.RechnungAdresse!.AdresseTyp)
+                                                    @Html.HiddenFor(m => m.ApplicationUser.RechnungAdresse!.Ort)
+                                                    @Html.HiddenFor(m => m.ApplicationUser.RechnungAdresse!.Straße)
+                                                    @Html.HiddenFor(m => m.ApplicationUser.RechnungAdresse!.PLZ)
+                                                    @Html.HiddenFor(m => m.ApplicationUser.RechnungAdresse!.DateCreated)
+
+                                                    @Html.HiddenFor(m => m.ApplicationUser.LieferAdresse!.AdresseTyp)
+                                                    @Html.HiddenFor(m => m.ApplicationUser.LieferAdresse!.PLZ)
+                                                    @Html.HiddenFor(m => m.ApplicationUser.LieferAdresse!.Ort)
+                                                    @Html.HiddenFor(m => m.ApplicationUser.LieferAdresse!.Straße)
+                                                    @Html.HiddenFor(m => m.ApplicationUser.LieferAdresse!.DateCreated)
+
+                                                    @Html.HiddenFor(m => m.WarenkorbItemsListe!.FirstOrDefault()!.ProduktName)
+                                                    *@
+
+                                                            @*<input type="submit" class="btn btn-primary btn-block btn-lg mt-4" style="background-color:forestgreen" value="Anfrage schicken" />*@
+
+                                                        </div>
+                                                    </div>
+                                                }
+                                                else if (Model?.ApplicationUser == null && Model?.GastKunde != null)
+                                                {
+                                                    <div class="col-lg-4 mt-4 mb-2" style="border-top-left-radius: 16px;border-bottom-left-radius: 16px;background-color: #eae8e8;">
+                                                        <div class="p-3">
+                                                            <h3 class="fw-bold mb-3 mt-3 pt-1">Kunden Daten</h3>
+
+                                                            <hr class="my-1 mb-3" style="height:4px;border-width:0;color:gray;background-color:gray">
+
+                                                            <div class="d-flex justify-content-between mb-2 mt-3">
+                                                                <h5>
+                                                                    <span>@Model?.GastKunde?.Anrede</span>
+                                                                </h5>
+                                                                <h5 class="text-uppercase">
+                                                                    <span>@Model?.GastKunde?.Vorname</span>
+                                                                    <span>@Model?.GastKunde?.Nachname</span>
+                                                                </h5>
+                                                            </div>
+
+                                                            <div class="d-flex justify-content-between mb-2 mt-3">
+                                                                <h5 class="">
+                                                                    <span>Telefon</span>
+                                                                </h5>
+                                                                <h5 class="text-uppercase">
+                                                                    <span>@Model?.GastKunde?.Telefon</span>
+                                                                </h5>
+                                                            </div>
+
+                                                            <div class="d-flex justify-content-between mb-4 mt-3">
+                                                                <h5 class="">
+                                                                    <span>E-mail</span>
+                                                                </h5>
+                                                                <h5 class="text-uppercase">
+                                                                    <span>@Model?.GastKunde?.Email</span>
+                                                                </h5>
+                                                            </div>
+
+
+
+                                                            <div>
+                                                                <h5 class="text-uppercase mt-5">
+                                                                    <span>Rechnungsadresse</span>
+                                                                </h5>
+
+                                                                <hr class="my-2 mb-3" style="height:4px;border-width:0;color:gray;background-color:gray">
+
+                                                                <div class="mb-5">
+
+                                                                    <h5 class="text-uppercase mb-2">
+                                                                        <span>@Model?.GastKunde?.RechStraße</span>
+                                                                    </h5>
+                                                                    <h5 class="text-uppercase d-flex gap-5">
+                                                                        <span>@Model?.GastKunde?.RechOrt</span>
+                                                                        <span>@Model?.GastKunde?.RechPLZ</span>
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+
+                                                            @if (Model?.GastKunde?.LiefStraße != null)
+                                                            {
+                                                                <div>
+                                                                    <h5 class="text-uppercase mt-5">
+                                                                        <span>Lieferadresse</span>
+                                                                    </h5>
+
+                                                                    <hr class="my-2 mb-3" style="height:4px;border-width:0;color:gray;background-color:gray">
+
+                                                                    <div class="mb-5">
+                                                                        <h5 class="text-uppercase mb-2">
+                                                                            <span>@Model?.GastKunde?.LiefStraße</span>
+                                                                        </h5>
+                                                                        <h5 class="text-uppercase d-flex gap-5">
+                                                                            <span>@Model?.GastKunde?.LiefOrt</span>
+                                                                            <span>@Model?.GastKunde?.LiefPLZ</span>
+                                                                        </h5>
+                                                                    </div>
+                                                                </div>
+                                                            }
+
+                                                        </div>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between me-2 mt-3 mb-5 p-2">
+                                <div class="d-flex gap-5 ms-5 mt-3">
+                                    <input type="button" class="btn btn-dark btn-block btn-lg mt-1" value="Zurück" onclick="location.href='@Url.Action("Checkout", "Shop")'" />
+                                    <input type="button" class="btn btn-dark btn-block btn-lg mt-1" value="Zurück zur Warenkorb" onclick="location.href='@Url.Action("warenkorb", "Shop")'" />
+                                    <input type="submit" class="btn btn-primary btn-block btn-lg mt-1" value="Anfrage senden" style="background-color:#61b300;" @*onclick="location.href='@Url.Action("OrderCompleted", "Shop")'" *@/>
+                                </div>
+                                
+                            </div>
+                           
+                        </form>
+                        
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+}
+else
+{
+    <div class="row">
+        <div class="lg-6">
+            <div class="container-nodata"><h1>Etwas ist Schief gelaufen!</h1></div>
+
+            <div class="d-flex gap-5 ms-5 mt-3">
+                <input type="button" class="btn btn-dark btn-block btn-lg mt-1" value="Zurück" onclick="location.href='@Url.Action("Checkout", "Shop")'" />
+            </div>
+        </div>
+    </div>
+
+
+    @*<div class="pt-5">
+        <h6 class="mb-0">
+            <a href="/Shop/ShoppingCart" class="text-body">
+                <i class="fas fa-long-arrow-alt-left me-2"></i>zurück zur Warenkorb
+            </a>
+        </h6>
+    </div>*@
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
